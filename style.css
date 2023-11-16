@@ -1,0 +1,135 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+.summary > li:first-child {
+    height: 100px;
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+}
+.book .book-summary ul.summary li.divider {
+    height: 0px;
+    width: 650px;
+    color:#13322B;
+}
+body {
+  text-align: justify;
+  font-size: 12px;
+  font-family: "Montserrat";
+}
+.level1 h1 { /* Header 1 */
+  font-size: 28px;
+  font-weight: bold;
+  color: #13322B;
+}
+h2 { /* Header 2 */
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  color: #2C5C51;
+}
+h3 { /* Header 3 */
+  font-size: 16px;
+  color: #2C5C51;
+}
+.header-section-number::after {
+  content: ".";
+  padding-right: 12px;
+.level2 {
+  counter-increment: subsection-level 2;
+}
+.sidebar h1, .sidebar h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 8.5rem;
+}
+.sidebar h2 { /* Header 1 */
+  font-size: 22px;
+}
+/* Menu lateral*/
+.navbar-nav {
+  height: 8px;
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 15px;
+  padding: 9px 10px !important;
+}
+.navbar-link{
+  height: 6px; 
+}
+.navbar-link active {
+  height: 6px;
+  font-size: 10px;
+  font-weight: bolder;
+}
+/* Left side menu stlye font*/
+.book-toc .active {
+    font-weight: bolder;
+}
+a {
+    color: #2C5C51;
+}
+
+.showopt {
+  background-color: #004c93;
+  color: #FFFFFF; 
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle !important;
+  float: right;
+  font-family: sans-serif;
+  border-radius: 8px;
+}
+
+.showopt:hover {
+    background-color: #dfe4f2;
+    color: #004c93;
+}
+
+pre.plot {
+  background-color: white !important;
+}
+
+
+.fade {
+  @include transition($transition-fade);
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}
+
+// scss-docs-start collapse-classes
+.collapse {
+  &:not(.show) {
+    display: none;
+  }
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  @include transition($transition-collapse);
+
+  &.collapse-horizontal {
+    width: 0;
+    height: auto;
+    @include transition($transition-collapse-width);
+  }
+}
+// scss-docs-end collapse-classes
+
+#mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid lightgray;
+        }

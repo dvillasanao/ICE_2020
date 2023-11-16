@@ -1,0 +1,20 @@
+bookdown::bs4_book:
+  css: style.css
+  includes:
+      in_header: header.html
+  theme: 
+    primary: "#13322B"
+  repo: https://www.gob.mx/conapo
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: true
+      number_sections: true
+      toc_depth: 2
+      toc_float:
+        collapsed: yes
+    toolbar:
+      position: right
+    edit : null
+    download: null
+    

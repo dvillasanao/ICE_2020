@@ -1,0 +1,2 @@
+"Indicadores","Máximo","Mínimo"
+"7 comps","Entorno Urbano",80.7211704737367,-3.18746794157154
