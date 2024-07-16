@@ -1,0 +1,923 @@
+# Localidad {.unlisted .unnumbered}
+
+
+```{r, echo = FALSE, out.width = '100%', fig.asp = 1, fig.align='center'}
+readRDS(file = paste0(here::here(), "/Output/Localidad/Network_Loc.rds"))
+```
+
+Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad 
+
+```{r, echo=TRUE}
+load(paste0(here::here(), "/Bases/Localidad/MGN.Rdata"))
+```
+
+## Marginación {.unnumbered}
+
+Se vuelve a reestructurar la base de datos a nivel localidad 2020, donde los principales cambios que se hacen: 
+-	Se agregan esas localidades con el margen de error mayores al 90%.
+-	En la base publicada del índice de marginación a nivel localidad. Se excluyeron a aquellas localidades que no presentaban a algún cálculo en uno de los indicadores. Pero en este caso se incluyen todas las localidades, para que puedan coincidir con los datos oficiales del INEGI para el Censo de Población y Vivienda 2020. 
+
+Al final del cálculo se van a desplegar las localidades menores a 2 viviendas particulares, en las cuales están agrupadas a nivel municipal. Finalmente puedan ser usadas en el  ICE.  
+
+**Bases de datos**
+
+Se carga la nueva base del índice de marginación 2020. 
+
+
+Para el cálculo de los componentes principales depende de las unidades
+de medida empleadas en las variables. Por lo que es importante, antes de
+aplicar `PCA`, estandarizar los indicadores simples para que tengan
+media **0** y desviación estándar **1**, ya que, de lo contrario, las
+variables con mayor varianza dominarían al resto, aunque en el caso en
+que las variables estén medidas en las mismas unidades, podemos optar
+por no estandarizarlas. La estandarización se lleva a cabo restando a
+cada observación la media y dividiendo entre la desviación estándar de
+la variable a la que pertenece:
+
+$$Z_{i}=\frac{x_{i}-\bar{x}}{\sigma_{i}}$$
+
+Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se
+especifica que se estandaricen las vairables con el parámetro
+*scale.unit=TRUE*
+
+**Análisis de componentes principales**
+
+**Se utilizan todas las variables** 
+
+```{r, eval = FALSE}
+load(paste0(here::here(), "/Bases/Localidad/IML.Rdata"))
+
+PCA_IML <- PCA(IML[, c(2:ncol(IML))],
+                 scale.unit = TRUE, 
+                  ncp = ncol(IML[, c(2:ncol(IML))]),
+                   graph = FALSE) 
+```
+
+**Es importante seleccionar que gráficos se pueden incluir en el análisis**
+
+Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada
+
+Por otro lado se generan dos índices, de los cuales: - Uno se estandariza para explicarlos a través de descomposición de valores singulares (`SVD`) de la matriz de datos.
+
+$$\mathbf X = \mathbf U \mathbf S \mathbf V^\top$$ - Segundo, desde el punto de vista `PCA` que requiere el cálculo de los valores propios y
+los vectores propios, haciendo la descomposición propia de $\mathbf X \mathbf X^{T}$.
+
+$$\mathbf X \mathbf V = \mathbf U \mathbf S \mathbf V^\top \mathbf V = \mathbf U \mathbf S$$
+
+Donde - $\mathbf V$ son los eigenvectors - $\mathbf U$ es la matriz unitaria - $\mathbf S$ es la traza de los eigenvalues
+
+Las columnas de $\mathbf {US}$ son los pesos de las componentes principales
+
+**Se generan los índices de cada uno de los subsistemas** **Se utilizan
+a los componentes principales que expliquen el máximo de la información**
+
+Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.
+
+
+```{r, eval = FALSE}
+# Índice estandarizado (SVD)
+# Componentes seleccionadas
+ncp <- 4
+
+# Índices de las componentes principales seleccionados
+PC_IML <-  IML %>%
+             select(CVE_LOC) %>%
+               mutate(PC = as.numeric(scale(as.matrix(IML[,c(2:ncol(IML))])) %*% 
+                                       as.matrix(PCA_IML[["var"]][["coord"]][,1:ncp]) %*% 
+                                        as.matrix(PCA_IML[["eig"]][,2][1:ncp]/100))) %>%
+                 as.data.frame()
+save(PC_IML, file = paste0(here::here(), "/Output/Localidad/PC_IML.Rdata"))
+```
+
+
+**Resumen**
+
+```{r, echo = FALSE}
+load(paste0(here::here(), "/Output/Localidad/facto_summarize_IML.Rdata"))
+tabla %>%
+  kable(caption = "Tabla: Resumen de los indicadores de marginación utilizando PCA", 
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic"),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:8, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T) 
+```
+
+
+
+## Equipamiento {.unnumbered}
+
+**Claves económicas**
+
+### DENUE {.unnumbered}
+
+Se anexan los indicadores simples, de acuerdo a la clasificación económica del DENUE (**01**)
+
+```{r, class.source = "fold-show"}
+load(paste0(here::here(), "/Bases/Localidad/Indicadores_DENUE.RData"))
+```
+
+
+Se utiliza la nueva reclasificación de los subsitemas, de los cuales fueron obtenidos del DENUE
+
+```{r, class.source = "fold-show"}
+load(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.RData"))
+```
+
+**Subramos**
+
+Se toman como referencia 13 subsitemas económicos y 64 elementos
+económicos que lo integran
+
+Integrarlo en una base de datos para no saturar la página web
+
+
+```{r}
+load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
+tablas <- names(Subsitemas)
+
+for(i in 1:11){
+assign(paste0("tabla_",tablas[i]), denue_loc %>%
+                                     ungroup() %>%
+                                      select(CVE_LOC, Subsitemas[[paste(tablas[i])]]) %>%
+                                       mutate(suma = rowSums(.[2:length(Subsitemas[[paste(tablas[i])]])])) %>%
+                                        mutate(suma = as.numeric(.$suma)) %>%
+                                          filter(.$suma != 0) %>%
+                                           select(-suma))
+}
+```
+
+
+**Dimensiones de cálculo**
+
+```{r, echo = FALSE}
+tabla <- matrix(data = NA, nrow = 11, ncol = 3)
+for(i in 1:11){
+  tabla[i, 1] <- paste(tablas[i])
+  tabla[i, 2] <- nrow(get(paste0("tabla_", tablas[i])))
+  tabla[i, 3] <- length(Subsitemas[[paste(tablas[i])]])
+}
+colnames(tabla) <- c("Indicadores", "Observaciones", "Dimensiones")
+
+tabla %>% 
+  as.data.frame() %>%
+    mutate(Observaciones = as.numeric(.$Observaciones)) %>%
+  kable(caption = "Tabla: Dimensiones de cálculo", 
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic", big.mark = " "),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:11, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T)
+```
+
+
+**Análisis de componentes principales**
+
+```{r, class.source = "fold-show"}
+ncp <- c(2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 1) %>% as.matrix() %>% `rownames<-`(.,paste(tablas))
+
+PCA_Subsistemas <- NULL
+for(i in 1:11){
+  PCA_Subsistemas[[paste(tablas[i])]] <- PCA(get(paste0("tabla_", tablas[i]))[, c(2:ncol(get(paste0("tabla_", tablas[i]))))], 
+                                              scale.unit = TRUE, 
+                                               ncp =  length(Subsitemas[[paste(tablas[i])]]),
+                                                graph = FALSE) 
+}
+```
+
+```{r}
+# Índices de las componentes principales seleccionados
+PC_DENUE <- NULL
+for(i in 1:11){
+  PC_DENUE[[i]] <- get(paste0("tabla_", tablas[i]))[1] %>%
+                     select(CVE_LOC) %>%
+                       mutate(PC = scale(as.matrix(get(paste0("tabla_", tablas[i]))[,-1])) %*% 
+                                    as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["var"]][["coord"]][,1:ncp[i]]) %*% 
+                                      as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["eig"]][,2][1:ncp[i]]/100)) %>% 
+                         as.data.frame()
+}
+save(PC_DENUE, file = paste0(here::here(), "/Output/Localidad/PC_DENUE.Rdata"))
+```
+
+```{r, echo = FALSE}
+tabla <- NULL 
+for(i in 1:11){
+ tabla[[paste0(tablas[i])]] <- facto_summarize(PCA_Subsistemas[[paste0(tablas[i])]], "var", axes = 1:ncp[i])
+}
+
+# Asistencia Social 
+i <- 2
+tabla <- facto_summarize(PCA_Subsistemas[[paste0(tablas[i])]], "var", axes = 1:ncp[i]) %>%
+          select(-name) %>%
+           as.data.frame() 
+
+tabla %>%
+  kable(caption = "Tabla: Resumen de los indicadores de asistencia social", 
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic"),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:5, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T)
+```
+
+#### Valores extremos {.unnumbered}
+
+```{r, eval = FALSE}
+## Principal Components Regression (PCR)
+pcr_model <- NULL
+for(i in 1:11){
+pcr_model[[i]] <- pcr(PC_DENUE[[i]][,2]~., data = get(paste0("tabla_",tablas[i]))[-1], ncomp = ncp[i],  scale = TRUE, center = TRUE, validation = "LOO")
+}
+
+## Se guardan los resultados 
+saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_denue.rds"))
+
+## Caso máximo
+pcr_pred_max <- NULL
+for(i in 1:11){
+  test <- t(rep(100, length(Subsitemas[[paste(tablas[i])]]))) %>% as.data.frame() 
+  colnames(test) <- Subsitemas[[paste(tablas[i])]]
+  pcr_pred_max[[i]] <- predict(pcr_model[[i]], test)
+  names(pcr_pred_max[[i]]) <- c(paste0(seq(1, ncp[i]), ".comp"))
+}
+
+## Caso mínimos 
+pcr_pred_min <- NULL
+for(i in 1:11){
+  test <- t(rep(0, length(Subsitemas[[paste(tablas[i])]]))) %>% as.data.frame() 
+  colnames(test) <- Subsitemas[[paste(tablas[i])]]
+  pcr_pred_min[[i]] <- predict(pcr_model[[i]], test)
+}
+
+
+pcr_extremos <- matrix(NA, nrow = 11, ncol = 3)
+for(i in 1:11){
+  pcr_extremos[i, 1] <- paste(tablas[i])
+  pcr_extremos[i, 2] <- pcr_pred_max[[i]][,1,][ncp[i]]
+  pcr_extremos[i, 3] <- pcr_pred_min[[i]][,1,][ncp[i]]
+}
+colnames(pcr_extremos) <- c("Indicadores", "Máximo", "Mínimo")
+write.table(pcr_extremos, file = paste0(here::here(), "/Output/Localidad/PCR_DENUE.txt"), sep = ",")
+```
+
+
+
+### Educación {.unnumbered}
+
+```{r}
+load(paste0(here::here(), "/Bases/Localidad/Indicadores_Escuelas_SEP.RData"))
+
+sep_loc <- sep_loc %>%
+             mutate(suma = rowSums(.[3:11])) %>%
+               mutate(suma = as.numeric(.$suma)) %>%
+                filter(.$suma != 0) %>%
+                  select(-suma)
+```
+
+**Análisis de componentes principales**
+
+```{r, class.source = "fold-show"}
+PCA_SEP <- PCA(sep_loc[, c(3:11)],
+                scale.unit = TRUE, 
+                 ncp = ncol(sep_loc[, c(3:11)]),
+                  graph = FALSE)
+```
+
+
+```{r}
+# Índice estandarizado (SVD)
+# Componentes seleccionadas
+ncp <- 4
+
+# Índices de las componentes principales seleccionados
+PC_SEP <-  sep_loc %>%
+              select(CVE_LOC) %>%
+               mutate(PC = as.numeric(scale(as.matrix(sep_loc[, c(3:11)])) %*% 
+                              as.matrix(PCA_SEP[["var"]][["coord"]][,1:ncp]) %*% 
+                                        as.matrix(PCA_SEP[["eig"]][,2][1:ncp]/100))) %>%
+                 as.data.frame()
+
+save(PC_SEP,  file = paste0(here::here(), "/Output/Localidad/PC_SEP.Rdata"))
+```
+
+\renewcommand{\arraystretch}{2}
+```{r, echo = FALSE}
+tabla <- facto_summarize(PCA_SEP, "var", axes = 1:ncp) %>%
+          select(-name) %>%
+           as.data.frame() 
+tabla %>%
+  kable(caption = "Tabla: Resumen de los indicadores de educación utilizando PCA", 
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic"),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:9, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T)
+```
+
+
+#### Valores extremos {.unnumbered}
+
+```{r, eval = FALSE}
+## Principal Components Regression (PCR)
+pcr_model <- pcr(PC_SEP$PC~., data = sep_loc[, c(3:11)], ncomp = ncp,  scale = TRUE, center = TRUE, validation = "LOO")
+
+saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_sep.rds"))
+
+## Caso máximo
+test <- t(rep(100, 9)) %>% as.data.frame() 
+colnames(test) <- names(sep_loc[,c(3:11)])
+pcr_pred_max <- predict(pcr_model, test)
+
+## Caso mínimos 
+test <- t(rep(0, 9)) %>% as.data.frame() 
+colnames(test) <- names(sep_loc[,c(3:11)])
+pcr_pred_min <- predict(pcr_model, test)
+
+
+pcr_extremos <- data.frame("Indicadores" = c("Educación"),
+                           "Máximo" = pcr_pred_max[,1,][ncp],
+                           "Mínimo" = pcr_pred_min[,1,][ncp]) 
+
+write.table(pcr_extremos, file = paste0(here::here(), "/Output/Localidad/PCR_SEP.txt"), sep = ",")
+```
+
+
+
+### Salud {.unnumbered}
+
+
+```{r, class.source = "fold-show"}
+load(paste0(here::here(), "/Bases/Localidad/Indicadores_CLUES.RData"))
+
+clues_loc <- clues_loc %>%
+               mutate(suma = rowSums(.[3:6])) %>%
+                 mutate(suma = as.numeric(.$suma)) %>%
+                  filter(.$suma != 0) %>%
+                    select(-suma)
+```
+
+```{r, class.source = "fold-show"}
+PCA_CLUES <- PCA(clues_loc[, c(3:6)],
+                  scale.unit = TRUE, 
+                   ncp = ncol(clues_loc[, c(3:6)]),
+                    graph = FALSE) 
+```
+
+
+
+```{r}
+# Índice estandarizado (SVD)
+# Componentes seleccionadas
+ncp <- 2
+
+# Índices de las componentes principales seleccionados
+PC_CLUES <-  clues_loc %>%
+              select(CVE_LOC) %>%
+               mutate(PC = as.numeric(scale(as.matrix(clues_loc[, c(3:6)])) %*% 
+                                       as.matrix(PCA_CLUES[["var"]][["coord"]][,1:ncp]) %*% 
+                                        as.matrix(PCA_CLUES[["eig"]][,2][1:ncp]/100))) %>%
+                 as.data.frame()
+
+save(PC_CLUES,  file = paste0(here::here(), "/Output/Localidad/PC_CLUES.Rdata"))
+```
+
+```{r, echo = FALSE}
+tabla <- facto_summarize(PCA_CLUES, "var", axes = 1:ncp) %>%
+          select(-name) %>%
+           as.data.frame() 
+tabla %>%
+  kable(caption = "Tabla: Resumen de los indicadores de salud utilizando PCA", 
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic"),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:4, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T) 
+```
+
+
+#### Caso extremos {-}
+
+```{r, eval = FALSE}
+## Principal Components Regression (PCR)
+pcr_model <- pcr(PC_CLUES$PC~., data = clues_loc[, c(3:6)], ncomp = ncp,  scale = TRUE, center = TRUE, validation = "LOO")
+
+saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_clues.rds"))
+
+## Caso máximo
+test <- t(rep(100, 4)) %>% as.data.frame() 
+colnames(test) <- names(clues_loc[, c(3:6)])
+pcr_pred_max <- predict(pcr_model, test)
+
+## Caso mínimos 
+test <- t(rep(0, 4)) %>% as.data.frame() 
+colnames(test) <- names(clues_loc[, c(3:6)])
+pcr_pred_min <- predict(pcr_model, test)
+
+pcr_extremos <- data.frame("Indicadores" = c("Salud"),
+                           "Máximo" = pcr_pred_max[,1,][ncp],
+                           "Mínimo" = pcr_pred_min[,1,][ncp]) 
+
+write.table(pcr_extremos, file = paste0(here::here(), "/Output/Localidad/PCR_CLUES.txt"), sep = ",")
+```
+
+
+
+**Índice de accesibilidad**
+
+```{r}
+load(paste0(here::here(), "/Bases/Localidad/IA_localidad.Rdata"))
+```
+
+
+
+```{r,echo = FALSE}
+rm(list = ls())
+```
+
+## Calidad del entorno {-}
+
+**MGN**
+
+```{r}
+load(paste0(here::here(), "/Bases/Localidad/MGN.RData")) 
+```
+
+
+**Marginación**
+
+```{r}
+load(paste0(here::here(), "/Output/Localidad/PC_IML.Rdata"))
+```
+
+**Localidades confidenciales**
+
+Para la obtención de las localidades confidenciales se requirio agruparlas a nivel municipal, lo que permitio poder contemplar el 100 por ciento de las localidades reconocidas en el marco geoestadístico. 
+
+Se analizan 81 105 localidades confidenciales
+
+```{r}
+load(file = paste0(here::here(), "/Bases/Localidad/Loc_Confidenciales_Claves.Rdata"))
+
+IML <- PC_IML %>%
+           filter(substr(.$CVE_LOC,6,9) != '9999') %>%
+            rbind(., Loc_Confidenciales %>% select(CVE_LOC, PC)) 
+
+IML <- IML %>%
+           rename("IML" = "PC")
+```
+
+
+**DENUE**
+
+Se excluyen los subsistemas de `Educación` y `Salud`. 
+
+```{r}
+load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
+Indicadores <- names(Subsitemas)
+
+load(paste0(here::here(), "/Output/Localidad/PC_DENUE.Rdata"))
+
+tabla <- NULL
+for(i in 1:11){
+  if(i %in% 1){
+  tabla_DENUE <- PC_DENUE[[i]]
+  tabla[[i]] <- left_join(MGN_loc %>% select(CVE_LOC), tabla_DENUE, by = c("CVE_LOC"))
+  } else {
+  tabla_DENUE <- PC_DENUE[[i]]
+  tabla[[i]] <- left_join(MGN_loc %>% select(CVE_LOC), tabla_DENUE, by = c("CVE_LOC")) %>%
+                 select(.,2)
+  }
+}
+
+DENUE <- do.call(cbind.data.frame, tabla)
+colnames(DENUE) <- c("CVE_LOC", Indicadores)
+rm(tabla_DENUE)
+```
+
+
+***SEP** 
+
+```{r}
+load(paste0(here::here(), "/Output/Localidad/PC_SEP.RData"))
+
+SEP <- PC_SEP %>%
+         rename("Educacion" = "PC")
+```
+
+
+**CLUES**
+
+```{r}
+load(paste0(here::here(), "/Output/Localidad/PC_CLUES.RData"))
+
+CLUES <- PC_CLUES %>%
+          rename("Salud" = "PC")
+```
+
+
+**Accesibilidad**
+
+```{r}
+load(paste0(here::here(), "/Bases/Localidad/IA_localidad.Rdata")) 
+
+IAL <- accesibilidad_loc %>%
+         select(CVE_LOC, IAL) 
+```
+
+
+**Integración del ICE**
+
+**Imputación de valores faltantes**
+
+A los valores faltantes de equipamiento se les imputa el valor mínimos
+que puede obtener cada subsistema, calculados por el método de
+componentes principales. Siendo estos los valores extremos (falta de
+equipamiento), este valor se formuló utilizando Principal Component
+Regresion (PCR) y de esta manera poder obtener el valor predictivo del
+valor mínimo.
+
+```{r}
+PCR_pred <- read.table(paste0(here::here(), "/Output/Localidad/PCR_SEP.txt"), header = TRUE, sep = ",") %>% 
+             rbind(.,read.table(paste0(here::here(), "/Output/Localidad/PCR_CLUES.txt"), header = TRUE, sep = ",")) %>%
+              rbind(., read.table(paste0(here::here(), "/Output/Localidad/PCR_DENUE.txt"), header = TRUE, sep = ","))
+
+```
+
+```{r}
+ICE_2020 <- MGN_loc %>%
+             select(CVE_LOC, Indicadora) %>%
+              left_join(., IML, by = c("CVE_LOC")) %>%
+               left_join(., SEP, by = c("CVE_LOC")) %>%
+                left_join(., CLUES, by = c("CVE_LOC")) %>%
+                 left_join(., DENUE, by = c("CVE_LOC")) %>% 
+                  left_join(., IAL, by = c("CVE_LOC")) %>% 
+                   mutate_at(vars(3:17), as.numeric)
+
+ICE_2020 <- ICE_2020 %>%
+                mutate(Educacion = ifelse(is.na(.$Educacion) == TRUE, PCR_pred[1, 3], .$Educacion),
+                       Salud = ifelse(is.na(.$Salud) == TRUE, PCR_pred[2, 3], .$Salud),
+                       Cultura = ifelse(is.na(.$Cultura) == TRUE, PCR_pred[3, 3], .$Cultura),
+                       Asistencia_social = ifelse(is.na(.$Asistencia_social) == TRUE, PCR_pred[4, 3], .$Asistencia_social),
+                       Comercio =  ifelse(is.na(.$Comercio ) == TRUE, PCR_pred[5, 3], .$Comercio ),
+                       Comunicaciones = ifelse(is.na(.$Comunicaciones) == TRUE, PCR_pred[6, 3], .$Comunicaciones),
+                       Transporte = ifelse(is.na(.$Transporte) == TRUE, PCR_pred[7, 3], .$Transporte),
+                       Deporte_Recreacion = ifelse(is.na(.$Deporte_Recreacion) == TRUE, PCR_pred[8, 3], .$Deporte_Recreacion),
+                       Administracion_publica = ifelse(is.na(.$Administracion_publica) == TRUE, PCR_pred[9, 3], .$Administracion_publica),
+                       Servicios_urbanos = ifelse(is.na(.$Servicios_urbanos) == TRUE, PCR_pred[10, 3], .$Servicios_urbanos),
+                       Servicios_financieros = ifelse(is.na(.$Servicios_financieros) == TRUE, PCR_pred[11, 3], .$Servicios_financieros),
+                       Hoteleria_Restaurantes = ifelse(is.na(.$Hoteleria_Restaurantes) == TRUE, PCR_pred[12, 3], .$Hoteleria_Restaurantes),
+                       Talleres = ifelse(is.na(.$Talleres) == TRUE, PCR_pred[13, 3], .$Talleres)) %>%  # Se sustituyen los vacios por ceros,
+                  mutate(IAL = ifelse(is.na(.$IAL) == TRUE, 810, .$IAL)) %>%
+                   mutate(Indicadora = case_when(nchar(.$Indicadora)>0 ~ .$Indicadora,
+                                                 is.na(.$IAL) ~ "Sin localización en la red",
+                                                 is.na(.$IML) ~ "Sin cálculo de marginación"))
+table(ICE_2020$Indicadora)
+```
+
+
+Es importante determinar que sucede con las localidades que no tienen cálculo
+
+```{r}
+ICE_2020 <- ICE_2020 %>%
+             filter(nchar(.$IML)> 0) %>%
+              select(., c(1, 3:17)) 
+```
+
+José Bernardo Pena Trapero: `Problemas de la medición del bienestar y conceptos afines (1977)` 
+
+Primeramente se define como es la entrada de los indicadores simples. Este tipo de método 
+- Índice de marginación (Negativo) (Marginación baja (-Negativa) / Marginación alta (Positiva))
+- Índice de equipamiento 
+    + CLUES (Postivo)
+    + SEP (Postivo)
+    + DENUE (Positivo)
+- Indice de accesibilidad (Negativo)
+
+
+
+```{r}
+ICE_2020_data <- ICE_2020 %>%
+                   mutate(IML = -1*.$IML,
+                          IAL = -1*.$IAL)
+```
+
+
+**Base de referencia**
+
+**Nota.-** Se toma como base de referencia el valor del mínimo de cada
+indicador simple.
+
+
+```{r}
+minRV <- makeReferenceVector(X = ICE_2020_data[-1], 
+                             reference_vector_function = 'min')
+```
+
+```{r, echo = FALSE}
+tabla <- t(minRV) %>%
+           as.data.frame() %>%
+            tibble::rownames_to_column(var = "Indicadores")
+tabla %>%              
+  kable(caption = "Tabla: Base de referencia a nivel localidad", 
+         col.names = c("Indicadores", "Base de referencia"),
+               digits = 3, 
+                align = 'c',
+                format.args = list(font_size = '10px', family = "Century Gothic"),
+                 format = "html", 
+                  booktabs = FALSE) %>% 
+        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
+          column_spec(1, bold = T, border_right = T) %>%
+           row_spec(0, bold = T) %>%
+            row_spec(1:15, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+        footnote(., general = "Elaboración propia", 
+                  general_title = "Fuente:", 
+                   footnote_as_chunk = T) 
+```
+
+**Método de Distancia** $DP_{2}$
+
+```{r}
+#require(p2distance)
+##Calculo del Método de Distancias DP2
+ind_ice <- p2distance(matriz = as.matrix(ICE_2020_data[-1]), 
+                       reference_vector = minRV, 
+                        iterations = 50)
+```
+
+El modelo converge a la cuarta iteración
+
+```{r}
+ind_ice$iteration
+```
+
+```{r}
+ICE_2020 <- cbind(ICE_2020, ind_ice[["p2distance"]])
+
+# Se cambian los nombres de las columnas 
+names(ICE_2020) = c(colnames(ICE_2020)[1:(ncol(ICE_2020)-1)], "ICE")
+```
+
+```{r, echo = FALSE, fig.height=3, fig.width=7}
+p <- ICE_2020 %>%
+      ggplot() + 
+       geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.7) + 
+        geom_jitter(aes(x = ICE, y = "", color = ICE, fill = ICE), size = 0.3, alpha = 0.01) + 
+         theme_ipsum_rc(grid = "X") +
+                     theme(title = element_text(size = 15, family = "Century Gothic"),
+                            plot.title = element_text(size = 15,family = "Century Gothic"),
+                            plot.subtitle = element_text(size = 12, hjust = 0, family = "Century Gothic"),
+                             plot.caption = element_text(size = 9, family = "Century Gothic"),
+                             axis.text.x = element_text(size = 6, family = "Century Gothic"), 
+                             axis.text.y = element_text(size = 6, family = "Century Gothic"), 
+                              axis.title = element_text(size = 10, family = "Century Gothic"), 
+                               axis.title.y = element_text(size = 10, family = "Century Gothic"), 
+                                axis.title.x = element_text(size = 10, family = "Century Gothic"), 
+                            legend.key.size = unit(0.5, 'cm'),
+                               legend.text =element_text(size = 10, family = "Century Gothic"), 
+                                legend.title = element_text(size = 12, family = "Century Gothic")) + 
+              scale_color_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
+                scale_fill_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
+                 scale_y_discrete(expand = c(0.5,0)) +
+                 labs(title = paste("Boxplot del índice de calidad del entorno"),
+                       subtitle = "Nivel localidad", 
+                       color = "",  
+                        fill = "", 
+                         x = "", 
+                          y = "") 
+p
+```
+
+
+```{r}
+# Se identifican los outliers en el índice de calidad del entorno
+#boxplot.stats(DP2_2010$IM_2010)$out
+outliers <- boxplot.stats(ICE_2020$ICE)
+
+## Se crea un índice ficticio quitando los outliers   
+ICE_2020 <- ICE_2020 %>%
+              mutate(ICE_out = case_when(.$ICE < outliers$stats[1] ~ outliers$stats[1],
+                                         .$ICE > outliers$stats[5] ~ outliers$stats[5],
+                                         .$ICE >= outliers$stats[1] | .$ICE <= outliers$stats[5] ~ .$ICE)) 
+```
+
+
+### Método de estratificación {.unnumbered}
+
+`strata.cumrootf`: cumulative root frequency method by Dalenius and
+Hodges (1959)\
+
+**Nclass óptimo del método de Dalenius & Hodge**
+
+`alloc` lista que especifica el esquema de asignación. La lista debe
+contener 3 números para los 3 exponentes q1, q2 y q3 en el esquema de
+asignación general (ver paquete de `stratification`). El valor
+predeterminado es la asignación de **Neyman** (q1 = q3 = 0.5 y q2 = 0)
+
+```{r,eval = FALSE, cache=TRUE,cache.lazy=TRUE}
+start.time <- Sys.time()
+# Se define el coeficiente de variación a usar
+coef.var <- 0.05
+
+DH_Localidad <- list()
+i <- 1
+  sd <- matrix(NA, nrow = (1000 - 4), ncol = 3)
+  meanh <- matrix(NA, nrow = (1000 - 4), ncol = 6)
+  varh <- matrix(NA, nrow=(1000 - 4), ncol = 6)
+ for (n in seq(5, 1000, 1)){
+   DH_Localidad[[n]] <- strata.cumrootf(x = ICE_2020$ICE_out, CV = coef.var , Ls = 5, alloc = c(0.5,0,0.5), nclass = n)
+   cum <- DH_Localidad[[n]]
+   sd[i,] <-  c(n, cum$stderr, cum$CV)
+   meanh[i,] <- c(n, cum$meanh)
+   varh[i,] <-  c(n, cum$varh)
+   i <- i + 1
+}
+
+colnames(sd) <- c("n","sderr","CV")
+colnames(meanh) <- c("nclass", paste0(rep("Strata",5),1:5))
+colnames(varh) <- c("nclass",paste0(rep("Strata",5),1:5))
+
+end.time <- Sys.time()
+time.taken <- round(end.time - start.time, 2)
+time.taken
+
+#Se guardan los resultados de las iteraciones
+save(sd, file = paste0(here::here(), "/Output/Localidad/sd.Rdata"))
+```
+
+```{r, echo = FALSE}
+load(paste0(here::here(), "/Output/Localidad/sd.Rdata"))
+```
+
+```{r, collapse=TRUE}
+min.strata <- sd %>%
+               as.data.frame() %>% 
+                slice(which.min(.$CV))
+```
+
+<div class = "row">
+<div class = "col-md-3">
+```{r, echo = FALSE}
+min.strata %>%
+    kable(col.names = c("n", "Error \n estándar", "CV"),
+                   digits = 4, 
+                    align = 'c',
+                    format.args = list(font_size = '9px', family = "Century Gothic"),
+                     format = "html", 
+                      booktabs = FALSE) %>% 
+            kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
+             kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
+              column_spec(1, bold = T, border_right = T) %>%
+               row_spec(0, bold = T) %>%
+                  row_spec(1, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
+              footnote(., general = "Elaboración propia", 
+                        general_title = "Fuente:", 
+                         footnote_as_chunk = T) 
+```
+</div>
+
+<div class = "col-md-8">
+```{r, echo = FALSE, out.width = "80%", out.height= "80%"}
+rows <- c(nrow(sd))
+
+p <- sd %>%
+      as.data.frame() %>%
+       arrange(desc(.$CV)) %>%
+        mutate(count = seq(1,nrow(sd))) %>%
+         ggplot() + 
+          geom_point(aes(x = count, y = CV)) + 
+           geom_line(aes(x = count, y = CV)) +
+            geom_text(data = min.strata, aes(label = paste("CV = ", round(CV, 4) ," | nclass  =", n), x = rows -300, y = CV),  
+                       vjust = -1,
+                         size = 3,
+                          color = "red",
+                           family = "Century Gothic") +
+             geom_hline(data = min.strata, aes(yintercept = CV), color = "red") +
+              theme_minimal() +
+                     theme(title = element_text(size = 15, family = "Century Gothic"),
+                            plot.title = element_text(size = 15,family = "Century Gothic"),
+                            plot.subtitle = element_text(size = 12, hjust = 0, family = "Century Gothic"),
+                             plot.caption = element_text(size = 9, family = "Century Gothic"),
+                             axis.text.x = element_text(size = 6, family = "Century Gothic"), 
+                             axis.text.y = element_text(size = 6, family = "Century Gothic"), 
+                              axis.title = element_text(size = 10, family = "Century Gothic"), 
+                               axis.title.y = element_text(size = 10, family = "Century Gothic"), 
+                                axis.title.x = element_text(size = 10, family = "Century Gothic"), 
+                               legend.text =element_text(size = 10, family = "Century Gothic"), 
+                                legend.title = element_text(size = 12, family = "Century Gothic")) + 
+                labs(title = "Método de Dalenius & Hodges óptimo",
+                      subtitle = paste("Índice de calidad del entorno | Método iterativo | CV Óptimo"),
+                       y = "CV", 
+                        x = "iteraciones") 
+p
+```
+</div>
+</div>
+
+
+```{r}
+strata.ice <- strata.cumrootf(ICE_2020$ICE_out,
+                               CV = 0.05, 
+                                Ls = 5,
+                                 alloc = c(0.5,0,0.5), 
+                                  nclass = min.strata$n)
+
+## Se agrega a la base de datos
+ICE_2020 <- ICE_2020 %>%
+              select(-ICE_out) %>%   # Se quita el índice ficticio
+                mutate(G.ICE = strata.ice[["stratumID"]])
+
+
+# Se cambian los nombres de las columnas 
+colnames(ICE_2020) = c(colnames(ICE_2020)[1:(ncol(ICE_2020)-1)], "G.ICE")
+
+# Se cambian los levels de D&H
+levels(ICE_2020$G.ICE) = c("Completa", "Grave", "Moderada", "Ligera", "No hay")
+```
+
+
+### Índice normalizado {.unnumbered}
+
+**Indice normalizado**
+
+**Escenarios del mínimo y máximo valor en el índice DP2**
+
+**Se guarda la bases de Datos del ICE por municipio**
+
+
+```{r}
+# Desviación estandar de los indicadores
+desvest <- as.matrix(apply(ICE_2020[2:16], MARGIN = 2, sd)) %>%
+                       as.data.frame() %>%
+                        rename("desvest" ="V1") %>%
+                          mutate(sd_muestral = .$desvest *(sqrt((dim(ICE_2020[2:16])[1] -1)/dim(ICE_2020[2:16])[1]))) %>%
+                            mutate(desvest.inversa = 1/(.$sd_muestral))
+
+# Escenario mínimo
+vector_minimo <- as.matrix(minRV)
+
+tabla <- abs(vector_minimo - minRV)* desvest$desvest.inversa *
+           ind_ice[["correction_factors"]][names(ICE_2020[,c(2:16)])]
+minimo <- data.frame(Escenario = "Mínimo", tabla, DP2 = sum(tabla))
+
+# Escenario mínimo  
+vector_maximo <- p2distance::makeReferenceVector(ICE_2020_data[-1], reference_vector_function = 'max')
+
+tabla <- abs(vector_maximo - minRV)* desvest$desvest.inversa *
+           ind_ice[["correction_factors"]][names(ICE_2020[,c(2:16)])] 
+
+maximo <- data.frame(Escenario = "Máximo", tabla, DP2 = sum(tabla))
+
+# Indice normalizado
+min_DP2 <- minimo$DP2[1]
+max_DP2 <- maximo$DP2[1]
+
+ICE_2020 <- ICE_2020 %>%
+              mutate(ICE_Norm = (max_DP2 - .$ICE) / (max_DP2 - min_DP2)) %>%
+               arrange(ICE_Norm)
+
+# Se guarda el índice de calidad del entorno normalizado
+save(ICE_2020, file = paste0(here::here(), "/Bases/Localidad/ICE_2020.RData"))
+```
+
+

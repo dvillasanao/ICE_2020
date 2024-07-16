@@ -1,0 +1,50 @@
+---
+title: "Bases del índice de marginación"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Nivel municipal 
+
+Se carga la nueva base del índice de marginación 2020.
+
+```{r}
+IMM <- read.xlsx("Bases/Municipio/Indice de marginacion/Indice de marginacion a nivel municipio_2020.xlsx", sheet = "IMM_2020") %>%
+              select(CVE_MUN, ANALF, SBASC, OVSDE, OVSEE, OVSAE, OVPT, VHAC, PL.5000, PO2SM)
+save(IMM, file = "Bases/Municipio/IMM.Rdata")
+load("Bases/Municipio/IMM.Rdata")
+```
+
+
+## Nivel Localidad 
+
+Se carga la nueva base del índice de marginación 2020. 
+
+```{r, class.source = "fold-show"}
+IML_2020 <- read.xlsx("Bases/Localidad/Indice de marginacion/Indice de marginacion a nivel localidad_2020.xlsx", sheet = "IML_2020") 
+names(IML_2020)
+IML <- IML_2020  %>%
+         select(CVE_LOC, ANALF, SBASC, OVSDE, OVSEE, OVSAE, OVPT, OVSREF, OVHAC)
+save(IML, file = "Bases/Localidad/IML.Rdata")
+```
+
+## Nivel AGEB
+
+**Bases de datos**
+
+Se carga la nueva base del índice de marginación 2020. 
+Por criterios de confidencialidad, se omiten esta base de datos
+
+```{r, class.source = "fold-show"}
+IMU_2020 <- read.xlsx("Bases/AGEB/Indice de marginacion/Indice de marginacion a nivel AGEB_2020.xlsx", sheet = "IMU_2020") 
+names(IMU_2020)
+IMU <- IMU_2020  %>%
+         select(CVE_AGEB, "P6a14NAE", "I_SBASC", "I_SDSS1", "I_OVSDE", "I_OVSEE", "I_OVSAE", "I_OVPT", "I_OVSREF", "I_OVSINT", "I_OVSCEL", "I_OVHAC")
+names(IMU) <- c("CVE_AGEB", "P6A14NAE", "PSBASC", "PSDSS", "OVSDE", "OVSEE", "OVSAE", "OVPT", "OVSREF", "OVSINT", "OVSCEL", "OVHAC")
+
+save(IMU, file = "Bases/AGEB/IMU.Rdata")
+```

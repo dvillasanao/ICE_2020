@@ -1,0 +1,32 @@
+---
+title: "[Sistema de Clasificación Industrial de América del Norte, 2018 (SCIAN)"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Se consideran 13 subsistemas económicos de los cuales se clasificaron 52 elementos económicos que pertenecen a los subistemas. 
+
+```{r}
+require(openxlsx)
+require(readxl)
+require(dplyr)
+
+SCIAN <- read.xlsx(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.xlsx"), sheet = "Reclasificación_Claves") %>%
+          mutate(Ramo = substr(.$CÓDIGO,1,2)) %>%
+           filter(.$SUBSISTEMA != c("Educación")) %>%
+            filter(.$SUBSISTEMA != c("Salud")) %>%
+             select(-CVE_SUBS) %>%
+              rename("CODIGO" = "CÓDIGO") %>%
+               mutate(CVE_SUBSISTEMA = cumsum(.$SUBSISTEMA != lag(.$SUBSISTEMA, default = first(.$SUBSISTEMA))) + 1) %>%
+                relocate(CVE_SUBSISTEMA, .before = "SUBSISTEMA") %>%
+                 mutate(CVE_ELE = cumsum(.$ELEMENTO != lag(.$ELEMENTO, default = first(.$ELEMENTO))) + 1)
+
+
+save(SCIAN, file = "Bases/Claves_subsistema_SCIAN2018.RData")
+load("Bases/Claves_subsistema_SCIAN2018.RData")
+```
+

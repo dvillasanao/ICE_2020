@@ -1,0 +1,398 @@
+---
+title: "Plotly Gráficos"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+require(dplyr)
+require(ggplotify)
+```
+
+# Nivel municipal   
+
+```{r, eval = FALSE, echo = FALSE, fig.cap = "Estructura del índice de calidad del entorno a nivel municipal", fig.width=7, fig.height=4, fig.align='right'}
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 15 años o más analfabeta', 
+                                 'Porcentaje de población de 15 años o más sin educación básica',
+                                 'Porcentaje de ocupantes en viviendas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas sin energía eléctrica', 
+                                 'Porcentaje de ocupantes en viviendas sin agua entubada', 
+                                 'Porcentaje de ocupantes en viviendas con piso de tierra',
+                                 'Porcentaje de población en localidades con menos de 5 000 habitantes',
+                                 'Porcentaje de viviendas con algún nivel de hacinamiento',
+                                 'Porcentaje de población ocupada con ingresos de hasta 2 salarios mínimos',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Índice de accesibilidad"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                 "ANALF", 
+                                 "SBASC",
+                                 "OVSDE",
+                                 "OVSEE", 
+                                 "OVSAE", 
+                                 "OVPT",
+                                 "PL.5000",
+                                 "VHAC",
+                                 "PO2SM",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Accesibilidad"),
+                    parents = c("","Calidad del entorno", rep("Marginación", 9),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                          rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                          rep("DENUE", 11),
+                                "Calidad del entorno"),
+                    color = c("white", "white",  rep("white", 9), 
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                   "white", rep("white", 4),  #Salud
+                                     "white", rep("white", 11),  #DENUE
+                              "black"),
+                    values = c(12, 14, rep(10,9), 
+                                   14, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                  15))
+
+paleta <- viridis::viridis(nrow(tabla), option = "D", begin = 0.3, end = 0.7) 
+
+p <- plot_ly() %>% 
+       add_trace(labels = tabla$markers,
+                 parents = tabla$parents,
+                 values = tabla$values,
+                 hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
+                 marker = list(hjust = 0.5, colors = paleta),
+                 colors = paleta,
+                 textfont = list(color = tabla$color),
+                 domain=list(column = 1),
+                 maxdepth = 3,
+                 insidetextorientation = 'radial',
+                 type = 'sunburst') %>% 
+            layout(
+                   #xaxis = list(range = c(5, 10)),
+                   autosize = TRUE,
+                   annotations = list(x = 0, 
+                                      y = -0.1, 
+                                   # text ="Estructura del índice de calidad del entorno a nivel municipal",
+                                     xref='paper', 
+                                     yref='paper', 
+                                     font=list(size = 8),
+                  font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                  margin = list(l = 0, r = 0, b = 1, t = 0, pad = 4, autoexpand = TRUE),
+                  # width = 600, height = 600,
+                       showlegend = FALSE)
+p
+config(p, displayModeBar = FALSE)
+```
+
+
+## Nivel localidad 
+
+```{r, eval = FALSE, echo = FALSE, fig.cap="Estructura del índice de calidad del entorno a nivel municipal"}
+
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 15 años o más analfabeta', 
+                                 'Porcentaje de población de 15 años o más sin educación básica',
+                                 'Porcentaje de ocupantes en viviendas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas sin energía eléctrica', 
+                                 'Porcentaje de ocupantes en viviendas sin agua entubada', 
+                                 'Porcentaje de ocupantes en viviendas con piso de tierra',
+                                 'Porcentaje de ocupantes en viviendas con algún nivel de hacinamiento',
+                                 'Porcentaje de pocupantes en viviendas sin refrigerador',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Índice de accesibilidad"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                 "ANALF", 
+                                 "SBASC",
+                                 "OVSDE",
+                                 "OVSEE", 
+                                 "OVSAE", 
+                                 "OVPT",
+                                 "OVHAC",
+                                 "OVSREF",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Accesibilidad"),
+                    parents = c("","Calidad del entorno", rep("Marginación", 8),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                          rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                          rep("DENUE", 11),
+                                "Calidad del entorno"),
+                    color = c("white", "white",  rep("white", 8), 
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                   "white", rep("white", 4),  #Salud
+                                     "white", rep("white", 11),  #DENUE
+                              "black"),
+                    values = c(12, 14, rep(10,8), 
+                                   14, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                  15))
+
+paleta <- paletteer_c("grDevices::Inferno", nrow(tabla), direction = -1) 
+paleta <- viridis::viridis(nrow(tabla), option = "B", begin = 0.1, end = 0.7) 
+
+p <- plot_ly() %>% 
+       add_trace(labels = tabla$markers,
+                 parents = tabla$parents,
+                 values = tabla$values,
+                 hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
+                 marker = list(hjust = 0.5, colors = paleta),
+                 colors = paleta,
+                 textfont = list(color = tabla$color),
+                 domain=list(column = 1),
+                 maxdepth = 3,
+                 insidetextorientation = 'radial',
+                 type = 'sunburst') %>% 
+            layout(annotations = 
+                    list(x = 0, 
+                         y = -0.1, 
+                        # text ="Estructura del índice de calidad del entorno a nivel municipal",
+                         xref='paper', 
+                         yref='paper', 
+                         font=list(size = 8, 
+                                   family = 'montserrat')),
+                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                      margin = list(l = 0, r = 0, b = 1, t = 0))
+
+config(p, displayModeBar = FALSE)
+```
+
+## Nivel AGEB  
+
+```{r, eval=FALSE, echo = FALSE, fig.cap="Estructura del índice de calidad del entorno a nivel municipal"}
+
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 6 a 14 años que no asiste a la escuela', 
+                                 'Porcentaje de población de 15 años y más sin educación básica',
+                                 'Porcentaje de población sin derechohabiencia a los servicios de salud',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin energía eléctrica',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin agua entubada',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas con piso de tierra',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin refrigerador',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin internet',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin celular',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas con algún nivel de hacinamiento',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Entorno Urbano",
+                                    "Vialidad",
+                                    "Frente de manzana",
+                                    "Infraestructura vial",
+                                    "Mobiliaria Urbana",
+                                    "Servicios urbanos"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                    "P6A14NAE", 
+                                    "SBASC", 
+                                    "PSDSS", 
+                                    "OVSDE", 
+                                    "OVSEE", 
+                                    "OVSAE", 
+                                    "OVPT", 
+                                    "OVSREF", 
+                                    "OVSINT", 
+                                    "OVSCEL", 
+                                    "OVHAC",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Entorno Urbano",
+                                    "Vialidad",
+                                    "Frente de manzana",
+                                    "Infraestructura vial",
+                                    "Mobiliaria Urbana",
+                                    "Servicios urbanos"),
+                    parents = c("","Calidad del entorno", rep("Marginación", 11),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                          rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                          rep("DENUE", 11),
+                                "Calidad del entorno", rep("Entorno Urbano", 5)),
+                    color = c("white", "white",  rep("white", 11),  # Marginación
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                   "white", rep("white", 4),  #Salud
+                                     "white", rep("white", 11),  #DENUE
+                              "black", rep("black", 5) #Entorno Urbano
+                              ),
+                    values = c(12, 14, rep(10,11), # Marginación
+                                   14, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                  15, rep(8,5)))
+require(paletteer)
+paleta <- paletteer_c("grDevices::SunsetDark", nrow(tabla)) 
+
+p <- plot_ly() %>% 
+       add_trace(labels = tabla$markers,
+                 parents = tabla$parents,
+                 values = tabla$values,
+                 hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
+                 marker = list(hjust = 0.5, colors = paleta, family = "montserrat", size = 12),
+                 colors = paleta,
+                 textfont = list(color = tabla$color, size = 12),
+                 domain=list(column = 1),
+                 maxdepth = 3,
+                 insidetextorientation = 'radial',
+                 type = 'sunburst') %>% 
+            layout(annotations = 
+                    list(x = 0, 
+                         y = -0.1, 
+                        # text ="Estructura del índice de calidad del entorno a nivel municipal",
+                         xref='paper', 
+                         yref='paper', 
+                         font=list(size = 8, 
+                                   family = 'montserrat')),
+                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                      margin = list(l = 0, r = 0, b = 1, t = 0))
+
+config(p, displaylogo = FALSE)
+```
+

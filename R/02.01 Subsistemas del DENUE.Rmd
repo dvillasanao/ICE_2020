@@ -1,0 +1,64 @@
+---
+title: "Subsistemas del DENUES"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Subramos**
+
+Se toman como referencia 13 subsitemas económicos y 64 elementos
+económicos que lo integran
+
+Integrarlo en una base de datos para no saturar la página wev
+
+```{r, class.source = "fold-hide"}
+# Cultura
+Cultura <- c("Bibliotecas", "Museos", "Sitios históricos y parques naturales")
+
+# Asistencia social 
+Asistencia_social <- c("Residencias de asistenacia social", "Asilos", "Orfanatos", "Otros asistencia social", "Guarderías")
+
+# Comericio 
+Comercio <- c("Comercio al menudeo", "Farmacias", "Comercio al mayoreo", "Almacenes")
+
+# Comunicaciones
+Comunicaciones <- c("Medios impresos", "Medios audiovisuales", "Radio y TV", "Telecomunicaciones", "Otros comunicaciones", "Sercicios postales", "Mensajería y paquetería")
+
+# Transporte
+Transporte <- c("Transporte aéreo", "Ferrocarril", "Transporte de carga", "Transporte marítimo", "Transporte terrestre", "Transporte turistico")
+
+# Deporte y recreación 
+Deporte_Recreacion <- c("Parques de diversiones", "Juegos de azar", "Otros recreación", "Antros", "Club deportivo y gimnasios", "Otros deporte")
+
+# Administración pública 
+Administracion_publica <- c("Organos legislativos", "Medio ambiente", "Bienestar social", "Relaciones exteriores")
+
+# Servicios urbanos 
+Servicios_urbanos <- c("Disposición de residuos", "Gasolinerías", "Justicia", "Cementerios y serv funerarios")
+
+# Servicios financieros 
+Servicios_financieros <- c("Banca", "Ahorro y crédito", "Casa de cambio", "Inversión", "Seguros", "Fondos de inversión") 
+
+# Hotelería 
+Hoteleria_Restaurantes <- c("Hoteles", "Campamentos", "Pensiones", "Restaurantes", "Cafeterías")
+
+# Talleres 
+Talleres <- c("Talleres mecánicos", "Otros talleres")
+
+Subsitemas <- list(Cultura = c("Bibliotecas", "Museos", "Sitios históricos y parques naturales"),
+                   Asistencia_social = c("Residencias de asistenacia social", "Asilos", "Orfanatos", "Otros asistencia social", "Guarderías"),
+                   Comercio = c("Comercio al menudeo", "Farmacias", "Comercio al mayoreo", "Almacenes"),
+                   Comunicaciones = c("Medios impresos", "Medios audiovisuales", "Radio y TV", "Telecomunicaciones", "Otros comunicaciones", "Sercicios postales", "Mensajería y paquetería"),
+                   Transporte = c("Transporte aéreo", "Ferrocarril", "Transporte de carga", "Transporte marítimo", "Transporte terrestre", "Transporte turistico"), 
+                   Deporte_Recreacion = c("Parques de diversiones", "Juegos de azar", "Otros recreación", "Antros", "Club deportivo y gimnasios", "Otros deporte"),
+                   Administracion_publica = c("Organos legislativos", "Medio ambiente", "Bienestar social", "Relaciones exteriores"),
+                   Servicios_urbanos = c("Disposición de residuos", "Gasolinerías", "Justicia", "Cementerios y serv funerarios"),
+                   Servicios_financieros = c("Banca", "Ahorro y crédito", "Casa de cambio", "Inversión", "Seguros", "Fondos de inversión"),
+                   Hoteleria_Restaurantes = c("Hoteles", "Campamentos", "Pensiones", "Restaurantes", "Cafeterías"),
+                   Talleres = c("Talleres mecánicos", "Otros talleres"))
+save(Subsitemas, file = "Bases/Subsistemas_DENEU.Rdata")
+```

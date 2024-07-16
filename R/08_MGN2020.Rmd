@@ -1,0 +1,50 @@
+---
+title: "Marco Geoestadístico Nacional 2020"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Nivel municipal  
+
+Se toma como referencia el marco geoestadístico nacional 2020 a Nivel Municipal.
+
+```{r}
+MGN <- read.xlsx("Claves geoestadísticas/Municipios 2020.xlsx", sheet = "Municipio") 
+
+MGN_mun <- MGN %>%
+            select(-VPART, -VCOLEC)
+
+save(MGN_mun, file = "Bases/Municipio/MGN.Rdata")
+```
+
+
+## Nivel Localidad 
+
+Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad 
+
+```{r}
+MGN <- read.xlsx("Claves geoestadísticas/Localidades 2020.xlsx", sheet = "Localidad")
+
+MGN_loc <- MGN %>%
+            select(-VPH, -OVPH)
+
+save(MGN_loc, file = "Bases/Localidad/MGN.Rdata")
+```
+
+## Nivel AGEB  
+
+Se toma como referencia el marco geoestadístico nacional 2020 a nivel AGEB
+
+```{r}
+MGN <- read.xlsx("Claves geoestadísticas/AGEB 2020.xlsx", sheet = "AGEB Urbana")
+
+MGN_ageb <- MGN %>%
+            select(-I_VPH, -I_OVPH)
+
+save(MGN_ageb, file = "Bases/AGEB/MGN_ageb.Rdata")
+```
+

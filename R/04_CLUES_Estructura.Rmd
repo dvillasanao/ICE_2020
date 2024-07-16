@@ -1,0 +1,168 @@
+---
+title: "Untitled"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+df <- read.xlsx("CLUES/ESTABLECIMIENTO_SALUD_20_06_22.xlsx")
+```
+
+```{r}
+CLUES <- df %>%
+          select(CLAVE.DE.LA.ENTIDAD, 
+                  NOMBRE.DE.LA.ENTIDAD,
+                  CLAVE.DEL.MUNICIPIO,
+                   NOMBRE.DEL.MUNICIPIO,
+                   CLAVE.DE.LA.LOCALIDAD,
+                    NOMBRE.DE.LA.LOCALIDAD,
+                    CLUES, 
+                     CLAVE.DE.LA.INSTITUCION, 
+                      NOMBRE.DE.LA.INSTITUCION,
+                      NOMBRE.TIPO.ESTABLECIMIENTO, 
+                       CLAVE.TIPO.ESTABLECIMIENTO, 
+                        NIVEL.ATENCION, 
+                         CLAVE.NIVEL.ATENCION, 
+                          ESTATUS.DE.OPERACION, 
+                           CLAVE.DE.ESTATUS.DE.OPERACION, 
+                            LATITUD, 
+                             LONGITUD) %>%
+            rename("ENT" = "CLAVE.DE.LA.ENTIDAD",
+                   "MUN" = "CLAVE.DEL.MUNICIPIO", 
+                   "LOC" = "CLAVE.DE.LA.LOCALIDAD") %>%
+              mutate(CVE_ENT = .$ENT,
+                     CVE_MUN = paste0(.$ENT, .$MUN),
+                     CVE_LOC = paste0(.$ENT, .$MUN, .$LOC)) %>%
+                relocate(c(CVE_ENT, NOMBRE.DE.LA.ENTIDAD, CVE_MUN,NOMBRE.DEL.MUNICIPIO, CVE_LOC, NOMBRE.DE.LA.LOCALIDAD), .before = "CLUES") %>%
+              mutate(`NOMBRE.TIPO.ESTABLECIMIENTO` = case_when(.$NOMBRE.TIPO.ESTABLECIMIENTO == "DE APOYO" ~ "Apoyo",
+                                                               .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE ASISTENCIA SOCIAL" ~ "Asistencia Social",  
+                                                               .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE CONSULTA EXTERNA" ~ "Consulta Externa", 
+                                                               .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE HOSPITALIZACIÓN" ~ "Hospitalización"), 
+                    `NIVEL.ATENCION` = case_when(.$NIVEL.ATENCION == "NO APLICA" ~ "Apoyo / Asistencia Social",
+                                                 .$NIVEL.ATENCION == "PRIMER NIVEL" ~ "Primer Nivel", 
+                                                 .$NIVEL.ATENCION == "SEGUNDO NIVEL" ~ "Segundo Nivel", 
+                                                 .$NIVEL.ATENCION == "TERCER NIVEL" ~ "Tercer Nivel")) %>%
+                  filter(.$CLAVE.DE.ESTATUS.DE.OPERACION == 1) %>%
+                    select(., -ENT, -MUN, -LOC) %>%
+                    rename(`Tipo de establecimientos` = `NOMBRE.TIPO.ESTABLECIMIENTO`,
+                           `Nombre de la entidad` = "NOMBRE.DE.LA.ENTIDAD",
+                           `Nombre del municipio` = "NOMBRE.DEL.MUNICIPIO",
+                           `Nombre de la loalidad` = "NOMBRE.DE.LA.LOCALIDAD",
+                           `Nivel de atención` = `NIVEL.ATENCION`)
+
+save(CLUES, file = "Bases/CLUES_Estructura.RData")
+```
+
+
+### Municipio {-}
+
+```{r}
+clues_mun <- CLUES %>%
+                select(`Nivel de atención`, CVE_MUN) %>%
+                 melt(., id = c("CVE_MUN"))  %>%
+                  mutate(value = as.character(.$value)) %>%
+                   acast(., CVE_MUN ~ value, drop = FALSE) %>% 
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_MUN") %>%
+                      mutate(CVE_ENT = substr(.$CVE_MUN, 1, 2)) %>%
+                       relocate(CVE_ENT, .before = "CVE_MUN") %>%
+                        group_by(CVE_ENT) %>%
+                         mutate_at(vars(c(-CVE_ENT, -CVE_MUN)),funs(./sum(.)*100))%>%
+                          replace(., is.na(.), 0) %>% 
+                           ungroup() 
+
+save(clues_mun, file = "Bases/Municipio/Indicadores_CLUES.RData")
+```
+
+
+### Localidad {-}
+
+```{r}
+clues_loc <- CLUES %>%
+                select(`Nivel de atención`, CVE_LOC) %>%
+                 melt(., id = c("CVE_LOC"))  %>%
+                  mutate(value = as.character(.$value)) %>%
+                   acast(., CVE_LOC ~ value, drop = FALSE) %>% 
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_LOC") %>%
+                      mutate(CVE_MUN = substr(.$CVE_LOC, 1, 5)) %>%
+                       relocate(CVE_MUN, .before = "CVE_LOC") %>%
+                        group_by(CVE_MUN) %>%
+                         mutate_at(vars(c(-CVE_MUN, -CVE_LOC)),funs(./sum(.)*100))%>%
+                          replace(., is.na(.), 0) %>% 
+                           ungroup() 
+
+save(clues_loc, file = "Bases/Localidad/Indicadores_CLUES.RData")
+```
+
+### AGEB {-}
+
+```{r}
+df <- read.xlsx("Bases/AGEB/CLUES_AGEB.xlsx")
+```
+
+```{r}
+CLUES_AGEB <- df %>%
+          select(CVE_GEO, 
+                  CLAVE.DE.LA.ENTIDAD, 
+                   CLAVE.DEL.MUNICIPIO, 
+                    CLAVE.DE.LA.LOCALIDAD, 
+                     CLAVE.AGEB,
+                      AMBITO, 
+                       ID_CLUES, 
+                        CLUES,
+                          NOMBRE.TIPO.ESTABLECIMIENTO, 
+                           CLAVE.TIPO.ESTABLECIMIENTO, 
+                            NIVEL.ATENCION, 
+                             CLAVE.NIVEL.ATENCION, 
+                              ESTATUS.DE.OPERACION, 
+                               CLAVE.DE.ESTATUS.DE.OPERACION, 
+                                LATITUD, 
+                                 LONGITUD) %>%
+                rename("ENT" = "CLAVE.DE.LA.ENTIDAD",
+                       "MUN" = "CLAVE.DEL.MUNICIPIO", 
+                       "LOC" = "CLAVE.DE.LA.LOCALIDAD",
+                       "AGEB" = "CLAVE.AGEB") %>%
+                  mutate(CVE_ENT = .$ENT,
+                         CVE_MUN = paste0(.$ENT, .$MUN),
+                         CVE_LOC = paste0(.$ENT, .$MUN, .$LOC),
+                         CVE_AGEB = paste0(.$ENT, .$MUN, .$LOC, .$AGEB)) %>%
+                    relocate(CVE_ENT, CVE_MUN, CVE_LOC, CVE_AGEB, .before = "CVE_GEO") %>%
+                  mutate(`NOMBRE.TIPO.ESTABLECIMIENTO` = case_when(.$NOMBRE.TIPO.ESTABLECIMIENTO == "DE APOYO" ~ "Apoyo",
+                                                                   .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE ASISTENCIA SOCIAL" ~ "Asistencia Social",  
+                                                                   .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE CONSULTA EXTERNA" ~ "Consulta Externa", 
+                                                                   .$NOMBRE.TIPO.ESTABLECIMIENTO == "DE HOSPITALIZACI├ôN"  ~ "Hospitalización"), 
+                        `NIVEL.ATENCION` = case_when(.$NIVEL.ATENCION == "NO APLICA" ~ "Apoyo / Asistencia Social",
+                                                     .$NIVEL.ATENCION == "PRIMER NIVEL" ~ "Primer Nivel", 
+                                                     .$NIVEL.ATENCION == "SEGUNDO NIVEL" ~ "Segundo Nivel", 
+                                                     .$NIVEL.ATENCION == "TERCER NIVEL" ~ "Tercer Nivel")) %>%
+                      filter(.$CLAVE.DE.ESTATUS.DE.OPERACION == 1) %>%
+                       select(., -CVE_GEO, -CVE_ENT, -CVE_MUN, -CVE_LOC) %>%
+                        rename(`Tipo de establecimientos` = `NOMBRE.TIPO.ESTABLECIMIENTO`,
+                               `Nivel de atención` = `NIVEL.ATENCION`)
+save(CLUES_AGEB, file = "Bases/CLUES_Estructura_AGEB.RData")
+```
+
+Se cambia la estructura de algunas columnas y se quedan las columnas que se van a usar para nuestro uso
+
+```{r}
+clues_ageb <- CLUES_AGEB %>%
+                select(`Nivel de atención`, CVE_AGEB) %>%
+                 melt(., id = c("CVE_AGEB"))  %>%
+                  mutate(value = as.character(.$value)) %>%
+                   acast(., CVE_AGEB ~ value, drop = FALSE) %>% 
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_AGEB") %>%
+                      mutate(CVE_LOC = substr(.$CVE_AGEB, 1, 9)) %>%
+                       relocate(CVE_LOC, .before = "CVE_AGEB") %>%
+                        group_by(CVE_LOC) %>%
+                         mutate_at(vars(c(-CVE_LOC, -CVE_AGEB)),funs(./sum(.)*100))%>%
+                          replace(., is.na(.), 0) %>% 
+                           ungroup() 
+
+save(clues_ageb, file = "Bases/AGEB/Indicadores_CLUES.RData")
+```

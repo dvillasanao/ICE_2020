@@ -1,0 +1,85 @@
+---
+title: "Índice de Calidad del Entorno"
+author: "Consejo Nacional de Población"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::bs4_book,
+  set in the _output.yml file.
+biblio-style: apalike
+csl: chicago-fullnote-bibliography.csl
+---
+
+# Introducción {.unlisted .unnumbered}
+
+El `Índice de Calidad del Entorno (ICE)`, es una herramenta, el cual su objetivo, es medir la concentración y dispersión de acceso a servicios, calidad de las viviendas, ubicación y infrestructura urbana.
+
+```{r, include=FALSE}
+# automatically create a bib database for R packages
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, cache = TRUE, 
+                       eval = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+setwd(rprojroot::find_rstudio_root_file())
+```  
+
+```{r, echo=FALSE, results=FALSE}
+#Font Stlye
+require(showtext)
+library(extrafont)
+# activar showtext
+windowsFonts()
+#Century Gothic
+```
+
+```{r, echo = FALSE}
+# Librerías que se usaron en el documento
+require(corrplot)
+require(doMC)
+require(dplyr)
+require(extrafont)
+require(factoextra)
+require(FactoMineR)
+require(ggplot2)
+require(ggthemes)
+require(ggpubr)
+require(hrbrthemes)
+require(haven)
+require(kableExtra)
+require(knitr)
+require(openxlsx)
+require(paletteer)
+require(p2distance)
+require(pls)
+library(plotly)
+require(readxl)
+require(reshape2)
+require(rrcov)
+require(showtext)
+require(stratification)
+require(tibble)
+require(tidyr)
+require(unikn)
+require(visNetwork)
+set.seed(321)
+```
+```{r include=FALSE, eval=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'dp2distance', 'statification', 'corrplot'
+), 'packages.bib')
+```
+
+Como se van a estructurar los cápitulos 
+
+Donde se van a exportar los datos 
+Archivo de donde se van a leer los datos
+
+También PCR solamente se toma en cuenta los casos que no exite equipamiento en los diferentes niveles. A nivel municipal, aquellos municipios que no cuentan con equipamiento de los que sí presentan. 
+
+
+```{block2, type='rmdwarning'}
+Este material no es introductorio al uso de R, es dirigido a personas que tienen conocimientos al lenguaje de programación. 
+```

@@ -1,0 +1,154 @@
+---
+title: "SEP Estructura"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Se cambia la estructura de algunas columnas y se quedan las columnas que se van a usar para nuestro uso.
+
+## SEP {-}
+
+```{r}
+SEP <- read_xlsx("Bases/Localidad/SEP_Localidad.xlsx")
+```
+
+Se cambia la estructura de algunas columnas y se quedan las columnas que se van a usar para nuestro uso
+
+```{r}
+SEP <- SEP %>%
+          mutate(CVE_ENT = stringr::str_pad(.$CVE_ENT, 2, "left", pad = "0"),
+                 CVE_MUN = stringr::str_pad(.$CVE_MUN, 3, "left", pad = "0"),
+                 CVE_LOC = stringr::str_pad(.$CVE_LOC, 4, "left", pad = "0")) %>%
+           mutate(CVE_MUN = paste0(.$CVE_ENT,.$CVE_MUN),
+                  CVE_LOC = paste0(.$CVE_ENT, .$CVE_MUN, .$CVE_LOC)) %>%
+              relocate(c(CVE_ENT, NOM_ENT, CVE_MUN, NOM_MUN, CVE_LOC, NOM_LOC), .before = "CVE_CT") %>%
+               as.data.frame() %>%
+              rename(`Tipo educativo` = "TIPO_EDUC",
+                     `Nivel educativo` = "NIVEL_EDUC") %>%
+               mutate(`Tipo educativo` = case_when(.$`Tipo educativo` == "INICIAL" ~ "Inicial",
+                                                   .$`Tipo educativo` == "BÁSICA" ~ "Básica",
+                                                   .$`Tipo educativo` == "MEDIA SUPERIOR" ~ "Media superior",
+                                                   .$`Tipo educativo` == "SUPERIOR" ~ "Superior",
+                                                   .$`Tipo educativo` == "CAPACITACIÓN" ~ "Capacitación",
+                                                   .$`Tipo educativo` == "ESPECIAL" ~ "Especial",
+                                                   .$`Tipo educativo` == "OTROS" ~ "Otros Educación")) %>%
+                  mutate(`Nivel educativo` = case_when(.$`Nivel educativo` == "INICIAL" ~ "Inicial", 
+                                                       .$`Nivel educativo` == "INICIAL GENERAL" ~ "Inicial",
+                                                       .$`Nivel educativo` == "PREESCOLAR" ~ "Preescolar", 
+                                                       .$`Nivel educativo` == "PRIMARIA" ~ "Primaria", 
+                                                       .$`Nivel educativo` == "SECUNDARIA" ~ "Secundaria", 
+                                                       .$`Nivel educativo` == "BACHILLERATO" ~ "Bachillerato", 
+                                                       .$`Nivel educativo` == "LICENCIATURA" ~ "Profesional", 
+                                                       .$`Nivel educativo` == "PROFESIONAL" ~ "Profesional",
+                                                       .$`Nivel educativo` == "POSGRADO" ~ "Profesional", 
+                                                       .$`Nivel educativo` == "CAM" ~ "Centro de atención múltiple", 
+                                                       .$`Nivel educativo` == "FORMACIÓN PARA EL TRABAJO" ~ "Centros de Capacitación", 
+                                                       .$`Nivel educativo` == "OTRO NIVEL EDUCATIVO" ~ "Otros Educación")) %>%
+                      select(-CLAVE_LOC, -VARIABLE)
+save(SEP, file = "Bases/SEP_Estructura.RData")
+load("Bases/SEP_Estructura.RData")
+```
+
+### Municipio {-}
+
+**Se utiliza la base de datos a nivel municipio, ya que esta presenta todo el universo de escuelas en el país.**  
+
+```{r}
+sep_mun <- SEP %>%
+            select(CVE_MUN, `Nivel educativo`) %>%
+             reshape2::melt(., id = c("CVE_MUN")) %>%
+              acast(., CVE_MUN ~ value, drop = FALSE) %>%
+               as.data.frame() %>% 
+                tibble::rownames_to_column(., "CVE_MUN") %>%
+                 mutate(CVE_ENT = substr(.$CVE_MUN, 1, 2)) %>%
+                  relocate(CVE_ENT, .before = "CVE_MUN") %>%
+                   group_by(CVE_ENT) %>%
+                    mutate_at(vars(c(-CVE_MUN, -CVE_ENT)), funs(./sum(.)*100))%>%
+                     replace(., is.na(.), 0) %>% 
+                      ungroup() 
+save(sep_mun, file = "Bases/Municipio/Indicadores_Escuelas_SEP.RData")
+```
+
+
+### Localidad {-}
+
+```{r}
+sep_loc <- SEP %>%
+                select(CVE_LOC, `Nivel educativo`) %>%
+                 reshape2::melt(., id = c("CVE_LOC")) %>%
+                   acast(., CVE_LOC ~ value, drop = FALSE) %>%
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_LOC") %>%
+                      mutate(CVE_MUN = substr(.$CVE_LOC, 1, 5)) %>%
+                        relocate(CVE_MUN, .before = "CVE_LOC") %>%
+                         group_by(CVE_MUN) %>%
+                          mutate_at(vars(c(-CVE_LOC, -CVE_MUN)), funs(./sum(.)*100))%>%
+                           replace(., is.na(.), 0) %>% 
+                            ungroup() 
+
+save(sep_loc, file = "Bases/Localidad/Indicadores_Escuelas_SEP.RData")
+```
+
+
+### AGEB {-}
+
+```{r}
+sep_ageb <- read.xlsx("Bases/AGEB/SEP_AGEB.xlsx")
+```
+
+```{r}
+sep_ageb <- sep_ageb %>%
+           mutate(CVE_ENT = .$CVE_ENT,
+                  CVE_MUN = paste0(.$CVE_ENT,.$CVE_MUN),
+                  CVE_LOC = paste0(.$CVE_ENT, .$CVE_MUN, .$CVE_LOC),
+                  CVE_AGEB = paste0(.$CVE_ENT, .$CVE_MUN, .$CVE_LOC, .$CVE_AGEB)) %>%
+              relocate(c(CVEGEO, CVE_ENT, NOM_ENT, CVE_MUN, NOM_MUN, CVE_LOC, NOM_LOC, CVE_AGEB), .before = "CVE_CT") %>%
+               as.data.frame() %>%
+              rename(`Tipo educativo` = "TIPO_EDUC",
+                     `Nivel educativo` = "NIVEL_EDUC") %>%
+               mutate(`Tipo educativo` = case_when(.$`Tipo educativo` == "INICIAL" ~ "Inicial",
+                                                   .$`Tipo educativo` == "BÁSICA" ~ "Básica",
+                                                   .$`Tipo educativo` == "MEDIA SUPERIOR" ~ "Media superior",
+                                                   .$`Tipo educativo` == "SUPERIOR" ~ "Superior",
+                                                   .$`Tipo educativo` == "CAPACITACIÓN" ~ "Capacitación",
+                                                   .$`Tipo educativo` == "ESPECIAL" ~ "Especial",
+                                                   .$`Tipo educativo` == "OTROS" ~ "Otros Educación")) %>%
+                  mutate(`Nivel educativo` = case_when(.$`Nivel educativo` == "INICIAL" ~ "Inicial", 
+                                                       .$`Nivel educativo` == "INICIAL GENERAL" ~ "Inicial",
+                                                       .$`Nivel educativo` == "PREESCOLAR" ~ "Preescolar", 
+                                                       .$`Nivel educativo` == "PRIMARIA" ~ "Primaria", 
+                                                       .$`Nivel educativo` == "SECUNDARIA" ~ "Secundaria", 
+                                                       .$`Nivel educativo` == "BACHILLERATO" ~ "Bachillerato", 
+                                                       .$`Nivel educativo` == "LICENCIATURA" ~ "Profesional", 
+                                                       .$`Nivel educativo` == "PROFESIONAL" ~ "Profesional",
+                                                       .$`Nivel educativo` == "POSGRADO" ~ "Profesional", 
+                                                       .$`Nivel educativo` == "CAM" ~ "Centro de atención múltiple", 
+                                                       .$`Nivel educativo` == "FORMACIÓN PARA EL TRABAJO" ~ "Centros de Capacitación", 
+                                                       .$`Nivel educativo` == "OTRO NIVEL EDUCATIVO" ~ "Otros Educación")) %>%
+                      select(-VARIABLE)
+
+save(sep_ageb, file = "Bases/SEP_Estructura_AGEB.RData")
+load("Bases/SEP_Estructura_AGEB.RData")
+```
+
+```{r}
+sep_ageb <- sep_ageb %>%
+                select(CVE_AGEB, `Nivel educativo`) %>%
+                 reshape2::melt(., id = c("CVE_AGEB")) %>%
+                   acast(., CVE_AGEB ~ value, drop = TRUE) %>% # drop = FALSE
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_AGEB") %>%
+                      mutate(CVE_LOC = substr(.$CVE_AGEB, 1, 9)) %>%
+                        relocate(CVE_LOC, .before = "CVE_AGEB") %>%
+                         group_by(CVE_LOC) %>%
+                          mutate_at(vars(c(-CVE_AGEB, -CVE_LOC)), funs(./sum(.)*100))%>%
+                           replace(., is.na(.), 0) %>% 
+                            ungroup() 
+
+save(sep_ageb, file = "Bases/AGEB/Indicadores_Escuelas_SEP.RData")
+```
+

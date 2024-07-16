@@ -1,0 +1,15 @@
+# Referencias {.unnumbered}
+
+Las librerías que se usaron para este projecto. 
+
+```{r, collapse=FALSE}
+sesion_info <- devtools::session_info()
+```
+
+
+```{r, echo = FALSE}
+kable(dplyr::select(tibble::as_tibble(sesion_info$packages %>% dplyr::filter(attached == TRUE)),
+                    c(package, loadedversion, source))) %>%
+   kable_classic(full_width = TRUE, html_font = "Century Gothic") %>% 
+    scroll_box(width = "100%", height = "200px")
+```

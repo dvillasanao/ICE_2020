@@ -39,11 +39,13 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
-
 # translation temp files
 po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+Bases/
+Output/
+ICE_2020_cache/
+ICE_2020_files/

@@ -1,0 +1,483 @@
+---
+title: "VisNetwork Gráfico"
+output: html_document
+date: "2024-07-16"
+---
+
+## Nivel municipal  
+
+
+```{r, eval = TRUE, echo = FALSE, fig.width=20, fig.height=20, fig.align='center'}
+options(device = "quartz")
+require(shiny)
+require(visNetwork)
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 15 años o más analfabeta', 
+                                 'Porcentaje de población de 15 años o más sin educación básica',
+                                 'Porcentaje de ocupantes en viviendas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas sin energía eléctrica', 
+                                 'Porcentaje de ocupantes en viviendas sin agua entubada', 
+                                 'Porcentaje de ocupantes en viviendas con piso de tierra',
+                                 'Porcentaje de población en localidades con menos de 5 000 habitantes',
+                                 'Porcentaje de viviendas con algún nivel de hacinamiento',
+                                 'Porcentaje de población ocupada con ingresos de hasta 2 salarios mínimos',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Índice de accesibilidad"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                 "ANALF", 
+                                 "SBASC",
+                                 "OVSDE",
+                                 "OVSEE", 
+                                 "OVSAE", 
+                                 "OVPT",
+                                 "PL.5000",
+                                 "VHAC",
+                                 "PO2SM",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Accesibilidad"),
+                    parents = c(""," Calidad del entorno", rep("Marginación", 9),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                           rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("DENUE", 11),
+                                "Calidad del entorno"),
+                    color = c("white", "white",  rep("white", 9), 
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                     "white", rep("white", 4),  #Salud
+                                       "white", rep("white", 11),  #DENUE
+                              "white"),
+                    values = c(40, 20, rep(10, 9), 
+                                 20, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                 20), 
+                    size = c(28, 22, rep(12,9), 
+                                22, # Equipamiento
+                                      15, rep(15, 9), 
+                                      15, rep(15, 4), 
+                                      15, rep(15,11), 
+                                22), 
+                    to = c("", 1, rep(2,9),
+                               1, 12, rep(13, 9),
+                                  12, rep(23, 4),
+                                  12, rep(28, 11),
+                               1))
+
+paleta <- viridis::viridis(nrow(tabla), option = "D", begin = 0.3, end = 0.7) 
+
+# Bolitas 
+basic_network <- data.frame(from = 1:nrow(tabla),
+                            to = tabla$to, 
+                            arrows = 'to')
+  
+vertex_info <- data.frame(id = 1:nrow(tabla), 
+                          label = tabla$markers,
+                          value = tabla$values,
+                          group = "Not user-specified", # for the legend
+                          shape = rep("box", nrow(tabla)), # shape
+                          color = paleta, # color
+                          font.color = tabla$color, # text color in boxes when labelling
+                          font.size = tabla$size,
+                          font.family = "montserrat",
+                          shadow = rep(TRUE, nrow(tabla)) 
+)
+
+ns <- NS(vertex_info$id)
+ 
+p <- visNetwork(nodes = vertex_info, 
+                edges = basic_network,
+                main = list(text = "Estructura del índice de calidad del entorno",  
+                            style = "font-family:montserrat; font-size:22px;text-align:center; color;#35608DFF; font-weight: bold;"),
+                            #width = "1920px",
+                            #height = "1080px"
+                ) %>% 
+      visNodes(shape = "ellipse", scaling = list(min = 40, max = 80),
+                shapeProperties = list(borderRadius =  12)) %>% 
+       visEdges(arrows = "to", smooth = list(enabled = TRUE)) %>% 
+        visPhysics(stabilization = FALSE
+                   #barnesHut = list(gravitationalConstant = -3500)
+                   ) %>%
+         visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) %>%
+          visLayout(randomSeed = 321)  %>%
+           visInteraction(navigationButtons = TRUE,
+                           dragNodes = TRUE,
+                            dragView = TRUE, 
+                             zoomView = TRUE, 
+                              keyboard = TRUE,
+                               hover = TRUE, 
+                                multiselect = TRUE, 
+                                 zoomSpeed = 2) 
+#visNetworkEditor(object = p)
+saveRDS(p, file = "Output/Municipio/Network_Mun.rds")
+readRDS(file = "Output/Municipio/Network_Mun.rds")
+```
+
+
+## Nivel localidad 
+
+```{r, eval = TRUE, echo = FALSE, fig.width=12, fig.height=8, fig.align='center'}
+require(visNetwork)
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 15 años o más analfabeta', 
+                                 'Porcentaje de población de 15 años o más sin educación básica',
+                                 'Porcentaje de ocupantes en viviendas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas sin energía eléctrica', 
+                                 'Porcentaje de ocupantes en viviendas sin agua entubada', 
+                                 'Porcentaje de ocupantes en viviendas con piso de tierra',
+                                 'Porcentaje de ocupantes en viviendas con algún nivel de hacinamiento',
+                                 'Porcentaje de pocupantes en viviendas sin refrigerador',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Índice de accesibilidad"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                 "ANALF", 
+                                 "SBASC",
+                                 "OVSDE",
+                                 "OVSEE", 
+                                 "OVSAE", 
+                                 "OVPT",
+                                 "OVHAC",
+                                 "OVSREF",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Accesibilidad"),
+                    parents = c("","Calidad del entorno", rep("Marginación", 8),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                          rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                          rep("DENUE", 11),
+                                "Calidad del entorno"),
+                    color = c("white", "white",  rep("white", 8), 
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                   "white", rep("white", 4),  #Salud
+                                     "white", rep("white", 11),  #DENUE
+                              "black"),
+                    values = c(40, 20, rep(10,8), 
+                                   20, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                  20), 
+                    size = c(30, 24, rep(12,8), 
+                                   24, # Equipamiento
+                                      20, rep(15, 9), 
+                                      20, rep(15, 4), 
+                                      20, rep(15,11), 
+                                  24), 
+                    to = c("", 1, rep(2,8),
+                              1, 11, rep(12, 9),
+                                 11, rep(22, 4),
+                                 11, rep(27, 11),
+                              1))
+
+paleta <- viridis::viridis(nrow(tabla), option = "B", begin = 0.1, end = 0.7) 
+# Bolitas 
+basic_network <- data.frame(from = 1:nrow(tabla),
+                            to = tabla$to, 
+                            arrows = 'to')
+  
+vertex_info <- data.frame(id = 1:nrow(tabla), 
+                          label = tabla$markers,
+                          value = tabla$values,
+                          group = "Not user-specified", # for the legend
+                          shape = rep("box", nrow(tabla)), # shape
+                          color = paleta, # color
+                          font.color = tabla$color, # text color in boxes when labelling
+                          font.size = tabla$size,
+                          font.family = "montserrat",
+                          shadow = rep(TRUE, nrow(tabla)) 
+)
+p <- visNetwork(nodes = vertex_info, 
+             edges = basic_network,
+              main = list(text = "Estructura del índice de calidad del entorno",  style = "font-family:montserrat; font-size:22px;text-align:center; color;#35608DFF; font-weight: bold;"),
+                 #width = "1920px",
+                 #height = "1080px"
+                  ) %>% 
+  visNodes(shape = "ellipse", scaling = list(min = 40, max = 80),
+            shapeProperties = list(borderRadius =  12)) %>% 
+  visEdges(arrows = "to", smooth = list(enabled = TRUE)) %>% 
+  visPhysics(stabilization = FALSE
+             #barnesHut = list(gravitationalConstant = -3500)
+             ) %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) %>%
+  visLayout(randomSeed = 321)  %>%
+   visInteraction(navigationButtons = TRUE,
+                   dragNodes = TRUE,
+                    dragView = TRUE, 
+                     zoomView = TRUE, 
+                      keyboard = TRUE,
+                       hover = TRUE, 
+                        multiselect = TRUE, 
+                         zoomSpeed = 2) 
+
+saveRDS(p, file = "Output/Localidad/Network_Loc.rds")
+readRDS(file = "Output/Localidad/Network_Loc.rds")
+```
+
+## Nivel AGEB 
+
+```{r, eval = TRUE, echo = FALSE, fig.width=15, fig.height=12, fig.align='center'}
+require(visNetwork)
+tabla <- data.frame(labels = c("Calidad del entorno", 
+                               "Marginación",
+                                 'Porcentaje de población de 6 a 14 años que no asiste a la escuela', 
+                                 'Porcentaje de población de 15 años y más sin educación básica',
+                                 'Porcentaje de población sin derechohabiencia a los servicios de salud',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin drenaje ni excusado',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin energía eléctrica',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin agua entubada',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas con piso de tierra',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin refrigerador',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin internet',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas sin celular',
+                                 'Porcentaje de ocupantes en viviendas particulares \n habitadas con algún nivel de hacinamiento',
+                               "Equipamiento",
+                                 'SEP',
+                                    rep("SEP", 9),
+                                 'CLUES', 
+                                    rep("CLUES", 4),
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Entorno Urbano",
+                                    "Vialidad",
+                                    "Frente de manzana",
+                                    "Infraestructura vial",
+                                    "Mobiliaria Urbana",
+                                    "Servicios urbanos"),
+                    markers = c("Calidad del entorno", # Son los visibles en el gráfico
+                                "Marginación",
+                                    "P6A14NAE", 
+                                    "SBASC", 
+                                    "PSDSS", 
+                                    "OVSDE", 
+                                    "OVSEE", 
+                                    "OVSAE", 
+                                    "OVPT", 
+                                    "OVSREF", 
+                                    "OVSINT", 
+                                    "OVSCEL", 
+                                    "OVHAC",
+                               "Equipamiento", 
+                                 'Educación',
+                                    "Inicial",
+                                    "Preescolar",
+                                    "Primaria", 
+                                    "Secundaria",
+                                    "Bachillerato", 
+                                    "Profesional", 
+                                    "Centro de atención múltiple",
+                                    "Centros de capacitación",
+                                    "Otros de educación",
+                                 'Salud', 
+                                    "Apoyo / Asistencia Social",
+                                    "Primer nivel",
+                                    "Segundo nivel", 
+                                    "Tercer nivel",
+                                 'DENUE',
+                                    "Cultura", 
+                                    "Asistencia social", 
+                                    "Comercio", 
+                                    "Comunicaciones", 
+                                    "Transporte", 
+                                    "Deporte y recreación", 
+                                    "Administración pública", 
+                                    "Servicios urbanos",
+                                    "Servicios financieros",
+                                    "Hotelería y restaurantes", 
+                                    "Talleres",
+                               "Entorno Urbano",
+                                    "Vialidad",
+                                    "Frente de manzana",
+                                    "Infraestructura vial",
+                                    "Mobiliaria Urbana",
+                                    "Servicios urbanos"),
+                    parents = c("","Calidad del entorno", rep("Marginación", 11),  #Son los markers
+                                "Calidad del entorno", rep("Equipamiento", 1), 
+                                                          rep("Educación", 9), 
+                                                       rep("Equipamiento", 1),
+                                                           rep("Salud", 4), 
+                                                       rep("Equipamiento", 1),
+                                                          rep("DENUE", 11),
+                                "Calidad del entorno", rep("Entorno Urbano", 5)),
+                    color = c("white", "white",  rep("white", 11),  # Marginación
+                                 "white", 
+                                   "white", rep("white", 9), #Educación
+                                   "white", rep("white", 4),  #Salud
+                                     "white", rep("white", 11),  #DENUE
+                              "black", rep("black", 5) # Entorno Urbano
+                              ),
+                    values = c(40, 20, rep(10,11), # Marginación
+                                   20, # Equipamiento
+                                      5, rep(6, 9), 
+                                      5, rep(8, 4), 
+                                      10, rep(5,11), 
+                                  20, rep(8, 5) # Entorno Urbano
+                               ), 
+                    size = c(28, 22, rep(12, 11), # Marginación
+                                   22, # Equipamiento
+                                      18, rep(15, 9), 
+                                      18, rep(15, 4), 
+                                      18, rep(15,11), 
+                                  22, rep(15, 5) # Entorno Urbano
+                             ), 
+                    to = c("", 1, rep(2, 11), # Marginación
+                               1, 14, rep(15, 9), # Equipamiento
+                                  14, rep(25, 4),
+                                  14, rep(30, 11), # Entorno Urbano
+                               1, rep(42, 5))
+                    )
+require(paletteer)
+paleta <- paletteer_c("grDevices::SunsetDark", nrow(tabla))
+
+# Bolitas 
+basic_network <- data.frame(from = 1:nrow(tabla),
+                            to = tabla$to, 
+                            arrows = 'to')
+  
+vertex_info <- data.frame(id = 1:nrow(tabla), 
+                          label = tabla$markers,
+                          value = tabla$values,
+                          group = "Not user-specified", # for the legend
+                          shape = rep("box", nrow(tabla)), # shape
+                          color = paleta %>% as.vector(), # color
+                          font.color = tabla$color, # text color in boxes when labelling
+                          font.size = tabla$size,
+                          font.family = "montserrat",
+                          shadow = rep(TRUE, nrow(tabla)) 
+)
+
+p <- visNetwork(nodes = vertex_info, 
+             edges = basic_network,
+              main = list(text = "Estructura del índice de calidad del entorno",  style = "font-family:montserrat; font-size:22px;text-align:center; color;#35608DFF; font-weight: bold;"),
+                 #width = "1920px",
+                 #height = "1080px"
+                  ) %>% 
+  visNodes(shape = "ellipse", scaling = list(min = 40, max = 80),
+            shapeProperties = list(borderRadius =  12)) %>% 
+  visEdges(arrows = "to", smooth = list(enabled = TRUE)) %>% 
+  visPhysics(stabilization = FALSE
+             #barnesHut = list(gravitationalConstant = -3500)
+             ) %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = FALSE) %>%
+  visLayout(randomSeed = 321)  %>%
+   visInteraction(navigationButtons = TRUE,
+                   dragNodes = TRUE,
+                    dragView = TRUE, 
+                     zoomView = TRUE, 
+                      keyboard = TRUE,
+                       hover = TRUE, 
+                        multiselect = TRUE, 
+                         zoomSpeed = 2) 
+
+saveRDS(p, file = "Output/AGEB/Network_AGEB.rds")
+readRDS(file = "Output/AGEB/Network_AGEB.rds")
+```
+
+
+
+

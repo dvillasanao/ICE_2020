@@ -1,0 +1,151 @@
+---
+title: "DENUE Integrado"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Se cargan todas las bases del DENUE 2021 que se van a usar, el cúal después se van a seleccionar los subramos económicos. 
+
+
+Descarga masiva
+En esta sección podrás descargar los archivos del DENUE, el Banco de Indicadores, el Inventario Nacional de Viviendas, Microdatos y la Sala de prensa por área geográfica, proyectos, años de la información, temas y formatos para poder utilizar la información en forma local en tu equipo.
+Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021
+
+https://www.inegi.org.mx/app/api/denue/v1/tokenVerify.aspx
+
+```{r, eval = FALSE}
+tablas <- c("43", "46111", "46112-46311","46321-46531", "46591-46911", "48-49", "51", "52", "56", "61", "62", "71",  "72_1", "72_2", "81_1", "81_2")
+
+url <- c('https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_43_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_46111_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_46112-46311_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_46321-46531_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_46591-46911_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_48-49_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_51_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_52_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_56_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_61_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_62_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_71_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_72_1_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_72_2_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_81_1_0521_csv.zip',
+         'https://www.inegi.org.mx/contenidos/masiva/denue/2021_05/denue_00_81_2_0521_csv.zip')
+
+write.table(url, file = "Bases/DENUE/Enlaces_DENUE_0521.txt", sep = ",")
+url <- read.table(file = "Bases/DENUE/Enlaces_DENUE_0521.txt", sep = ",")
+
+for(i in 1:16){
+  if(!file.exists(paste0("Bases/DENUE/denue_00_", tablas[i], "_0521_csv.zip"))){
+  download.file(url[i,],paste0("Bases/DENUE/denue_00_", tablas[i], "_0521_csv.zip"), mode = "wb")
+  }
+}
+for(i in tablas){
+  assign(paste0("df_",i), read.csv(paste0("DENUE 2021/CSV/CSV/conjunto_de_datos/denue_inegi_",i,"_.csv"), fileEncoding = "latin1"))
+}
+# Se agrupan todas las tablas en una sola
+lista <- ls(pattern =  "df_")
+denue_2021 <- do.call(rbind.data.frame, mget(lista))
+
+denue_2021 <- denue_2021 %>%
+               select(codigo_act, nombre_act, cve_ent, entidad, cve_mun, municipio, cve_loc, localidad, ageb, manzana) %>% 
+                 mutate(cve_ent = stringr::str_pad(.$cve_ent, 2, "left", pad = "0"), 
+                        cve_mun = stringr::str_pad(.$cve_mun, 3, "left", pad = "0"),
+                        cve_loc = stringr::str_pad(.$cve_loc, 4, "left", pad = "0"),
+                        ageb = stringr::str_pad(.$ageb, 4, "left", pad = "0"),
+                        manzana = stringr::str_pad(.$manzana, 3, "left", pad = "0")) %>%
+                   mutate(CVE_MUN = paste0(.$cve_ent, .$cve_mun),
+                          CVE_LOC = paste0(.$cve_ent, .$cve_mun, .$cve_loc),
+                          CVE_AGEB = paste0(.$cve_ent, .$cve_mun, .$cve_loc, .$ageb), 
+                          CVE_MZA =  paste0(.$cve_ent, .$cve_mun, .$cve_loc, .$ageb, .$manzana)) %>%
+# Se anexa la base de Claves
+                    left_join(., SCIAN, 
+                               by = c("codigo_act" = "CODIGO")) %>%
+                      mutate(CVE_ELE = as.character(.$CVE_ELE))
+
+# Se guarda la base de datos donde se integran 16 bases de datos
+save(denue_2021, file = "Bases/denue_integrado.RData")
+
+# Se trabaja con el DENUE integrado 
+rm(list = setdiff(ls(), c("denue_2021", "tablas", "SCIAN")))
+```
+
+
+Se integran las claves geoestadísticas para la elaboración de los indicadores simples
+
+```{r}
+# Estructura integrada del DENUE
+load("Bases/denue_integrado.RData")
+codigo <- unique(SCIAN$CODIGO)
+```
+
+### Municipio {-}
+
+```{r}
+denue_mun <- denue_2021 %>%
+              filter(.$codigo_act %in% codigo) %>%
+               select(ELEMENTO, CVE_MUN) %>%
+                melt(., id = c("CVE_MUN"))  %>%
+                 mutate(value = as.character(.$value)) %>%
+                  acast(., CVE_MUN ~ value, drop = FALSE) %>% 
+                   as.data.frame() %>% 
+                    tibble::rownames_to_column(., "CVE_MUN") %>%
+                     mutate(CVE_ENT = substr(.$CVE_MUN, 1, 2)) %>%
+                      relocate(CVE_ENT, .before = "CVE_MUN") %>%
+                       group_by(CVE_ENT) %>%
+                        mutate_at(vars(c(-CVE_ENT, -CVE_MUN)), funs(./sum(.)*100))%>%
+                         replace(., is.na(.), 0) %>% 
+                          ungroup() 
+
+save(denue_mun, file = "Bases/Municipio/Indicadores_DENUE.RData")
+```
+
+
+### Localidad {-}
+
+```{r}
+denue_loc <- denue_2021 %>%
+              filter(.$codigo_act %in% codigo) %>%
+               select(ELEMENTO, CVE_LOC) %>%
+                melt(., id = c("CVE_LOC"))  %>%
+                 mutate(value = as.character(.$value)) %>%
+                  acast(., CVE_LOC ~ value, drop = FALSE) %>% 
+                   as.data.frame() %>% 
+                    tibble::rownames_to_column(., "CVE_LOC") %>%
+                     mutate(CVE_MUN = substr(.$CVE_LOC, 1, 5)) %>%
+                      relocate(CVE_MUN, .before = "CVE_LOC") %>%
+                       group_by(CVE_MUN) %>%
+                        mutate_at(vars(c(-CVE_MUN, -CVE_LOC)), funs(./sum(.)*100))%>%
+                         replace(., is.na(.), 0) %>% 
+                          ungroup() 
+
+save(denue_loc, file = "Bases/Localidad/Indicadores_DENUE.RData")
+```
+
+
+### AGEB {-}
+
+```{r}
+denue_ageb <- denue_2021 %>%
+               filter(.$codigo_act %in% codigo) %>%
+                select(ELEMENTO, CVE_AGEB) %>%
+                 melt(., id = c("CVE_AGEB"))  %>%
+                  mutate(value = as.character(.$value)) %>%
+                   acast(., CVE_AGEB ~ value, drop = FALSE) %>% 
+                    as.data.frame() %>% 
+                     tibble::rownames_to_column(., "CVE_AGEB")  %>%
+                      mutate(CVE_LOC = substr(.$CVE_AGEB, 1, 9)) %>%
+                       relocate(CVE_LOC, .before = "CVE_AGEB") %>%
+                        group_by(CVE_LOC) %>%
+                         mutate_at(vars(c(-CVE_LOC, -CVE_AGEB)), funs(./sum(.)*100))%>%
+                          replace(., is.na(.), 0) %>% 
+                           ungroup() 
+
+save(denue_ageb, file = "Bases/AGEB/Indicadores_DENUE.RData")
+```
+

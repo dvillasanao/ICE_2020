@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+output: html_document
+date: "2024-07-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## IAL {-}
+
+### Municipio {-}
+
+```{r}
+accesibilidad_mun <- read.xlsx("Bases/Municipio/Indice de accesibilidad/Indice de accesibilidad_2020.xlsx", sheet = "bd_accesibilidad") %>%
+                      rename("IAM" = "IAL")
+save(accesibilidad_mun, file = "Bases/Municipio/IA_municipio.Rdata")
+```
+
+
+### Localidad {-}
+
+```{r}
+accesibilidad_loc <- read.xlsx("Bases/Localidad/Indice de accesibilidad/Indice de accesibilidad_2020.xlsx", sheet = "bd_accesibilidad") 
+
+accesibilidad_loc <- accesibilidad_loc %>%
+           select(CVLOC_ORIG,ENT, NOM_ENT, MUN, NOM_MUN, LOC, NMLOC_ORIG, IAL, GACC, TAMLOC, TIPO_LOC) %>%
+            rename("CVE_LOC" = "CVLOC_ORIG",
+                   "NOM_LOC" = "NMLOC_ORIG")
+save(accesibilidad_loc, file = "Bases/Localidad/IA_localidad.Rdata")
+```
