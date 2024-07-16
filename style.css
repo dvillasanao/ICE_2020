@@ -66,5 +66,10 @@ h3 { /* Header 3 */
     font-size: 0.7rem;
     line-height: 1.5;
 }
+
+.book-logo img {
+  width: 10px; /* Cambia el tamaño según sea necesario */
+  height: auto;
+}
 /*https://lokeshdhakar.com/projects/lightbox2/*/
 <link href="/lightbox.css" rel="stylesheet" />

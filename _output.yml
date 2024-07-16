@@ -1,4 +1,5 @@
 bookdown::bs4_book:
+  logo: "images/logo.svg"
   template: "template.html"
   css: style.css
   includes:
