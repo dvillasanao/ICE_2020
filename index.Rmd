@@ -1,6 +1,6 @@
 ---
 title: "Índice de Calidad del Entorno"
-author: "Consejo Nacional de Población"
+author: "Diana Villasana Ocampo"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
