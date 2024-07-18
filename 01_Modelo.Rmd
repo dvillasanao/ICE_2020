@@ -1,5 +1,13 @@
 # Metodología {.unlisted .unnumbered}
 
+<a href="images/Metodología ICE.png" data-lightbox="image-1" data-title="metodologia">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/Metodología ICE.png"))
+```
+</a>
+
+
 ## Indicadores simples {-}
 
 $$Indicador_{j}=\frac{\sum_{i=1}^{k}Z_{ij}\sqrt{\lambda_{i}}}{\sum_{i=1}^{k}\sqrt{\lambda_{i}}}; \text{i = 1, 2, ..., n componentes}$$
