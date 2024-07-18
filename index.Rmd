@@ -15,7 +15,23 @@ csl: chicago-fullnote-bibliography.csl
 
 # Introducción {.unlisted .unnumbered}
 
-El `Índice de Calidad del Entorno (ICE)`, es una herramenta, el cual su objetivo, es medir la concentración y dispersión de acceso a servicios, calidad de las viviendas, ubicación y infrestructura urbana.
+El `Índice de Calidad del Entorno (ICE)`, es una herramenta, el cual su objetivo, es medir la concentración y dispersión de acceso a servicios, calidad de las viviendas, ubicación y infrestructura urbana.  
+
+## Estructura del índice de calidad del entorno {-}
+
+```{r, echo =}
+readRDS(file = paste0(here::here(), "/images/Estructura_ICE.RDS"))
+```
+
+
+## Equipamiento Urbano {-}
+
+<a href="images/IE_Estructura.png" data-lightbox="image-1" data-title="metodologia">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/IE_Estructura.png"))
+```
+</a>
 
 ```{r, include=FALSE}
 # automatically create a bib database for R packages

@@ -230,6 +230,7 @@ tabla <- data.frame(labels = c("Calidad del entorno",
                                       10, rep(5,11), 
                                   15))
 
+
 paleta <- paletteer_c("grDevices::Inferno", nrow(tabla), direction = -1) 
 paleta <- viridis::viridis(nrow(tabla), option = "B", begin = 0.1, end = 0.7) 
 
@@ -361,7 +362,7 @@ tabla <- data.frame(labels = c("Calidad del entorno",
                                      "white", rep("white", 11),  #DENUE
                               "black", rep("black", 5) #Entorno Urbano
                               ),
-                    values = c(12, 14, rep(10,11), # Marginación
+                    values = c(12, 14, rep(10, 11), # Marginación
                                    14, # Equipamiento
                                       5, rep(6, 9), 
                                       5, rep(8, 4), 
@@ -395,4 +396,41 @@ p <- plot_ly() %>%
 
 config(p, displaylogo = FALSE)
 ```
+
+## Estructura General 
+
+```{r}
+require(openxlsx)
+tabla <- read.xlsx(paste0(here::here(), "/Output/tabla_ICE.xlsx"))
+
+require(paletteer)
+paleta <- paletteer_c("grDevices::SunsetDark", nrow(tabla)) 
+
+p <- plot_ly() %>% 
+       add_trace(labels = tabla$markers,
+                 parents = tabla$parents,
+                 values = tabla$values,
+                 hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
+                 marker = list(hjust = 0.5, colors = paleta, family = "montserrat", size = 12),
+                 colors = paleta,
+                 textfont = list(color = tabla$color, size = 12),
+                 domain=list(column = 1),
+                 maxdepth = 3,
+                 insidetextorientation = 'radial',
+                 type = 'sunburst') %>% 
+            layout(annotations = 
+                    list(x = 0, 
+                         y = -0.1, 
+                        # text ="Estructura del índice de calidad del entorno a nivel municipal",
+                         xref='paper', 
+                         yref='paper', 
+                         font=list(size = 8, 
+                                   family = 'montserrat')),
+                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                      margin = list(l = 0, r = 0, b = 1, t = 0))
+
+config(p, displaylogo = FALSE)
+saveRDS(p, file = paste0(here::here(), "/images/Estructura_ICE."))
+```
+
 
