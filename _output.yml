@@ -12,7 +12,7 @@ bookdown::bs4_book:
       collapse: subsection
       scroll_highlight: true
       number_sections: false
-      toc_depth: 2
+      toc_depth: 3
       toc_float:
         collapsed: yes
     toolbar:

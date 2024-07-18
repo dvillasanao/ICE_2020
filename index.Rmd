@@ -19,7 +19,7 @@ El `Índice de Calidad del Entorno (ICE)`, es una herramenta, el cual su objetiv
 
 ## Estructura del índice de calidad del entorno {-}
 
-```{r, echo =}
+```{r, echo = FALSE}
 readRDS(file = paste0(here::here(), "/images/Estructura_ICE.RDS"))
 ```
 

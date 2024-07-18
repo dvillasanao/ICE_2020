@@ -10,9 +10,17 @@ Primeramente, las fuentes de información que se utilizaron para la realización
 El Censo de Población y Vivienda 2020 (CPV2020) del INEGI (Instituto Nacional de Estadística y Geografía) el objetivo fue recopilar información detallada y actualizada sobre la población y las viviendas de México para ser utilizada en la toma de decisiones y la planificación de políticas públicas y privadas en el país. Esto incluye datos sobre la cantidad y características de las personas que viven en el país, como su edad, sexo, educación, ocupación, entre otros aspectos, así como información sobre la estructura y características de las viviendas en las que habitan. El cúal este tpo de informción es importante para la planificación y la toma de decisiones en áreas como la política pública, la inversión en infraestructura, la distribución de recursos y servicios, la investigación demográfica y social, y muchas otras. Además, también es utilizado por empresas y organizaciones para el análisis de mercado y la toma de decisiones estratégicas.  
 
 
+## Equipamiento {-}
+
+<a href="images/IE_Subsectores.png" data-lightbox="image-1" data-title="Subsectores">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/IE_Subsectores.png"))
+```
+</a>
 
 
-## DENUE {-}
+### DENUE {-}
 
 [El Directorio Estadístico Nacional de Unidades Económicas (DENUE)](https://www.inegi.org.mx/rnm/index.php/catalog/668) es la infraestructura mínima del Subsistema Nacional de Información Económica (SNIE), cuyo propósito es proveer a los usuarios tanto especializados como no especializados de los datos de identificación, ubicación y contacto de las unidades económicas activas en el territorio nacional para el desarrollo y evaluación, tanto de políticas públicas como de programas de fomento económico en los tres niveles de gobierno; así como apoyo en el proceso de toma de decisiones para direccionar la inversión y optimizar recursos tanto en el ámbito público como en el privado.
 
@@ -100,7 +108,7 @@ codigo <- unique(SCIAN$CODIGO)
 ```
 
 
-### Municipio {-}
+#### Municipio {-}
 
 ```{r, eval = FALSE}
 denue_mun <- denue_2021 %>%
@@ -120,7 +128,7 @@ denue_mun <- denue_2021 %>%
 save(denue_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_DENUE.RData"))
 ```
 
-### Localidad {-}
+#### Localidad {-}
 
 ```{r, eval = FALSE}
 denue_loc <- denue_2021 %>%
@@ -140,7 +148,7 @@ denue_loc <- denue_2021 %>%
 save(denue_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_DENUE.RData"))
 ```
 
-### AGEB {-}
+#### AGEB {-}
 
 ```{r, eval = FALSE}
 denue_ageb <- denue_2021 %>%
@@ -160,14 +168,14 @@ denue_ageb <- denue_2021 %>%
 save(denue_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_DENUE.RData"))
 ```
 
-## SEP {-}
+### SEP {-}
 
 
 ```{r, eval = FALSE, comment="03_SEP_Estructura.Rmd"}
 load(paste0(here::here(), "/Bases/SEP_Estructura.RData"))
 ```
 
-### Municipio {-}
+#### Municipio {-}
 
 **Se utiliza la base de datos a nivel municipio, ya que esta presenta todo el universo de escuelas en el país.**  
 
@@ -186,7 +194,7 @@ sep_mun <- SEP %>%
 save(sep_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_Escuelas_SEP.RData"))
 ```
 
-### Localidad {-}
+#### Localidad {-}
 
 ```{r, eval = FALSE}
 sep_loc <- SEP %>%
@@ -204,7 +212,7 @@ sep_loc <- SEP %>%
 save(sep_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_Escuelas_SEP.RData"))
 ```
 
-### AGEB {-}
+#### AGEB {-}
 
 ```{r, eval = FALSE, comment="03_SEP_Estructura.Rmd"}
 load("Bases/SEP_Estructura_AGEB.RData")
@@ -226,14 +234,14 @@ sep_ageb <- sep_ageb %>%
 save(sep_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_Escuelas_SEP.RData"))
 ```
 
-## CLUES {-}
+### CLUES {-}
 
 ```{r, eval = FALSE, comment="04_CLUES_Estructura.Rmd"}
 load("Bases/CLUES_Estructura.RData")
 ```
 
 
-### Municipio {-}
+#### Municipio {-}
 
 ```{r, eval = FALSE}
 clues_mun <- CLUES %>%
@@ -252,7 +260,7 @@ clues_mun <- CLUES %>%
 save(clues_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_CLUES.RData"))
 ```
 
-### Localidad {-}
+#### Localidad {-}
 
 ```{r, eval = FALSE}
 clues_loc <- CLUES %>%
@@ -271,7 +279,7 @@ clues_loc <- CLUES %>%
 save(clues_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_CLUES.RData"))
 ```
 
-### AGEB {-}
+#### AGEB {-}
 
 ```{r, eval = FALSE, comment="04_CLUES_Estructura.Rmd"}
 load(paste0(here::here(), "/Bases/CLUES_Estructura_AGEB.RData"))

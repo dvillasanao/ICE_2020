@@ -105,9 +105,14 @@
 </h2>
 <p>El Censo de Población y Vivienda 2020 (CPV2020) del INEGI (Instituto Nacional de Estadística y Geografía) el objetivo fue recopilar información detallada y actualizada sobre la población y las viviendas de México para ser utilizada en la toma de decisiones y la planificación de políticas públicas y privadas en el país. Esto incluye datos sobre la cantidad y características de las personas que viven en el país, como su edad, sexo, educación, ocupación, entre otros aspectos, así como información sobre la estructura y características de las viviendas en las que habitan. El cúal este tpo de informción es importante para la planificación y la toma de decisiones en áreas como la política pública, la inversión en infraestructura, la distribución de recursos y servicios, la investigación demográfica y social, y muchas otras. Además, también es utilizado por empresas y organizaciones para el análisis de mercado y la toma de decisiones estratégicas.</p>
 </div>
-<div id="denue" class="section level2 unnumbered">
-<h2>DENUE<a class="anchor" aria-label="anchor" href="#denue"><i class="fas fa-link"></i></a>
+<div id="equipamiento" class="section level2 unnumbered">
+<h2>Equipamiento<a class="anchor" aria-label="anchor" href="#equipamiento"><i class="fas fa-link"></i></a>
 </h2>
+<p><a href="images/IE_Subsectores.png" data-lightbox="image-1" data-title="Subsectores">
+<img src="images/IE_Subsectores.png" width="100%"></a></p>
+<div id="denue" class="section level3 unnumbered">
+<h3>DENUE<a class="anchor" aria-label="anchor" href="#denue"><i class="fas fa-link"></i></a>
+</h3>
 <p><a href="https://www.inegi.org.mx/rnm/index.php/catalog/668">El Directorio Estadístico Nacional de Unidades Económicas (DENUE)</a> es la infraestructura mínima del Subsistema Nacional de Información Económica (SNIE), cuyo propósito es proveer a los usuarios tanto especializados como no especializados de los datos de identificación, ubicación y contacto de las unidades económicas activas en el territorio nacional para el desarrollo y evaluación, tanto de políticas públicas como de programas de fomento económico en los tres niveles de gobierno; así como apoyo en el proceso de toma de decisiones para direccionar la inversión y optimizar recursos tanto en el ámbito público como en el privado.</p>
 <p><a href="https://www.inegi.org.mx/rnm/index.php/catalog/668">El Directorio Estadístico Nacional de Unidades Económicas (DENUE)</a> del INEGI cuyo objetivo es proporcionar una base de datos actualizada y completa de las unidades económicas en México. Esto incluye empresas, establecimientos, instituciones gubernamentales, organizaciones sin fines de lucro, entre otras entidades que realizan actividades económicas en el país. Este tipo de insumo sirve como base para la planificación económica, la investigación y la toma de decisiones en áreas como la inversión, el análisis de mercado, el diseño de políticas públicas, la identificación de oportunidades comerciales, entre otras. Además, también es utilizado por el sector empresarial para el análisis de la competencia, la segmentación de mercado, la identificación de clientes potenciales, entre otros fines.</p>
 <p><strong>[Sistema de Clasificación Industrial de América del Norte, 2018 (SCIAN)]</strong></p>
@@ -175,9 +180,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <code class="sourceCode R"><span><span class="co"># Estructura integrada del DENUE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/denue_integrado.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">codigo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">SCIAN</span><span class="op">$</span><span class="va">CODIGO</span><span class="op">)</span></span></code></pre></div>
-<div id="municipio" class="section level3 unnumbered">
-<h3>Municipio<a class="anchor" aria-label="anchor" href="#municipio"><i class="fas fa-link"></i></a>
-</h3>
+<div id="municipio" class="section level4 unnumbered">
+<h4>Municipio<a class="anchor" aria-label="anchor" href="#municipio"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">denue_mun</span> <span class="op">&lt;-</span> <span class="va">denue_2021</span> <span class="op">%&gt;%</span></span>
 <span>              <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">codigo_act</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -195,9 +200,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">denue_mun</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/Indicadores_DENUE.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="localidad" class="section level3 unnumbered">
-<h3>Localidad<a class="anchor" aria-label="anchor" href="#localidad"><i class="fas fa-link"></i></a>
-</h3>
+<div id="localidad" class="section level4 unnumbered">
+<h4>Localidad<a class="anchor" aria-label="anchor" href="#localidad"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">denue_loc</span> <span class="op">&lt;-</span> <span class="va">denue_2021</span> <span class="op">%&gt;%</span></span>
 <span>              <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">codigo_act</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -215,9 +220,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">denue_loc</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/Indicadores_DENUE.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="ageb" class="section level3 unnumbered">
-<h3>AGEB<a class="anchor" aria-label="anchor" href="#ageb"><i class="fas fa-link"></i></a>
-</h3>
+<div id="ageb" class="section level4 unnumbered">
+<h4>AGEB<a class="anchor" aria-label="anchor" href="#ageb"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">denue_ageb</span> <span class="op">&lt;-</span> <span class="va">denue_2021</span> <span class="op">%&gt;%</span></span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">codigo_act</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -236,14 +241,14 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">denue_ageb</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/AGEB/Indicadores_DENUE.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="sep" class="section level2 unnumbered">
-<h2>SEP<a class="anchor" aria-label="anchor" href="#sep"><i class="fas fa-link"></i></a>
-</h2>
+<div id="sep" class="section level3 unnumbered">
+<h3>SEP<a class="anchor" aria-label="anchor" href="#sep"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/SEP_Estructura.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="municipio-1" class="section level3 unnumbered">
-<h3>Municipio<a class="anchor" aria-label="anchor" href="#municipio-1"><i class="fas fa-link"></i></a>
-</h3>
+<div id="municipio-1" class="section level4 unnumbered">
+<h4>Municipio<a class="anchor" aria-label="anchor" href="#municipio-1"><i class="fas fa-link"></i></a>
+</h4>
 <p><strong>Se utiliza la base de datos a nivel municipio, ya que esta presenta todo el universo de escuelas en el país.</strong></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sep_mun</span> <span class="op">&lt;-</span> <span class="va">SEP</span> <span class="op">%&gt;%</span></span>
@@ -259,9 +264,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span>                     <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">.</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">sep_mun</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/Indicadores_Escuelas_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="localidad-1" class="section level3 unnumbered">
-<h3>Localidad<a class="anchor" aria-label="anchor" href="#localidad-1"><i class="fas fa-link"></i></a>
-</h3>
+<div id="localidad-1" class="section level4 unnumbered">
+<h4>Localidad<a class="anchor" aria-label="anchor" href="#localidad-1"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sep_loc</span> <span class="op">&lt;-</span> <span class="va">SEP</span> <span class="op">%&gt;%</span></span>
 <span>                <span class="fu">select</span><span class="op">(</span><span class="va">CVE_LOC</span>, <span class="va">`Nivel educativo`</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -277,9 +282,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">sep_loc</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/Indicadores_Escuelas_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="ageb-1" class="section level3 unnumbered">
-<h3>AGEB<a class="anchor" aria-label="anchor" href="#ageb-1"><i class="fas fa-link"></i></a>
-</h3>
+<div id="ageb-1" class="section level4 unnumbered">
+<h4>AGEB<a class="anchor" aria-label="anchor" href="#ageb-1"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"Bases/SEP_Estructura_AGEB.RData"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -298,14 +303,14 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">sep_ageb</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/AGEB/Indicadores_Escuelas_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="clues" class="section level2 unnumbered">
-<h2>CLUES<a class="anchor" aria-label="anchor" href="#clues"><i class="fas fa-link"></i></a>
-</h2>
+<div id="clues" class="section level3 unnumbered">
+<h3>CLUES<a class="anchor" aria-label="anchor" href="#clues"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"Bases/CLUES_Estructura.RData"</span><span class="op">)</span></span></code></pre></div>
-<div id="municipio-2" class="section level3 unnumbered">
-<h3>Municipio<a class="anchor" aria-label="anchor" href="#municipio-2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="municipio-2" class="section level4 unnumbered">
+<h4>Municipio<a class="anchor" aria-label="anchor" href="#municipio-2"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clues_mun</span> <span class="op">&lt;-</span> <span class="va">CLUES</span> <span class="op">%&gt;%</span></span>
 <span>                <span class="fu">select</span><span class="op">(</span><span class="va">`Nivel de atención`</span>, <span class="va">CVE_MUN</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -322,9 +327,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">clues_mun</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/Indicadores_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="localidad-2" class="section level3 unnumbered">
-<h3>Localidad<a class="anchor" aria-label="anchor" href="#localidad-2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="localidad-2" class="section level4 unnumbered">
+<h4>Localidad<a class="anchor" aria-label="anchor" href="#localidad-2"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clues_loc</span> <span class="op">&lt;-</span> <span class="va">CLUES</span> <span class="op">%&gt;%</span></span>
 <span>                <span class="fu">select</span><span class="op">(</span><span class="va">`Nivel de atención`</span>, <span class="va">CVE_LOC</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -341,9 +346,9 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">clues_loc</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/Indicadores_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="ageb-2" class="section level3 unnumbered">
-<h3>AGEB<a class="anchor" aria-label="anchor" href="#ageb-2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="ageb-2" class="section level4 unnumbered">
+<h4>AGEB<a class="anchor" aria-label="anchor" href="#ageb-2"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/CLUES_Estructura_AGEB.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -361,6 +366,7 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <span>                          <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">.</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">clues_ageb</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/AGEB/Indicadores_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div id="ial" class="section level2 unnumbered">
@@ -486,24 +492,10 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 <li><a class="nav-link" href="#fuentes-de-informaci%C3%B3n">Fuentes de información</a></li>
 <li><a class="nav-link" href="#cpv2020">CPV2020</a></li>
 <li>
-<a class="nav-link" href="#denue">DENUE</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#municipio">Municipio</a></li>
-<li><a class="nav-link" href="#localidad">Localidad</a></li>
-<li><a class="nav-link" href="#ageb">AGEB</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#sep">SEP</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#municipio-1">Municipio</a></li>
-<li><a class="nav-link" href="#localidad-1">Localidad</a></li>
-<li><a class="nav-link" href="#ageb-1">AGEB</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#clues">CLUES</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#municipio-2">Municipio</a></li>
-<li><a class="nav-link" href="#localidad-2">Localidad</a></li>
-<li><a class="nav-link" href="#ageb-2">AGEB</a></li>
+<a class="nav-link" href="#equipamiento">Equipamiento</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#denue">DENUE</a></li>
+<li><a class="nav-link" href="#sep">SEP</a></li>
+<li><a class="nav-link" href="#clues">CLUES</a></li>
 </ul>
 </li>
 <li>
