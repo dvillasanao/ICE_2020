@@ -129,7 +129,7 @@ p <- plot_ly() %>%
                                      xref='paper', 
                                      yref='paper', 
                                      font=list(size = 8),
-                  font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                  font = list(family = 'Century Gothic', size = 10, face = 'bold', color = tabla$color),
                   margin = list(l = 0, r = 0, b = 1, t = 0, pad = 4, autoexpand = TRUE),
                   # width = 600, height = 600,
                        showlegend = FALSE)
@@ -253,8 +253,8 @@ p <- plot_ly() %>%
                          xref='paper', 
                          yref='paper', 
                          font=list(size = 8, 
-                                   family = 'montserrat')),
-                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                                   family = 'Century Gothic')),
+                     font = list(family = 'Century Gothic', size = 10, face = 'bold', color = tabla$color),
                       margin = list(l = 0, r = 0, b = 1, t = 0))
 
 config(p, displayModeBar = FALSE)
@@ -376,7 +376,7 @@ p <- plot_ly() %>%
                  parents = tabla$parents,
                  values = tabla$values,
                  hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
-                 marker = list(hjust = 0.5, colors = paleta, family = "montserrat", size = 12),
+                 marker = list(hjust = 0.5, colors = paleta, family = "Century Gothic", size = 12),
                  colors = paleta,
                  textfont = list(color = tabla$color, size = 12),
                  domain=list(column = 1),
@@ -390,8 +390,8 @@ p <- plot_ly() %>%
                          xref='paper', 
                          yref='paper', 
                          font=list(size = 8, 
-                                   family = 'montserrat')),
-                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                                   family = 'Century Gothic')),
+                     font = list(family = 'Century Gothic', size = 10, face = 'bold', color = tabla$color),
                       margin = list(l = 0, r = 0, b = 1, t = 0))
 
 config(p, displaylogo = FALSE)
@@ -411,7 +411,7 @@ p <- plot_ly() %>%
                  parents = tabla$parents,
                  values = tabla$values,
                  hovertemplate = paste0("<b>", tabla$labels,"</b><br><extra>", tabla$parents,"</extra>"),
-                 marker = list(hjust = 0.5, colors = paleta, family = "montserrat", size = 12),
+                 marker = list(hjust = 0.5, colors = paleta, family = "Century Gothic", size = 12),
                  colors = paleta,
                  textfont = list(color = tabla$color, size = 12),
                  domain=list(column = 1),
@@ -425,12 +425,12 @@ p <- plot_ly() %>%
                          xref='paper', 
                          yref='paper', 
                          font=list(size = 8, 
-                                   family = 'montserrat')),
-                     font = list(family = 'montserrat', size = 10, face = 'bold', color = tabla$color),
+                                   family = 'Century Gothic')),
+                     font = list(family = 'Century Gothic', size = 10, face = 'bold', color = tabla$color),
                       margin = list(l = 0, r = 0, b = 1, t = 0))
 
 config(p, displaylogo = FALSE)
-saveRDS(p, file = paste0(here::here(), "/images/Estructura_ICE."))
+saveRDS(p, file = paste0(here::here(), "/images/Estructura_ICE.RDS"))
 ```
 
 
