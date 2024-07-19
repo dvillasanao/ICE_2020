@@ -1,5 +1,56 @@
 # Referencias {.unnumbered}
 
+CONAPO [Consejo Nacional de Población]. (2021a). Índice de marginación por entidad federativa y municipio 2020 Nota técnico-metodológica. (2021). Recuperado de:   https://www.gob.mx/cms/uploads/attachment/file/685354/Nota_te_cnica_IMEyM_2020.pdf.   
+_________. (2021b). Índice de marginación por localidad 2020 Nota técnico-metodológica. (2021). Recuperado de:  https://www.gob.mx/cms/uploads/attachment/file/685308/Nota_t_cnica_IML_2020.pdf.    
+
+DGIS [Dirección General de Información en Salud]. (2021). Catálogo de Clave Única de Establecimientos de Salud-CLUES. Recuperado de: http://www.dgis.salud.gob.mx/contenidos/sinais/s_clues.html.    
+
+Dalenius y Hodges, J. L., Jr. (1959). Minimum variance stratification. Journal of the American Statistical Association, 54, 88-101. Gunning, P. y Horgan, J. M.     (2004). A new algorithm for the construction of stratum boundaries in skewed populations. Survey Methodology, 30 (2), 159–166.   
+
+Gobierno de México. (2019). Plan Nacional de Desarrollo 2019-2024, Anexo XVIII-Bis, Gaceta Parlamentaria Número 5266-XVIII, Año XXII, Palacio Legislativo San Lázaro, México. Recuperado de: http://gaceta.diputados.gob.mx/PDF/64/2019/abr/20190430-XVIII-1.pdf (consultado el 16/11/2022).  
+
+Gunning, P. y Horgan, J. M. (2004). A new algorithm for the construction of stratum boundaries in skewed populations. Survey Methodology, 30 (2), 159–166.   
+Hidiroglou, M. A. y Kozak, M. (2018). Stratification of Skewed Populations: A Comparison of Optimizationbased versus Approximate Methods. International Statistical Review, 86 (1), 87–105. Recuperado de: https://doi.org/10.1111/insr.12230.    
+
+Hubert, M. y Vandervieren, E. (2007). An adjusted boxplot for skewed distributions. ScienceDirect, 52 (12), 5186-5201. Recuperado de https://doi.org/10.1016/j.csda.2007.11.008.     
+
+INEGI [Instituto Nacional de Estadística y Geografía]. (2020a). Recuperado de: Censo de Población y Vivienda 2020 https://www.inegi.org.mx/programas/ccpv/2020/    
+_________. (2020b). Marco Geoestadístico Nacional 2020. Censo de Población y Vivienda 2020.  Recuperado de: https://www.inegi.org.mx/temas/mg/   
+_________. (2020c). Características del Entorno Urbano y Localidad. Recuperado de: https://www.inegi.org.mx/programas/ccpv/2020/    
+_________. (2021). Directorio Estadístico Nacional de Unidades Económicas. Recuperado de: https:// www.inegi.org.mx/app/mapa/denue/    
+INEGI-IMT/SCT (2020). Instituto Nacional de Estadística y Geografía (INEGI), Instituto Mexicano del Transporte (IMT) y la Secretaría de Comunicaciones y Transportes (SCT). Recuperado   de:  https://www.gob.mx/imt/acciones-y-programas/red-nacional-de-caminos.  
+
+I.T. Jolliffe: “Principal Component Analysis”, Springer, 2002. ISBN: 978-0-387-22440-4   
+
+Martens, H., Naes, T. (1989). Multivariate Calibration. John Wiley & Sons, Chichester, UK.  
+
+Martens, H., Martens, M. (2001). Multivariate Analysis of Quality. John Wiley & Sons, Chichester, UK.  
+
+ONUHABITAT, (2022).  Ciudades - Desarrollo Sostenible Recuperado de: https://www.un.org/sustainabledevelopment/es/cities/   
+
+Pena Trapero, J. B. (1977). Problemas de la medición del bienestar y conceptos afines. Una aplicación al Caso Español. Madrid: INE.  
+
+SEDESOL [Secretaría de Desarrollo Social]. (2012). Estructura del Sistema Normativo de Equipamiento. Recuperado de: http://cdam.unsis.edu.mx/files/Servicios%20publicos%20municipales/4%20Mercados/Sistema%20Normativo%20de%20Equipamiento%20Urbano%20SEDESOL.pdf.  
+
+SIGED [Sistema de Información y Gestión Educativa]. (2021). Secretaría de Educación Pública (SEP). Recuperado de: http://snie.sep.gob.mx/SNIESC/ .   
+
+Somarriba, N. (2008): Aproximación a la medición de la calidad de vida en la Unión Europea. Tesis doctoral, dirigida por J. B. Pena, defendida el 11 de abril de 2008. Facultad de Ciencias Económicas y Empresariales. Universidad de Valladolid. Recuperado de: www.eumed.net/tesis-doctorales/2010/mnsa/index.htm.   
+
+Somarriba, N. y Pena, B. (2009a): Synthetic Indicators of Quality of Life in Europe. Social Indicators Research, doi 10.1007/s11205-008-9356-y. Recuperado de: https://link.springer.com/referenceworkentry/10.1007%2F978-94-007-0753-5_3729.    
+
+Somarriba, N. y Pena, B. (2009b): La medición de la calidad de vida en Europa, el papel de la información subjetiva. Estudios de economía aplicada, Vol. 27(2).    
+
+Somarriba, N. y Pena, B. (2010): Un análisis dinámico de la Calidad de Vida y de la Convergencia en Europa. Anales de Estudios Económicos y Empresariales, núm. 20, pp. 283-324.   
+
+Zarzosa, P. (Dir.) (2005): La calidad de vida en los municipios de la provincia de Valladolid. Valladolid: Diputación Provincial de Valladolid.      
+
+Zarzosa, P. (2009): Estimación de la pobreza en las Comunidades Autónomas españolas, mediante la Distancia DP2 de Pena. Estudios de Economía Aplicada, Vol. 27(2), pp. 397-416.  
+
+Zarzosa, P. (2012): The Social Welfare in Spain before the Crisis: Territorial and Chronological Analysis. International Journal of Advances in Management and Economics. Vol. 1, núm. 4, pp. 165-171.  
+
+Zarzosa, P. y Somarriba, N. (2013): An Assessment of Social Welfare in Spain: Territorial Analysis Using a Synthetic Welfare Indicator.  Social Indicators Research, Vol. 111, pp. 1-23.   
+
+
 Las librerías que se usaron para este projecto. 
 
 ```{r, collapse=FALSE}
@@ -10,6 +61,5 @@ sesion_info <- devtools::session_info()
 ```{r, echo = FALSE}
 kable(dplyr::select(tibble::as_tibble(sesion_info$packages %>% dplyr::filter(attached == TRUE)),
                     c(package, loadedversion, source))) %>%
-   kable_classic(full_width = TRUE, html_font = "Century Gothic") %>% 
-    scroll_box(width = "100%", height = "200px")
+   kable_classic(full_width = TRUE, html_font = "Century Gothic", font_size = 10) 
 ```

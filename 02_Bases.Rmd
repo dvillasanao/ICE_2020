@@ -305,14 +305,14 @@ save(clues_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_CLUES.RDat
 
 ## IAL {-}
 
-### Municipio {-}
+#### Municipio {-}
 
 ```{r, eval = FALSE}
 load(paste0(here::here(), "/Bases/Municipio/IA_municipio.Rdata"))
 ```
 
 
-### Localidad {-}
+#### Localidad {-}
 
 ```{r, eval = FALSE}
 load(paste0(here::here(), "/Bases/Localidad/IA_localidad.Rdata"))
@@ -386,7 +386,7 @@ save(EU_mun, file = paste0(here::here(), "/Bases/Municipio/EU_mun.RData"))
 ```
 
 
-### Nivel Localidad {-}
+#### Nivel Localidad {-}
 
 ```{r, eval = FALSE}
 EU_loc <- MANZANA_EU_2020 %>%
@@ -400,7 +400,7 @@ save(EU_loc, file = paste0(here::here(), "/Bases/Localidad/EU_loc.RData"))
 ```
 
 
-### Nivel AGEB {-}
+#### Nivel AGEB {-}
 
 ```{r, eval = FALSE}
 EU_ageb <- MANZANA_EU_2020 %>%

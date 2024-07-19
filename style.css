@@ -39,8 +39,16 @@ h2 { /* Header 2 */
   color: #030727;
 }
 h3 { /* Header 3 */
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Century Gothic";
   color: #030727;
+}
+h4 { /* Header 3 */
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Century Gothic";
+  color: #1063B9;
 }
 .header-section-number::after {
   content: ".";

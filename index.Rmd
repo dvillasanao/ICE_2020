@@ -15,16 +15,20 @@ csl: chicago-fullnote-bibliography.csl
 
 # Introducción {.unlisted .unnumbered}
 
-El `Índice de Calidad del Entorno (ICE)`, es una herramenta, el cual su objetivo, es medir la concentración y dispersión de acceso a servicios, calidad de las viviendas, ubicación y infrestructura urbana.  
+**Promoción de la Urbanización Sostenible por ONU-Habitat**
 
-## Estructura del índice de calidad del entorno {-}
+La Organización de las Naciones Unidas, a través de ONU-Habitat, impulsa una urbanización sostenible como motor de desarrollo, paz y derechos humanos. La rápida urbanización ha incrementado los habitantes en barrios pobres, infraestructuras y servicios sobrecargados, empeorando la contaminación del aire y el crecimiento urbano descontrolado. Por ello, el Objetivo 11 de los Objetivos de Desarrollo Sostenible (ODS) es crucial: “lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles”.    
 
-```{r, echo = FALSE}
-readRDS(file = paste0(here::here(), "/images/Estructura_ICE.RDS"))
-```
+**Plan Nacional de Desarrollo 2019–2024**  
 
+En México, el Plan Nacional de Desarrollo 2019–2024 promueve garantizar los derechos económicos, sociales, culturales y ambientales en poblaciones y territorios, alineado con los objetivos de desarrollo sostenible.    
 
-## Equipamiento Urbano {-}
+**Índice de Calidad del Entorno (ICE) por CONAPO**    
+
+La Secretaría General del Consejo Nacional de Población (CONAPO) presenta el Índice de Calidad del Entorno (ICE), un indicador compuesto que analiza las características de los asentamientos humanos, determinadas por las condiciones de marginación y la disponibilidad de servicios y equipamiento urbano. El ICE se desglosa en dos niveles geográficos: municipio y localidad, y se estructura en tres dimensiones:    
+
+1. **Dimensión sociodemográfica**: Basada en indicadores socioeconómicos de los índices de marginación a nivel municipal y localidad (CONAPO, 2021a y 2021b).   
+2. **Dimensión de equipamiento**: Analiza la disponibilidad de equipamiento y servicios públicos y privados, organizados en subsistemas según el Sistema Normativo de Equipamiento (SEDESOL, 2012). Los datos provienen de fuentes como el DENUE (INEGI, 2021), SIGED (SEP, 2021) y CLUES (DGIS, 2021).    
 
 <a href="images/IE_Estructura.png" data-lightbox="image-1" data-title="metodologia">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
@@ -32,6 +36,30 @@ require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/IE_Estructura.png"))
 ```
 </a>
+
+3. **Dimensión de accesibilidad y aislamiento geográfico**: Utiliza el tiempo de viaje a centros urbanos según el censo 2020, como parte del estudio de accesibilidad geoespacial (CONAPO/IMT/CentroGeo, 2022).   
+
+## Estructura del índice de calidad del entorno {-}
+
+```{r, echo = FALSE}
+readRDS(file = paste0(here::here(), "/images/Estructura_ICE.RDS"))
+```
+
+**Metodología del ICE.**
+
+La construcción del ICE se realizó en cuatro etapas:   
+
+1. **Generación y análisis de indicadores simples asociados a las dimensiones**.    
+2. **Análisis de Componentes Principales (ACP)**: Reducción de variables a componentes que explican la mayor varianza de los datos originales, generando un sistema de ponderación.         
+3. **Regresión de Componentes Principales (RCP)**: Método predictivo para estimar escenarios extremos y aplicar el método de distancias DP_2 para obtener el ICE.   
+4. **Generación del ICE con el método DP_2**: Obtención de un índice sintético agregando la información de los indicadores.   
+
+
+**Técnicas Multivariantes Complementarias**    
+
+El uso de $ACP$ y $DP_{2}$ ha sido explorado en otras investigaciones. Pena (1977) argumenta que ambas técnicas son consistentes para comparar la posición relativa de las filas y obtener factores comunes de las columnas. Somarriba (2008) resalta que las agrupaciones en componentes no condicionan los resultados del indicador sintético, enfocándose en los indicadores relevantes. Investigaciones adicionales que han utilizado estas técnicas incluyen trabajos de Zarzosa y Somarriba.   
+
+Este resumen proporciona una visión integral del Índice de Calidad del Entorno, destacando su relevancia en la evaluación de los asentamientos humanos y la importancia de la urbanización sostenible en el marco del desarrollo nacional y global.     
 
 ```{r, include=FALSE}
 # automatically create a bib database for R packages
@@ -88,14 +116,15 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
-Como se van a estructurar los cápitulos 
+**Estrcutura del documento**
 
-Donde se van a exportar los datos 
-Archivo de donde se van a leer los datos
-
-También PCR solamente se toma en cuenta los casos que no exite equipamiento en los diferentes niveles. A nivel municipal, aquellos municipios que no cuentan con equipamiento de los que sí presentan. 
-
+- [Metodología](https://dvillasanao.github.io/ICE_2020/metodolog%C3%ADa.html)    
+- [Fuentes de información](https://dvillasanao.github.io/ICE_2020/fuentes-de-informaci%C3%B3n.html)    
+- [Índice de Calidad del Entorno (Nivel Municipal)](https://dvillasanao.github.io/ICE_2020/municipio-4.html)   
+- [Índice de Calidad del Entorno (Nivel Localidad)](https://dvillasanao.github.io/ICE_2020/localidad-4.html)   
+- [Índice de Calidad del Entorno (Nivel AGEB)](https://dvillasanao.github.io/ICE_2020/ageb-3.html)  
+- [Resumen General](https://dvillasanao.github.io/ICE_2020/resumen-general.html)  
 
 ```{block2, type='rmdwarning'}
-Este material no es introductorio al uso de R, es dirigido a personas que tienen conocimientos al lenguaje de programación. 
+Este material no es introductorio al uso de R.
 ```

@@ -372,15 +372,15 @@ Title: Directorio Estadístico Nacional de Unidades Económicas (DENUE) 05_2021<
 <div id="ial" class="section level2 unnumbered">
 <h2>IAL<a class="anchor" aria-label="anchor" href="#ial"><i class="fas fa-link"></i></a>
 </h2>
-<div id="municipio-3" class="section level3 unnumbered">
-<h3>Municipio<a class="anchor" aria-label="anchor" href="#municipio-3"><i class="fas fa-link"></i></a>
-</h3>
+<div id="municipio-3" class="section level4 unnumbered">
+<h4>Municipio<a class="anchor" aria-label="anchor" href="#municipio-3"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/IA_municipio.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="localidad-3" class="section level3 unnumbered">
-<h3>Localidad<a class="anchor" aria-label="anchor" href="#localidad-3"><i class="fas fa-link"></i></a>
-</h3>
+<div id="localidad-3" class="section level4 unnumbered">
+<h4>Localidad<a class="anchor" aria-label="anchor" href="#localidad-3"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/IA_localidad.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -453,10 +453,9 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 <span>                    <span class="fu">mutate_at</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">ENT</span>, <span class="op">-</span><span class="va">PERSONAS</span>,<span class="op">-</span><span class="va">VIVPARHAB</span>,<span class="op">-</span><span class="va">TOTLADO</span><span class="op">)</span><span class="op">)</span>,<span class="fu">funs</span><span class="op">(</span><span class="op">(</span><span class="va">.</span><span class="op">/</span><span class="va">TOTLADO</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">EU_mun</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/EU_mun.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="nivel-localidad" class="section level3 unnumbered">
-<h3>Nivel Localidad<a class="anchor" aria-label="anchor" href="#nivel-localidad"><i class="fas fa-link"></i></a>
-</h3>
+<div id="nivel-localidad" class="section level4 unnumbered">
+<h4>Nivel Localidad<a class="anchor" aria-label="anchor" href="#nivel-localidad"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">EU_loc</span> <span class="op">&lt;-</span> <span class="va">MANZANA_EU_2020</span> <span class="op">%&gt;%</span></span>
 <span>             <span class="fu">select</span><span class="op">(</span><span class="st">"CVE_LOC"</span>, <span class="st">"PERSONAS"</span>, <span class="st">"VIVPARHAB"</span>, <span class="st">"TOTLADO"</span>, <span class="st">"TOTVIAL"</span>, <span class="st">"TOTRASGO"</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"_N"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -467,9 +466,9 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">EU_loc</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/EU_loc.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="nivel-ageb" class="section level3 unnumbered">
-<h3>Nivel AGEB<a class="anchor" aria-label="anchor" href="#nivel-ageb"><i class="fas fa-link"></i></a>
-</h3>
+<div id="nivel-ageb" class="section level4 unnumbered">
+<h4>Nivel AGEB<a class="anchor" aria-label="anchor" href="#nivel-ageb"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">EU_ageb</span> <span class="op">&lt;-</span> <span class="va">MANZANA_EU_2020</span> <span class="op">%&gt;%</span></span>
 <span>            <span class="fu">select</span><span class="op">(</span><span class="st">"CVE_AGEB"</span>, <span class="st">"PERSONAS"</span>, <span class="st">"VIVPARHAB"</span>, <span class="st">"TOTLADO"</span>, <span class="st">"TOTVIAL"</span>, <span class="st">"TOTRASGO"</span>, <span class="fu">contains</span><span class="op">(</span><span class="st">"_N"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -480,6 +479,7 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">EU_ageb</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/AGEB/EU_ageb.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 
+</div>
 </div>
 </div>
 </div>
@@ -498,18 +498,9 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 <li><a class="nav-link" href="#clues">CLUES</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#ial">IAL</a></li>
 <li>
-<a class="nav-link" href="#ial">IAL</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#municipio-3">Municipio</a></li>
-<li><a class="nav-link" href="#localidad-3">Localidad</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#entorno-urbano">Entorno Urbano</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#caso-particular">Caso particular</a></li>
-<li><a class="nav-link" href="#nivel-localidad">Nivel Localidad</a></li>
-<li><a class="nav-link" href="#nivel-ageb">Nivel AGEB</a></li>
-</ul>
+<a class="nav-link" href="#entorno-urbano">Entorno Urbano</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#caso-particular">Caso particular</a></li></ul>
 </li>
 </ul>
       <div class="book-extra">
