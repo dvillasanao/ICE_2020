@@ -8,49 +8,73 @@ knitr::include_graphics(paste0(here::here(), "/images/Metodología ICE.png"))
 </a>
 
 
-## Indicadores simples {-}
+## Primera etapa: construcción de indicadores {-} 
 
-$$Indicador_{j}=\frac{\sum_{i=1}^{k}Z_{ij}\sqrt{\lambda_{i}}}{\sum_{i=1}^{k}\sqrt{\lambda_{i}}}; \text{i = 1, 2, ..., n componentes}$$
+De acuerdo con los 13 subsistemas de equipamiento, se tomaron en consideración 71 variables que agruparon a los sectores propuesto en el Sistema Normativo de Equipamiento (SEDESOL, 2012). Dada las limitaciones en la disponibilidad de datos e información oficial disponible para la conformación de las variables, estas se construyeron como porcentaje de los equipamientos disponibles en las localidades respecto al total del municipio y sector correspondiente:   
 
-Siendo:  
+$$w_{hjk} = \sum_{h=1}^{N_{h}} \sum_{j=1}^{n_{h}}\frac{S_{hjk}}{S_{hk}}; \text{donde k: 1,2,...,m} $$
+donde: 
 
-- $Z_{ij}$ la puntuación del componente r-ésimo para la unidad de observación j-ésima.
+- $w_{hjk}$: Razón de la característica de interés en la $j-ésima$ localidad del $h-ésimo$ municipio,    
+- $n_{h}$: Número de localidades en el $h-ésimo$ municipio,    
+- $N_{h}$: Total de localidades en el $h-ésimo$ municipio,   
+- $S_{hk}$: Total de la característica de interés del $h-ésimo$ municipio,   
+- $S_{hk}$: Total de la característica de interés en la localidad $j-ésima$ del $h-ésimo$ municipio.   
 
 
+## Segunda etapa: Análisis de Componentes Principales (PCA) {-}   
 
+El Análisis de Componentes Principales (PCA, por sus siglas en inglés) es un método estadístico utilizado para reducir la complejidad de un conjunto de datos. El objetivo es transformar las variables originales en un conjunto más pequeño y manejable de nuevas variables llamadas "componentes principales".   
 
-##  Análisis de Componentes Principales `PCA`  {-} 
+Este método se basa en el cálculo de una matriz de covarianzas o correlaciones entre las variables originales, y en la posterior obtención de los vectores y valores propios de esta matriz. Los vectores propios representan las direcciones en las que los datos tienen la mayor variabilidad, y los valores propios indican la cantidad de variabilidad explicada por cada componente principal. Los valores propios se ordenan de mayor a menor, de manera que el primer componente principal explica la mayor parte de la variabilidad en los datos, y cada componente subsiguiente explica una proporción menor. Los componentes principales se utilizan para describir los datos y construir modelos estadísticos más sencillos.  
 
-El análisis de Componentes Principales  `PCA` se refiere a un método estadístico utilizado para reducir la complejidad de un conjunto de datos. El objetivo es transformar las variables originales en un conjunto más pequeño y manejable de nuevas variables llamadas "componentes principales".   
+En resumen, el PCA es un método estadístico que reduce la complejidad de un conjunto de datos al transformar las variables originales en un conjunto más pequeño de nuevas variables que explican la mayor parte de la variabilidad de los datos.   
 
-Este método se genera apartir del cálculo de una matriz de covarianzas o de correlaciones entre las variables originales, y la posterior obtención de los vectores y valores propios de esta matriz. Los vectores propios son las direcciones en las que los datos tienen la mayor variabilidad, y los valores propios indican la cantidad de variabilidad que se explica por cada componente principal.  Donde los valores propios obtenidos se ordenan de mayor a menor, de tal manera que el primer componente principal explica la mayor parte de la variabilidad en los datos, y cada componente subsiguiente explica una proporción menor. Los componentes principales pueden ser utilizados para describir los datos y para la construcción de modelos estadísticos más sencillos.      
+### Ventajas y Desventajas del PCA {-}  
 
-En resumen, los componentes principales son un método estadístico para reducir la complejidad de un conjunto de datos, transformando las variables originales en un conjunto más pequeño de nuevas variables llamadas componentes principales, que explican la mayor parte de la variabilidad en los datos o bien dicho el mayor porcentaje de información de los datos originales.      
- 
-El método de componentes principales (PCA) pueden tener varias ventajas y desventajas que se deben considerar al utilizarlo:   
+**Ventajas:**  
 
-**Ventajas:**
-
-- Reducción de la dimensionalidad: PCA permite reducir el número de variables que se utilizan para describir un conjunto de datos, lo que facilita la visualización y el análisis de los datos.   
-
-- Identificación de patrones: Al identificar los componentes principales, PCA puede ayudar a encontrar patrones o relaciones entre las variables que no eran evidentes en los datos originales.  
-
-- Eliminación de variables redundantes: PCA puede eliminar variables que estén altamente correlacionadas, lo que puede mejorar la eficiencia computacional y la interpretación de los resultados.   
-
-- Normalización de los datos: PCA normaliza los datos, lo que puede ayudar a eliminar problemas de escala o unidades diferentes entre las variables originales.  
+- **Reducción de la dimensionalidad**: PCA permite reducir el número de variables utilizadas para describir un conjunto de datos, facilitando su visualización y análisis.   
+- **Identificación de patrones**: Al identificar los componentes principales, el PCA puede ayudar a encontrar patrones o relaciones entre las variables que no eran evidentes en los datos originales.   
+- **Eliminación de variables redundantes**: PCA puede eliminar variables altamente correlacionadas, mejorando la eficiencia computacional y la interpretación de los resultados.   
+- **Normalización de los datos**: PCA normaliza los datos, eliminando problemas de escala o unidades diferentes entre las variables originales.   
 
 **Desventajas:**    
 
-- Interpretación: La interpretación de los componentes principales puede ser difícil, especialmente si no se tiene un conocimiento profundo del conjunto de datos.
+- **Interpretación**: La interpretación de los componentes principales puede ser difícil, especialmente si no se tiene un conocimiento profundo del conjunto de datos.    
+- **Pérdida de información**: PCA puede eliminar información útil si se descartan componentes con baja variabilidad que podrían ser importantes para la descripción de los datos.   
+- **Sensibilidad a los datos atípicos**: PCA puede verse afectado por datos atípicos, resultando en componentes que no reflejan adecuadamente la variabilidad en los datos.    
+- **Requisitos computacionales**: PCA puede requerir muchos recursos computacionales, especialmente para conjuntos de datos grandes.  
 
-- Pérdida de información: PCA puede eliminar información útil si se eliminan componentes que no tienen una gran variabilidad, pero que podrían ser importantes en la descripción de los datos.
+### Aplicación del PCA {-}  
 
-- Sensibilidad a los datos atípicos: PCA puede verse afectado por los datos atípicos, lo que puede resultar en componentes que no reflejan bien la variabilidad en los datos.
+El PCA es una técnica estadística no supervisada que permite reducir la complejidad de múltiples dimensiones, conservando la información en unas pocas componentes. Dada una matriz de datos con ppp variables y nnn observaciones, donde los datos están centrados y escalados con su desviación estándar, se asegura que la nube de datos esté centrada en el origen de las componentes principales, sin verse afectada por las relaciones espaciales entre las variables. 
 
--  Requisitos de computación: PCA puede requerir muchos recursos de computación, especialmente para conjuntos de datos grandes.
+El PCA busca transformar el espacio vectorial generado por un vector $\mathrm{X=}\left(\mathrm{\ }X_{n1},\ {\ X}_{n2},\ ...\ ,\ X_{np}\right)$ en un nuevo conjunto $\mathrm{Z\ =\ }\left(\mathrm{\ }Z_1,\ {\ Z}_2,\ ...\ ,\ Z_k\right),\ \ k\le p$, que sean combinaciones lineales de los indicadores y que expliquen la mayor parte de la variabilidad. Esto se expresa como:  
+
+$$Z\ =\ XA$$
+donde:  
+$A\ =\ \left(a_{n1},\ a_{n2},\ ...,\ a_{np}\right)$ representa las posiciones de cada observación en este nuevo sistema de coordenadas de componentes principales, denominadas *loadings*, y se calculan como combinaciones lineales de las variables originales y los pesos $a_{np}.$.    
+
+El PCA también permite conocer la proporción de la varianza explicada por cada componente principal, además de la varianza total presente en un conjunto de datos:   
+
+$$\sum_{j=1}^{p}{Var\left(X_j\right)\ =}\ \sum_{j=1}^{p}\frac{1}{n}\sum_{i=1}^{n}x_{ij}^2$$
+La varianza explicada por el $k-ésima$ componente principal se define como:  
+
+$$\frac{1}{n}\sum_{1=1}^{n}z_{ik}^2=\frac{1}{n}\sum_{1=1}^{n}\left(\sum_{j=1}^{p}{a_{nj}x_{ij}}\right)^2\ $$ 
+
+Por lo tanto, la proporción de la varianza explicada del kkk-ésimo componente principal está dada por:   
+
+$$\frac{\sum_{i=1}^{n}\left(\sum_{j=1}^{p}{a_{nj}x_{ij}}\right)^2}{\sum_{j=1}^{p}\frac{1}{n}\sum_{i=1}^{n}x_{ij}^2}$$
+
+En total, hay $min(n\ -\ 1,\ \ p))$ componentes principales, y la suma de la proporción de la varianza explicada es uno.  
+
+### Validación del PCA {-}  
+
+Para validar el PCA, se considera la calidad de la representación de las variables en la construcción del modelo, lo que permite evaluar la estabilidad de las variables en los componentes. También se identifican los valores atípicos y se determina en qué medida influyen en la construcción de los indicadores.   
 
 
-### Descomposición de componentes principales {-}
+### Descomposición de componentes principales {-}  
 
 En el análisis de componentes principales, se puede descomponer la matriz de varianzas y covarianzas de dos maneras diferentes:
 
@@ -59,6 +83,20 @@ Descomposición en valores propios (eigendecomposition): Esta descomposición se
 Descomposición en valores singulares (singular value decomposition, SVD): Esta descomposición se utiliza cuando la matriz de varianzas y covarianzas no es simétrica o no es definida positiva. En este caso, la matriz se descompone en tres matrices: una matriz de autovectores izquierdos, una matriz de autovectores derechos y una matriz diagonal de valores singulares. Los autovectores izquierdos y derechos forman una base ortogonal que describe las direcciones principales de la varianza en los datos, mientras que los valores singulares indican la importancia relativa de cada dirección.
 
 En ambas descomposiciones, se pueden seleccionar las componentes principales más importantes para reducir la dimensionalidad de los datos y simplificar su análisis.   
+
+<a href="images/SVD.png" data-lightbox="image-1" data-title="SVD">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/SVD.png"))
+```
+</a>
+
+<a href="images/SVD_Page_2.png" data-lightbox="image-1" data-title="SVD_2">
+```{r, echo = FALSE, fig.width=8, fig.height=8, out.width='100%'}
+knitr::include_graphics(paste0(here::here(), "/images/SVD_Page_2.png"))
+```
+</a>
+
 
 
 ### Identificación de datos atípicos {-}   

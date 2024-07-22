@@ -51,8 +51,8 @@ La construcción del ICE se realizó en cuatro etapas:
 
 1. **Generación y análisis de indicadores simples asociados a las dimensiones**.    
 2. **Análisis de Componentes Principales (ACP)**: Reducción de variables a componentes que explican la mayor varianza de los datos originales, generando un sistema de ponderación.         
-3. **Regresión de Componentes Principales (RCP)**: Método predictivo para estimar escenarios extremos y aplicar el método de distancias DP_2 para obtener el ICE.   
-4. **Generación del ICE con el método DP_2**: Obtención de un índice sintético agregando la información de los indicadores.   
+3. **Regresión de Componentes Principales (RCP)**: Método predictivo para estimar escenarios extremos y aplicar el método de distancias $DP_2$ para obtener el ICE.   
+4. **Generación del ICE con el método $DP_2$**: Obtención de un índice sintético agregando la información de los indicadores.   
 
 
 **Técnicas Multivariantes Complementarias**    
