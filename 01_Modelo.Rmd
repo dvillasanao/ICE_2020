@@ -48,13 +48,13 @@ En resumen, el PCA es un método estadístico que reduce la complejidad de un co
 
 ### Aplicación del PCA {-}  
 
-El PCA es una técnica estadística no supervisada que permite reducir la complejidad de múltiples dimensiones, conservando la información en unas pocas componentes. Dada una matriz de datos con ppp variables y nnn observaciones, donde los datos están centrados y escalados con su desviación estándar, se asegura que la nube de datos esté centrada en el origen de las componentes principales, sin verse afectada por las relaciones espaciales entre las variables. 
+El PCA es una técnica estadística no supervisada que permite reducir la complejidad de múltiples dimensiones, conservando la información en unas pocas componentes. Dada una matriz de datos con $p \times p$ variables y $n \times n$ observaciones, donde los datos están centrados y escalados con su desviación estándar, se asegura que la nube de datos esté centrada en el origen de las componentes principales, sin verse afectada por las relaciones espaciales entre las variables. 
 
 El PCA busca transformar el espacio vectorial generado por un vector $\mathrm{X=}\left(\mathrm{\ }X_{n1},\ {\ X}_{n2},\ ...\ ,\ X_{np}\right)$ en un nuevo conjunto $\mathrm{Z\ =\ }\left(\mathrm{\ }Z_1,\ {\ Z}_2,\ ...\ ,\ Z_k\right),\ \ k\le p$, que sean combinaciones lineales de los indicadores y que expliquen la mayor parte de la variabilidad. Esto se expresa como:  
 
 $$Z\ =\ XA$$
 donde:  
-$A\ =\ \left(a_{n1},\ a_{n2},\ ...,\ a_{np}\right)$ representa las posiciones de cada observación en este nuevo sistema de coordenadas de componentes principales, denominadas *loadings*, y se calculan como combinaciones lineales de las variables originales y los pesos $a_{np}.$.    
+$A\ =\ \left(a_{n1},\ a_{n2},\ ...,\ a_{np}\right)$ representa las posiciones de cada observación en este nuevo sistema de coordenadas de componentes principales, denominadas *loadings*, y se calculan como combinaciones lineales de las variables originales y los pesos $a_{np}$.    
 
 El PCA también permite conocer la proporción de la varianza explicada por cada componente principal, además de la varianza total presente en un conjunto de datos:   
 
@@ -63,7 +63,7 @@ La varianza explicada por el $k-ésima$ componente principal se define como:
 
 $$\frac{1}{n}\sum_{1=1}^{n}z_{ik}^2=\frac{1}{n}\sum_{1=1}^{n}\left(\sum_{j=1}^{p}{a_{nj}x_{ij}}\right)^2\ $$ 
 
-Por lo tanto, la proporción de la varianza explicada del kkk-ésimo componente principal está dada por:   
+Por lo tanto, la proporción de la varianza explicada del $k-ésimo$ componente principal está dada por:    
 
 $$\frac{\sum_{i=1}^{n}\left(\sum_{j=1}^{p}{a_{nj}x_{ij}}\right)^2}{\sum_{j=1}^{p}\frac{1}{n}\sum_{i=1}^{n}x_{ij}^2}$$
 
@@ -101,62 +101,53 @@ knitr::include_graphics(paste0(here::here(), "/images/SVD_Page_2.png"))
 
 ### Identificación de datos atípicos {-}   
 
-Los datos atípicos (también conocidos como valores extremos o outliers) pueden tener un impacto significativo en los resultados del método de componentes principales (`PCA`). Si los datos atípicos no se manejan adecuadamente, pueden llevar a resultados sesgados o incorrectos.    
+Los datos atípicos (también conocidos como *valores extremos* o *outliers*) pueden tener un impacto significativo en los resultados del método de componentes principales (`PCA`). Si los datos atípicos no se manejan adecuadamente, pueden llevar a resultados sesgados o incorrectos. Por lo tanto, es importante identificarlos y considerar cuidadosamente cómo manejarlos antes de realizar el análisis de PCA.        
 
 Existen algunas estrategias para manejar los datos atípicos dentro del análisis de  PCA:
 
-- Identificación de los datos atípicos: Es importante identificar los datos atípicos antes de realizar el análisis de PCA. Esto se puede hacer mediante la visualización de los datos o mediante pruebas estadísticas.   
+- **Identificación de los datos atípicos**: Es importante identificar los datos atípicos antes de realizar el análisis de PCA. Esto se puede hacer mediante la visualización de los datos o mediante pruebas estadísticas.      
 
-- Exclusión de los datos atípicos: Una estrategia común para manejar los datos atípicos es excluirlos del análisis. Sin embargo, esto debe hacerse con cuidado, ya que la exclusión de los datos atípicos puede resultar en una pérdida de información importante.   
+- **Exclusión de los datos atípicos**: Una estrategia común para manejar los datos atípicos es excluirlos del análisis. Sin embargo, esto debe hacerse con cuidado, ya que la exclusión de los datos atípicos puede resultar en una pérdida de información importante.    
 
-- Transformación de los datos: Otra estrategia es transformar los datos antes de realizar el análisis de PCA. Las transformaciones comunes incluyen la transformación logarítmica o la normalización de los datos. Estas transformaciones pueden reducir la influencia de los datos atípicos y mejorar los resultados de PCA.   
+- **Transformación de los datos**: Otra estrategia es transformar los datos antes de realizar el análisis de PCA. Las transformaciones comunes incluyen la transformación logarítmica o la normalización de los datos. Estas transformaciones pueden reducir la influencia de los datos atípicos y mejorar los resultados de PCA.     
 
-- Uso de métodos robustos: Existen métodos robustos que pueden manejar los datos atípicos de manera efectiva en PCA, como el método de componentes principales robustos (RPCA, por sus siglas en inglés). Estos métodos son menos sensibles a los datos atípicos y pueden proporcionar resultados más precisos.  
-
-- En resumen, los datos atípicos pueden tener un impacto significativo en los resultados de PCA. Es importante identificarlos y considerar cuidadosamente cómo manejarlos antes de realizar el análisis de PCA.  
-
-En resumen, el método de componentes principales puede ser una herramienta valiosa para reducir la complejidad de los datos y encontrar patrones en ellos, pero es importante tener en cuenta sus limitaciones y considerar cuidadosamente cuándo y cómo utilizarlo.     
-
+- **Uso de métodos robustos**: Existen métodos robustos que pueden manejar los datos atípicos de manera efectiva en PCA, como el método de componentes principales robustos (`RPCA`, por sus siglas en inglés). Estos métodos son menos sensibles a los datos atípicos y pueden proporcionar resultados más precisos.        
 
 
 ### Método de Componentes Principales Robustos `RPCA`  {-}
 
-El método de componentes principales robustos (RPCA, por sus siglas en inglés) se utiliza cuando se sospecha que los datos contienen valores atípicos o errores que pueden afectar los resultados del análisis de componentes principales (PCA).
+El método de componentes principales robustos (`RPCA`, por sus siglas en inglés) se utiliza cuando se sospecha que los datos contienen valores atípicos o errores que pueden afectar los resultados del análisis de componentes principales (PCA).    
 
-RPCA es una versión modificada del método de componentes principales tradicional que es menos sensible a los valores atípicos y a los errores en los datos. En lugar de minimizar la varianza total de los datos como en PCA, RPCA minimiza la varianza total de los datos después de excluir los valores atípicos o errores.
-
-RPCA puede ser útil en una variedad de situaciones, como en el análisis de datos biomédicos, análisis financiero, análisis de datos climáticos, entre otros.   
+El RPCA es una versión modificada del método de componentes principales tradicional que es menos sensible a los valores atípicos y a los errores en los datos. En lugar de minimizar la varianza total de los datos como en PCA, RPCA minimiza la varianza total de los datos después de excluir los valores atípicos o errores. Ete tipo de análisis puede ser útil en una variedad de situaciones, como en el análisis de datos biomédicos, análisis financiero, análisis de datos climáticos, entre otros.     
  
 En general, se recomienda utilizar RPCA cuando:
 
-- Los datos pueden contener valores atípicos o errores.
+- Los datos pueden contener valores atípicos o errores.   
 
-- Los datos tienen una distribución no normal.
+- Los datos tienen una distribución no normal.    
 
-- Las variables tienen diferentes escalas.
+- Las variables tienen diferentes escalas.    
 
-- El tamaño de la muestra es pequeño en comparación con la dimensión de los datos.
+- El tamaño de la muestra es pequeño en comparación con la dimensión de los datos.    
 
-- Se necesita una mayor precisión en los resultados del análisis.
+- Se necesita una mayor precisión en los resultados del análisis.    
 
 **Observaciones del método RPCA**
 
-Es importante tener en cuenta que RPCA no siempre es necesario y puede ser computacionalmente más costoso que el método de componentes principales tradicional. Por lo tanto, es importante evaluar cuidadosamente si RPCA es apropiado para los datos y los objetivos de análisis antes de utilizarlo.     
+Es importante tener en cuenta que RPCA no siempre es necesario y puede ser computacionalmente más costoso que el método de componentes principales tradicional. Por lo tanto, es importante evaluar cuidadosamente si RPCA es apropiado para los datos que se estan tratando y los objetivos de análisis antes de utilizarlo.      
 
-Aunque el método de componentes principales robustos (RPCA) es útil para manejar valores atípicos y errores en los datos, también presenta algunas desventajas que deben tenerse en cuenta:   
+Aunque el método de componentes principales robustos (RPCA), es útil para manejar valores atípicos y errores en los datos, también presenta algunas desventajas que deben tenerse en cuenta:    
 
-- Mayor complejidad computacional: El método RPCA puede ser más costoso computacionalmente que el método de componentes principales tradicional debido a la necesidad de excluir los valores atípicos o errores en los datos.  
+- **Mayor complejidad computacional**: El método RPCA puede ser más costoso computacionalmente que el método de componentes principales tradicional debido a la necesidad de excluir los valores atípicos o errores en los datos.    
 
-- Pérdida de información: Al excluir los valores atípicos o errores en los datos, puede perderse información importante, lo que puede afectar la precisión de los resultados del análisis.  
+- **Pérdida de información**: Al excluir los valores atípicos o errores en los datos, puede perderse información importante, lo que puede afectar la precisión de los resultados del análisis.   
 
-- Dependencia del modelo: El método RPCA se basa en un modelo específico de distribución de datos, por lo que si los datos no se ajustan a este modelo, los resultados pueden ser incorrectos o inexactos.  
+- **Dependencia del modelo**: El método RPCA se basa en un modelo específico de distribución de datos, por lo que si los datos no se ajustan a este modelo, los resultados pueden ser incorrectos o inexactos.    
 
-- Selección de parámetros: El método RPCA requiere la selección de parámetros para determinar qué valores se consideran atípicos o errores, lo que puede ser subjetivo y afectar los resultados del análisis.  
-
-En general, es importante evaluar cuidadosamente si el método RPCA es apropiado para los datos y los objetivos de análisis antes de utilizarlo, y considerar tanto sus ventajas como sus desventajas.  
+- **Selección de parámetros**: El método RPCA requiere la selección de parámetros para determinar qué valores se consideran atípicos o errores, lo que puede ser subjetivo y afectar los resultados del análisis.     
 
 
-## Regresión de Componentes Principales (`PCR`) {-}
+## Tercera etapa: Regresión de Componentes Principales (`PCR`) {-}
 
 El modelo de PCR es un método utilizado para reducir la dimensionalidad de los datos y evitar problemas de multicolinealidad en un modelo de regresión lineal múltiple. Este modelo se basa en la descomposición en valores singulares (SVD) de la matriz de datos originales, lo que permite identificar las componentes principales que explican la mayor parte de la varianza en los datos.
 
