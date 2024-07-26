@@ -167,9 +167,9 @@ En resumen, para implementar el modelo de PCR se utilizan los resultados de la d
 
 ## Método de distancias ponderadas al cuadrado $DP_2$ {-}
 
-El método de distancias ponderadas al cuadrado (DP2) de José Bernardo Peña Trapero es una técnica estadística utilizada para medir la similitud entre diferentes objetos o casos. Este método se basa en una medida de distancia que se calcula sumando las diferencias al cuadrado ponderadas entre las características de dos objetos y tomando la raíz cuadrada del resultado. La ponderación de las características permite que las más importantes tengan un mayor impacto en el resultado final mientras que las menos importantes tienen un menor impacto.
+El método de distancias ponderadas al cuadrado ($DP_2$) de José Bernardo Peña Trapero es una técnica estadística utilizada para medir la similitud entre diferentes objetos o casos. Este método se basa en una medida de distancia que se calcula sumando las diferencias al cuadrado ponderadas entre las características de dos objetos y tomando la raíz cuadrada del resultado. La ponderación de las características permite que las más importantes tengan un mayor impacto en el resultado final mientras que las menos importantes tienen un menor impacto.
 
-El método DP2 de Peña Trapero se utiliza en una variedad de aplicaciones, como la clasificación de imágenes y la evaluación de la similitud entre diferentes textos. Una de las ventajas del método DP2 es que puede manejar datos de diferentes tipos y escalas, lo que lo hace útil en situaciones donde los datos son heterogéneos.
+El método DP2 de Peña Trapero se utiliza en una variedad de aplicaciones, como la clasificación de imágenes y la evaluación de la similitud entre diferentes textos. Una de las ventajas del método $DP_2$ es que puede manejar datos de diferentes tipos y escalas, lo que lo hace útil en situaciones donde los datos son heterogéneos.
 
 Sin embargo, también hay algunas desventajas en el uso del método DP2, como la selección subjetiva de la función de ponderación de características y el costo computacional en grandes conjuntos de datos. Por lo tanto, se deben evaluar cuidadosamente los datos y los objetivos de análisis antes de aplicar este método.
 
