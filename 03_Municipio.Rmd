@@ -6,8 +6,7 @@
 readRDS(file = paste0(here::here(), "/Output/Municipio/Network_Mun.rds"))
 ```
 
-Se toma como referencia el marco geoestadístico nacional 2020 a Nivel
-Municipal.
+Se toma como referencia el marco geoestadístico nacional 2020 a Nivel Municipal.
 
 ```{r, codefolding_show = "hide" }
 load(paste0(here::here(), "/Bases/Municipio/MGN.Rdata"))
@@ -18,21 +17,11 @@ load(paste0(here::here(), "/Bases/Municipio/MGN.Rdata"))
 Se carga la nueva base del índice de marginación 2020.
 
 
-Para el cálculo de los componentes principales depende de las unidades
-de medida empleadas en las variables. Por lo que es importante, antes de
-aplicar `PCA`, estandarizar los indicadores simples para que tengan
-media **0** y desviación estándar **1**, ya que, de lo contrario, las
-variables con mayor varianza dominarían al resto, aunque en el caso en
-que las variables estén medidas en las mismas unidades, podemos optar
-por no estandarizarlas. La estandarización se lleva a cabo restando a
-cada observación la media y dividiendo entre la desviación estándar de
-la variable a la que pertenece:
+Para el cálculo de los componentes principales depende de las unidades de medida empleadas en las variables. Por lo que es importante, antes de aplicar `PCA`, estandarizar los indicadores simples para que tenganmedia **0** y desviación estándar **1**, ya que, de lo contrario, las variables con mayor varianza dominarían al resto, aunque en el caso en que las variables estén medidas en las mismas unidades, podemos optar por no estandarizarlas. La estandarización se lleva a cabo restando a cada observación la media y dividiendo entre la desviación estándar de la variable a la que pertenece:    
 
 $$Z_{i}=\frac{x_{i}-\bar{x}}{\sigma_{i}}$$
 
-Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se
-especifica que se estandaricen las vairables con el parámetro
-*scale.unit=TRUE*
+Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se especifica que se estandaricen las vairables con el parámetro *scale.unit=TRUE*
 
 **Análisis de componentes principales**
 
@@ -47,35 +36,23 @@ PCA_IMM <- PCA(IMM[, c(2:ncol(IMM))],
                   graph = FALSE) 
 ```
 
-**Es importante seleccionar que gráficos se pueden incluir en el
-análisis**
+**Es importante seleccionar que gráficos se pueden incluir en el análisis**
 
-Se utilizó como criterio los gráficos de sedimentación y la contriución
-de la variables en cada uno de los componentes y la varianza acumulada
+Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada
 
-Por otro lado se generan dos índices, de los cuales: - Uno se
-estandariza para explicarlos a través de descomposición de valores
-singulares (`SVD`) de la matriz de datos.
+Por otro lado se generan dos índices, de los cuales: - Uno se estandariza para explicarlos a través de descomposición de valores singulares (`SVD`) de la matriz de datos.
 
-$$\mathbf X = \mathbf U \mathbf S \mathbf V^\top$$ - Segundo, desde el
-punto de vista `PCA` que requiere el cálculo de los valores propios y
-los vectores propios, haciendo la descomposición propia de
-$\mathbf X \mathbf X^{T}$.
+$$\mathbf X = \mathbf U \mathbf S \mathbf V^\top$$ - Segundo, desde el punto de vista `PCA` que requiere el cálculo de los valores propios y los vectores propios, haciendo la descomposición propia de $\mathbf X \mathbf X^{T}$.
 
 $$\mathbf X \mathbf V = \mathbf U \mathbf S \mathbf V^\top \mathbf V = \mathbf U \mathbf S$$
 
-Donde - $\mathbf V$ son los eigenvectors - $\mathbf U$ es la matriz
-unitaria - $\mathbf S$ es la traza de los eigenvalues
+Donde - $\mathbf V$ son los eigenvectors - $\mathbf U$ es la matriz unitaria - $\mathbf S$ es la traza de los eigenvalues
 
-Las columnas de $\mathbf {US}$ son los pesos de las componentes
-principales
+Las columnas de $\mathbf {US}$ son los pesos de las componentes principales
 
-**Se generan los índices de cada uno de los subsistemas** **Se utilizan
-a los componentes principales que expliquen el máximo de la
-información**
+**Se generan los índices de cada uno de los subsistemas** **Se utilizan a los componentes principales que expliquen el máximo de la información**
 
-Se utilizó como criterio los gráficos de sedimentación y la contriución
-de la variables en cada uno de los componentes y la varianza acumulada.
+Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.
 
 ```{r}
 # Componentes seleccionadas
@@ -132,15 +109,13 @@ tabla %>%
 
 ### DENUE {.unnumbered}
 
-Se anexan los indicadores simples, de acuerdo a la clasificación
-económica del DENUE (**01**)
+Se anexan los indicadores simples, de acuerdo a la clasificación económica del DENUE (**01**)
 
 ```{r,eval = TRUE}
 load(paste0(here::here(), "/Bases/Municipio/Indicadores_DENUE.RData"))
 ```
 
-Se utiliza la nueva reclasificación de los subsitemas, de los cuales
-fueron obtenidos del DENUE
+Se utiliza la nueva reclasificación de los subsitemas, de los cuales fueron obtenidos del DENUE
 
 ```{r}
 load(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.RData"))
@@ -148,8 +123,7 @@ load(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.RData"))
 
 **Subramos**
 
-Se toman como referencia 13 subsitemas económicos y 64 elementos
-económicos que lo integran
+Se toman como referencia 13 subsitemas económicos y 64 elementos económicos que lo integran
 
 ```{r, collapse=TRUE}
 load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
