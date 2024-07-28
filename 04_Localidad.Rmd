@@ -5,11 +5,65 @@
 readRDS(file = paste0(here::here(), "/Output/Localidad/Network_Loc.rds"))
 ```
 
-Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad 
+Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad. El cúal cuenta con 189 432 localidades para el año 2020. 
 
 ```{r, echo=TRUE}
 load(paste0(here::here(), "/Bases/Localidad/MGN.Rdata"))
 ```
+
+
+
+<div style="height:320px;overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+head(MGN_loc, 10) %>% 
+dplyr::relocate(Tamaño.de.localidad, .before = "TAMLOC") %>%
+ gt() %>%
+  tab_header(title = "Marco Geoestadístico Nacional (MGN)",
+             subtitle = "Nivel localidad") %>%
+   fmt_integer(columns = c("Pob.Total", "Viviendas.Totales"),
+               sep_mark = " ") %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+       tab_style(style = list(cell_text(align = "left",
+                                         weight = 'bold')),
+                  locations = list(cells_title(groups = c("title")))) %>%
+        tab_style(style = list(cell_text(align = "left")),
+                   locations = list(cells_title(groups = c("subtitle")))) %>%
+         cols_label(CVE_LOC = md("**Clave de la localidad**"),
+                    ENTIDAD = md("**Clave de la entidad**"),
+                    NOM_ENT = md("**Entidad**"), 
+                    MUN = md("**Clave del municipio**"),
+                    NOM_MUN = md("**Municipio**"), 
+                    LOC = md("**Clave de localidad**"),
+                    NOM_LOC = md("**Localidad**"), 
+                    LONGITUD = md("**Longuitud**"),
+                    LATITUD = md("**Latitud**"),
+                    ALTITUD = md("**Altitud**"), 
+                    Pob.Total = md("**Población Total**"), 
+                    Viviendas.Totales = md("**Viviendas totales**"), 
+                    TAMLOC = md("**Tamaño de la localidad**"),
+                    AMBITO = md("**Ámbito**"),
+                    Tamaño.de.localidad = md("**Tamaño de la localidad**"),
+                    Indicadora = md("**Indicadora**")) %>%
+         cols_width(starts_with("CVE_LOC") ~ px(100),
+                    starts_with("ENTIDAD") ~ px(80),
+                    starts_with("MUN") ~ px(80),
+                    starts_with("NOM_LOC") ~ px(280),
+                    starts_with("LONGITUD") ~ px(100),
+                    starts_with("LATITUD") ~ px(100),
+                    starts_with("ALTITUD") ~ px(100),
+                    starts_with("Tamaño.de.localidad") ~ px(150),
+                    starts_with("Indicadora") ~ px(150),
+                    everything() ~ px(80)) %>%
+          as_raw_html() 
+```
+</div>
+
 
 ## Marginación {.unnumbered}
 
@@ -21,18 +75,49 @@ Al final del cálculo se van a desplegar las localidades menores a 2 viviendas p
 
 **Bases de datos**
 
-Se carga la nueva base del índice de marginación 2020. 
+Se carga la nueva base del índice de marginación 2020.   
+
+```{r}
+load(paste0(here::here(), "/Bases/Localidad/IML.Rdata"))
+```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+head(IML, 10) %>% 
+ gt() %>%
+  tab_header(title = "Indicadores sociodemigráficos",
+             subtitle = "Nivel localidad") %>%
+   fmt_number(columns = c(2:9), 
+                decimals = 2) %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+     tab_style(style = list(cell_text(align = "left", 
+                                      weight = 'bold')),
+               locations = list(cells_title(groups = c("title")))) %>%
+      tab_style(style = list(cell_text(align = "left")),
+                locations = list(cells_title(groups = c("subtitle")))) %>%
+       cols_label(CVE_LOC = md("**Clave de la localidad**"),
+                  ANALF = md("**Porcentaje de población de 15 años o más analfabeta**"),
+                  SBASC = md("**Porcentaje de población de 15 años o más sin educación básica**"),
+                  OVSDE = md("**Porcentaje de ocupantes en viviendas sin drenaje ni excusado**"),
+                  OVSEE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  OVSAE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  OVHAC = md("**Porcentaje de ocupantes en viviendas con algún nivel de hacinamiento**"),
+                  OVPT= md("**Porcentaje de ocupantes en viviendas con piso de tierra**")) %>% 
+        cols_width(starts_with("CVE_LOC") ~ px(80),
+                   everything() ~ px(150)) %>%
+          as_raw_html() 
+```
+</div>
 
 
-Para el cálculo de los componentes principales depende de las unidades
-de medida empleadas en las variables. Por lo que es importante, antes de
-aplicar `PCA`, estandarizar los indicadores simples para que tengan
-media **0** y desviación estándar **1**, ya que, de lo contrario, las
-variables con mayor varianza dominarían al resto, aunque en el caso en
-que las variables estén medidas en las mismas unidades, podemos optar
-por no estandarizarlas. La estandarización se lleva a cabo restando a
-cada observación la media y dividiendo entre la desviación estándar de
-la variable a la que pertenece:
+
+Para el cálculo de los componentes principales depende de las unidades de medida empleadas en las variables. Por lo que es importante, antes de aplicar `PCA`, estandarizar los indicadores simples para que tengan media **0** y desviación estándar **1**, ya que, de lo contrario, las variables con mayor varianza dominarían al resto, aunque en el caso en que las variables estén medidas en las mismas unidades, podemos optar por no estandarizarlas. La estandarización se lleva a cabo restando a cada observación la media y dividiendo entre la desviación estándar de la variable a la que pertenece:
 
 $$Z_{i}=\frac{x_{i}-\bar{x}}{\sigma_{i}}$$
 

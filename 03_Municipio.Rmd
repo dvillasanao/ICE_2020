@@ -12,9 +12,98 @@ Se toma como referencia el marco geoestadístico nacional 2020 a Nivel Municipal
 load(paste0(here::here(), "/Bases/Municipio/MGN.Rdata"))
 ```
 
+<div style="height:320px;overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+head(MGN_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Marco Geoestadístico Nacional (MGN)",
+             subtitle = "Nivel municipal") %>%
+   fmt_number(columns = c("IM_2020", "IMN_2020"), 
+                decimals = 2) %>%
+    fmt_integer(columns = c("POBTOT", "OVPH", "VIVTOT", "P_AFRO", "P_IND", "P_DISC"),
+                sep_mark = " ") %>%
+      tab_options(heading.title.font.size = 14, 
+                  heading.subtitle.font.size = 12,
+                  table.font.names = "Century Gothic",
+                  table.font.size = 10,
+                  table.align = 'center',
+                  data_row.padding = px(1)) %>%
+       tab_style(style = list(cell_text(align = "left",
+                                         weight = 'bold')),
+                  locations = list(cells_title(groups = c("title")))) %>%
+        tab_style(style = list(cell_text(align = "left")),
+                   locations = list(cells_title(groups = c("subtitle")))) %>%
+         cols_label(CVE_MUN = md("**Clave del municipio**"),
+                    ENT = md("**Clave de la entidad**"),
+                    NOM_ENT = md("**Entidad**"), 
+                    MUN = md("**Clave del municipio**"),
+                    NOM_MUN = md("**Municipio**"), 
+                    POBTOT = md("**Población Total**"), 
+                    OVPH = md("**Ocupantes en viviendas particulares habitadas**"), 
+                    VIVTOT = md("**Viviendas totales**"), 
+                    P_AFRO = md("**Población afrodescendiente o afromexicana**"),
+                    G_AFRO = md("**Grado de población afrodescendiente o afromexicana**"),
+                    P_IND = md("**Población indígena**"),
+                    G_IND = md("**Grado de población indígena**"),
+                    P_DISC = md("**Población con algún grado de discapacidad**"),
+                    IM_2020 = md("**Índice de marginación a nivel municipal**"),
+                    GM_2020 = md("**Grado de marginación a nivel municipal**"),
+                    IMN_2020 = md("**Índice de marginación a nivel municipal normalizado**")) %>%
+         cols_width(starts_with("POB") ~ px(100),
+                    starts_with("NOM") ~ px(120),
+                    starts_with("Grado") ~ px(180),
+                    starts_with("G_AFRO") ~ px(220),
+                    starts_with("G_IND") ~ px(200),
+                    everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
+
+
 ## Marginación {.unnumbered}
 
-Se carga la nueva base del índice de marginación 2020.
+Se carga la nueva base del índice de marginación 2020.   
+
+```{r}
+load(paste0(here::here(), "/Bases/Municipio/IMM.Rdata"))
+```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+head(IMM, 10) %>% 
+ gt() %>%
+  tab_header(title = "Indicadores sociodemigráficos",
+             subtitle = "Nivel municipal") %>%
+   fmt_number(columns = c(2:10), 
+                decimals = 2) %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+     tab_style(style = list(cell_text(align = "left", 
+                                      weight = 'bold')),
+               locations = list(cells_title(groups = c("title")))) %>%
+      tab_style(style = list(cell_text(align = "left")),
+                locations = list(cells_title(groups = c("subtitle")))) %>%
+       cols_label(CVE_MUN = md("**Clave del municipio**"),
+                  ANALF = md("**Porcentaje de población de 15 años o más analfabeta**"),
+                  SBASC = md("**Porcentaje de población de 15 años o más sin educación básica**"),
+                  OVSDE = md("**Porcentaje de ocupantes en viviendas sin drenaje ni excusado**"),
+                  OVSEE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  OVSAE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  VHAC = md("**Porcentaje de viviendas con algún nivel de hacinamiento**"),
+                  OVPT= md("**Porcentaje de ocupantes en viviendas con piso de tierra**"),
+                  PL.5000 = md("**Porcentaje de ocupantes en viviendas con piso de tierra**"),
+                  PO2SM = md("**Porcentaje de población ocupada con ingresos de hasta 2 salarios mínimos**")) %>% 
+        cols_width(starts_with("CVE_MUN") ~ px(80),
+                   everything() ~ px(150)) %>%
+          as_raw_html() 
+```
+</div>
 
 
 Para el cálculo de los componentes principales depende de las unidades de medida empleadas en las variables. Por lo que es importante, antes de aplicar `PCA`, estandarizar los indicadores simples para que tenganmedia **0** y desviación estándar **1**, ya que, de lo contrario, las variables con mayor varianza dominarían al resto, aunque en el caso en que las variables estén medidas en las mismas unidades, podemos optar por no estandarizarlas. La estandarización se lleva a cabo restando a cada observación la media y dividiendo entre la desviación estándar de la variable a la que pertenece:    
@@ -28,13 +117,16 @@ Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se especifica qu
 Se utilizan todas las variables
 
 ```{r}
-load(paste0(here::here(), "/Bases/Municipio/IMM.Rdata"))
-
 PCA_IMM <- PCA(IMM[, c(2:ncol(IMM))],
                 scale.unit = TRUE, 
                  ncp = ncol(IMM[, c(2:ncol(IMM))]),
                   graph = FALSE) 
 ```
+
+```{r, echo = FALSE, eval=FALSE}
+saveRDS(PCA_IMM,file = paste0(here::here(), "/Output/Municipio/PCA_IMM.RDS")) 
+```
+
 
 **Es importante seleccionar que gráficos se pueden incluir en el análisis**
 
@@ -54,25 +146,34 @@ Las columnas de $\mathbf {US}$ son los pesos de las componentes principales
 
 Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.
 
+<a href="images/Comportamiento acumulado_PC1 a PC9_IMM.png" data-lightbox="image-1" data-title="IMM_Sedimentacion">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/Comportamiento acumulado_PC1 a PC9_IMM.png"))
+```
+</a>
+
 ```{r}
 # Componentes seleccionadas
 ncp <- 3
 
 # Índices de las componentes principales seleccionados
 PC_IMM <-  IMM %>%
-              select(CVE_MUN) %>%
-                mutate(PC = as.numeric(scale(as.matrix(IMM[,c(2:10)])) %*% 
-                                        as.matrix(PCA_IMM[["var"]][["coord"]][,1:ncp]) %*% 
-                                          as.matrix(PCA_IMM[["eig"]][,2][1:ncp]/100))) %>%
-                   as.data.frame()
+            select(CVE_MUN) %>%
+             mutate(PC = as.numeric(scale(as.matrix(IMM[, c(2:10)])) %*% 
+                                     as.matrix(PCA_IMM[["var"]][["coord"]][, 1:ncp]) %*% 
+                                      as.matrix(PCA_IMM[["eig"]][,2][1:ncp]/100))) %>%
+              as.data.frame()
 
 save(PC_IMM, file = paste0(here::here(), "/Output/Municipio/PC_IMM.Rdata"))
 ```
 
+
 **Resumen**
 
 ```{r, echo = FALSE}
-tabla <- facto_summarize(PCA_IMM, "var", axes = 1:ncp) %>%
+PCA_IMM <- readRDS(file = paste0(here::here(), "/Output/Municipio/PCA_IMM.RDS")) 
+tabla <- facto_summarize(PCA_IMM, "var", axes = 1:3) %>%
           select(-name) %>%
            as.data.frame() %>%
             mutate(Indicadores = c('Porcentaje de población de 15 años o más analfabeta', 
@@ -84,23 +185,32 @@ tabla <- facto_summarize(PCA_IMM, "var", axes = 1:ncp) %>%
                                    'Porcentaje de población en localidades con menos de 5 000 habitantes',
                                    'Porcentaje de viviendas con algún nivel de hacinamiento',
                                    'Porcentaje de población ocupada con ingresos de hasta 2 salarios mínimos')) %>%
-              relocate(Indicadores, .before = "Dim.1") 
+             relocate(Indicadores, .before = "Dim.1") 
 ```
 
 ```{r, echo = FALSE}
-tabla %>%
-  kable(caption = "Tabla: Resumen de los indicadores de marginación utilizando PCA", 
-               digits = 3, 
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html", 
-                  booktabs = FALSE) %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T, ) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                  footnote_as_chunk = T) 
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Resumen de los indicadores de marginación utilizando PCA", 
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       tab_footnote(footnote = "Fuente: Elaboración propia", 
+                    placement = "left") %>%
+        fmt_number(columns = c(2:7), 
+                    decimals = 3)  %>%
+         as_raw_html() 
 ```
 
 ## Equipamiento {.unnumbered}
@@ -111,7 +221,7 @@ tabla %>%
 
 Se anexan los indicadores simples, de acuerdo a la clasificación económica del DENUE (**01**)
 
-```{r,eval = TRUE}
+```{r, eval = TRUE}
 load(paste0(here::here(), "/Bases/Municipio/Indicadores_DENUE.RData"))
 ```
 
@@ -131,9 +241,9 @@ tablas <- names(Subsitemas)
 tablas
 ```
 
-```{r}
+```{r, eval = FALSE}
 for(i in 1:11){
-assign(paste0("tabla_",tablas[i]), denue_mun %>%
+assign(paste0("tabla_", tablas[i]), denue_mun %>%
                                      ungroup() %>%
                                       select(CVE_MUN, Subsitemas[[paste(tablas[i])]]) %>%
                                        mutate(suma = rowSums(.[2:length(Subsitemas[[paste(tablas[i])]])])) %>%
@@ -146,33 +256,44 @@ assign(paste0("tabla_",tablas[i]), denue_mun %>%
 **Dimensiones de cálculo**
 
 ```{r, echo = FALSE}
-tabla <- matrix(data = NA, nrow = 11, ncol = 3)
-for(i in 1:11){
-  tabla[i, 1] <- paste(tablas[i])
-  tabla[i, 2] <- nrow(get(paste0("tabla_", tablas[i])))
-  tabla[i, 3] <- length(Subsitemas[[paste(tablas[i])]])
-}
-colnames(tabla) <- c("Indicadores", "Observaciones", "Dimensiones")
+#tabla <- matrix(data = NA, nrow = 11, ncol = 3)
+#for(i in 1:11){
+ # tabla[i, 1] <- paste(tablas[i])
+ #  tabla[i, 2] <- nrow(get(paste0("tabla_", tablas[i])))
+ #  tabla[i, 3] <- length(Subsitemas[[paste(tablas[i])]])
+#}
+#colnames(tabla) <- c("Indicadores", "Observaciones", "Dimensiones")
 
+load(paste0(here::here(), "/Output/Municipio/tabla_observaciones_DENUE.RData"))
 tabla %>% 
   as.data.frame() %>%
-    mutate(Observaciones = as.numeric(.$Observaciones)) %>%
-  kable(caption = "Tabla: Dimensiones de cálculo", 
-          format.args = list(font_size = '10px', family = "Century Gothic", big.mark = " "),
-            align = 'c',
-            format = "html") %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                  footnote_as_chunk = T)
+   mutate(Observaciones = as.numeric(.$Observaciones)) %>%
+    gt() %>%
+     tab_header(title = "Tabla: Dimensiones de cálculo", 
+                subtitle = "Nivel municipal") %>%
+      tab_options(heading.title.font.size = 14, 
+                  heading.subtitle.font.size = 12,
+                  table.font.names = "Century Gothic",
+                  table.font.size = 10,
+                  table.align = 'center',
+                  data_row.padding = px(1)) %>%
+       tab_style(style = list(cell_text(align = "left", 
+                                        weight = 'bold')),
+                 locations = list(cells_title(groups = c("title")))) %>%
+        tab_style(style = list(cell_text(align = "left")),
+                  locations = list(cells_title(groups = c("subtitle")))) %>%
+         tab_style(style = "vertical-align:center; font-weight: bold",
+                   locations = cells_column_labels()) %>%
+          tab_footnote(footnote = "Fuente: Elaboración propia", 
+                       placement = "left") %>%
+           fmt_integer(columns = c("Observaciones"),
+                       sep_mark = " ") %>%
+            as_raw_html()
 ```
 
 **Análisis de componentes principales**
 
-```{r}
+```{r, eval = FALSE}
 ncp <- c(1, 1, 1, 1, 3, 1 ,1, 1, 1, 1, 1) %>% as.matrix() %>% `rownames<-`(.,paste(tablas))
 
 PCA_Subsistemas <- NULL
@@ -184,46 +305,62 @@ for(i in 1:11){
 }
 ```
 
-```{r}
+```{r, echo = FALSE, eval = FALSE}
+saveRDS(PCA_Subsistemas, file = paste0(here::here(), "/Output/Municipio/PC_DENUE.RDS"))
+```
+
+
+```{r, eval = FALSE}
 # Índices de las componentes principales seleccionados
 PC_DENUE <- NULL
 for(i in 1:11){
   PC_DENUE[[i]] <- get(paste0("tabla_", tablas[i]))[1] %>%
-                     select(CVE_MUN) %>%
-                       mutate(PC = scale(as.matrix(get(paste0("tabla_", tablas[i]))[,-1])) %*% 
-                                    as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["var"]][["coord"]][,1:ncp[i]]) %*% 
-                                      as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["eig"]][,2][1:ncp[i]]/100)) %>% 
-                         as.data.frame()
+                    select(CVE_MUN) %>%
+                     mutate(PC = scale(as.matrix(get(paste0("tabla_", tablas[i]))[,-1])) %*% 
+                      as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["var"]][["coord"]][,1:ncp[i]]) %*% 
+                       as.matrix(PCA_Subsistemas[[paste0(tablas[i])]][["eig"]][,2][1:ncp[i]]/100)) %>% 
+                        as.data.frame()
 }
 save(PC_DENUE, file = paste0(here::here(), "/Output/Municipio/PC_DENUE.Rdata"))
 ```
 
 ```{r, echo = FALSE}
+PCA_Subsistemas <- readRDS(file = paste0(here::here(), "/Output/Municipio/PC_DENUE.RDS"))
+
+ncp <- c(1, 1, 1, 1, 3, 1 ,1, 1, 1, 1, 1) %>% as.matrix() %>% `rownames<-`(.,paste(tablas))
+
 tabla <- NULL 
 for(i in 1:11){
  tabla[[paste0(tablas[i])]] <- facto_summarize(PCA_Subsistemas[[paste0(tablas[i])]], "var", axes = 1:ncp[i])
 }
-```
-
-```{r, echo = FALSE}
 # Asistencia Social 
 i <- 2
 tabla <- facto_summarize(PCA_Subsistemas[[paste0(tablas[i])]], "var", axes = 1:ncp[i]) %>%
-          select(-name) %>%
+          rename("Indicadores" = "name") %>%
            as.data.frame() 
 
-tabla %>%
-  kable(caption = "Tabla: Resumen de los indicadores de asistencia social", 
-               digits = 3, 
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html") %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                  footnote_as_chunk = T)
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Resumen de los indicadores de asistencia social",  
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       tab_footnote(footnote = "Fuente: Elaboración propia", 
+                    placement = "left") %>%
+        fmt_number(columns = c(2:4), 
+                   decimals = 3)  %>%
+         as_raw_html() 
 ```
 
 #### Valores extremos {.unnumbered}
@@ -232,7 +369,7 @@ tabla %>%
 ## Principal Components Regression (PCR)
 pcr_model <- NULL
 for(i in 1:11){
-pcr_model[[i]] <- pcr(PC_DENUE[[i]][,2]~., data = get(paste0("tabla_",tablas[i]))[-1], ncomp = ncp[i], scale = TRUE, center = TRUE, validation = "LOO")
+pcr_model[[i]] <- pcr(PC_DENUE[[i]][,2]~., data = get(paste0("tabla_", tablas[i]))[-1], ncomp = ncp[i], scale = TRUE, center = TRUE, validation = "LOO")
 }
 
 ## Se guardan los resultados 
@@ -263,12 +400,44 @@ for(i in 1:11){
 }
 colnames(pcr_extremos) <- c("Indicadores", "Máximo", "Mínimo")
 
+save(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_DENUE.RData"))
 write.table(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_DENUE.txt", sep = ","))
 ```
 
+
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Output/Municipio/PCR_DENUE.RData"))
+
+pcr_extremos %>% 
+ as.data.frame() %>%
+  mutate_at(vars(2:3), as.numeric) %>%
+   gt() %>%
+    tab_header(title = "Tabla: Valores extremos utilizando Principal Component Regression (PCR)",  
+               subtitle = "Indicadores del DENUE a nivel municipal") %>%
+     tab_options(heading.title.font.size = 14, 
+                 heading.subtitle.font.size = 12,
+                 table.font.names = "Century Gothic",
+                 table.font.size = 10,
+                 table.align = 'center',
+                 data_row.padding = px(1)) %>%
+      tab_style(style = list(cell_text(align = "left", 
+                                       weight = 'bold')),
+                locations = list(cells_title(groups = c("title")))) %>%
+       tab_style(style = list(cell_text(align = "left")),
+                 locations = list(cells_title(groups = c("subtitle")))) %>%
+        tab_style(style = "vertical-align:center; font-weight: bold",
+                  locations = cells_column_labels()) %>%
+         tab_footnote(footnote = "Fuente: Elaboración propia", 
+                      placement = "left") %>%
+          fmt_number(columns = c("Máximo", "Mínimo"), 
+                     decimals = 3)  %>%
+           as_raw_html() 
+```
+
+
 ### Educación {.unnumbered}
 
-```{r}
+```{r, eval = FALSE}
 load("Bases/Municipio/Indicadores_Escuelas_SEP.RData")
 
 sep_mun <- sep_mun %>%
@@ -280,47 +449,66 @@ sep_mun <- sep_mun %>%
 
 **Análisis de componentes principales**
 
-```{r}
+```{r, eval = FALSE}
 PCA_SEP <- PCA(sep_mun[, c(3:11)],
                 scale.unit = TRUE, 
                  ncp = ncol(sep_mun[, c(3:11)]),
                   graph = FALSE)
 ```
 
-```{r}
+```{r, echo = FALSE, eval = FALSE}
+saveRDS(PCA_SEP, file = paste0(here::here(), "/Output/Municipio/PCA_SEP.RDS"))
+```
+
+
+```{r, eval = FALSE}
 # Índice estandarizado (SVD)
 # Componentes seleccionadas
 ncp <- 2
 # Índices de las componentes principales seleccionados
 PC_SEP <-  sep_mun %>%
-              select(CVE_MUN) %>%
-               mutate(PC = as.numeric(scale(as.matrix(sep_mun[, c(3:11)])) %*% 
-                              as.matrix(PCA_SEP[["var"]][["coord"]][,1:ncp]) %*% 
-                                        as.matrix(PCA_SEP[["eig"]][,2][1:ncp]/100))) %>%
-                 as.data.frame()
+            select(CVE_MUN) %>%
+             mutate(PC = as.numeric(scale(as.matrix(sep_mun[, c(3:11)])) %*% 
+              as.matrix(PCA_SEP[["var"]][["coord"]][,1:ncp]) %*% 
+               as.matrix(PCA_SEP[["eig"]][,2][1:ncp]/100))) %>%
+                as.data.frame()
 save(PC_SEP,  file = paste0(here::here(), "/Output/Municipio/PC_SEP.Rdata"))
 ```
 
 ```{r, echo = FALSE}
+PCA_SEP <- readRDS(file = paste0(here::here(), "/Output/Municipio/PCA_SEP.RDS"))
+
 tabla <- facto_summarize(PCA_SEP, "var", axes = 1:ncp) %>%
           select(-name) %>%
            as.data.frame() 
 
-```
+# Educación 
+tabla <- facto_summarize(PCA_SEP, "var", axes = 1:2) %>%
+          rename("Indicadores" = "name") %>%
+           as.data.frame() 
 
-```{r, echo = FALSE}
-tabla %>%
-  kable(caption = "Tabla: Resumen de los indicadores de educación utilizando PCA", 
-               digits = 3, 
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html") %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                   footnote_as_chunk = T)
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Resumen de los indicadores de educación utilizando PCA", 
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       tab_footnote(footnote = "Fuente: Elaboración propia", 
+                    placement = "left") %>%
+        fmt_number(columns = c(2:6), 
+                   decimals = 3)  %>%
+         as_raw_html() 
 ```
 
 #### Valores extremos {.unnumbered}
@@ -344,31 +532,66 @@ pcr_pred_min <- predict(pcr_model, test)
 
 pcr_extremos <- data.frame("Indicadores" = c("Educación"),
                            "Máximo" = pcr_pred_max[,1,][ncp],
-                           "Mínimo" = pcr_pred_min[,1,][ncp]) 
+                           "Mínimo" = pcr_pred_min[,1,][ncp])
 
+save(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_SEP.RData"))
 write.table(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_SEP.txt", sep = ","))
+```
+
+
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Output/Municipio/PCR_SEP.RData"))
+
+pcr_extremos %>% 
+ as.data.frame() %>%
+  mutate_at(vars(2:3), as.numeric) %>%
+   gt() %>%
+    tab_header(title = "Tabla: Valores extremos utilizando Principal Component Regression (PCR)",  
+               subtitle = "Indicadores de la SEP a nivel municipal") %>%
+     tab_options(heading.title.font.size = 14, 
+                 heading.subtitle.font.size = 12,
+                 table.font.names = "Century Gothic",
+                 table.font.size = 10,
+                 table.align = 'center',
+                 data_row.padding = px(1)) %>%
+      tab_style(style = list(cell_text(align = "left", 
+                                       weight = 'bold')),
+                locations = list(cells_title(groups = c("title")))) %>%
+       tab_style(style = list(cell_text(align = "left")),
+                 locations = list(cells_title(groups = c("subtitle")))) %>%
+        tab_style(style = "vertical-align:center; font-weight: bold",
+                  locations = cells_column_labels()) %>%
+         tab_footnote(footnote = "Fuente: Elaboración propia", 
+                      placement = "left") %>%
+          fmt_number(columns = c("Máximo", "Mínimo"), 
+                     decimals = 3)  %>%
+           as_raw_html() 
 ```
 
 ### Salud {.unnumbered}
 
-```{r}
+```{r, eval = FALSE}
 load(paste0(here::here(), "/Bases/Municipio/Indicadores_CLUES.RData"))
 
 clues_mun <- clues_mun %>%
-             mutate(suma = rowSums(.[3:6])) %>%
+              mutate(suma = rowSums(.[3:6])) %>%
                mutate(suma = as.numeric(.$suma)) %>%
                 filter(.$suma != 0) %>%
                   select(-suma)
 ```
 
-```{r}
+```{r, eval = FALSE}
 PCA_CLUES <- PCA(clues_mun[, c(3:6)],
                   scale.unit = TRUE, 
                    ncp = ncol(clues_mun[, c(3:6)]),
                     graph = FALSE) 
 ```
 
-```{r}
+```{r, echo = FALSE, eval = FALSE}
+saveRDS(PCA_CLUES, file = paste0(here::here(), "/Output/Municipio/PCA_CLUES.RDS"))
+```
+
+```{r, eval = FALSE}
 # Índice estandarizado (SVD)
 # Componentes seleccionadas
 ncp <- 1
@@ -384,28 +607,40 @@ PC_CLUES <-  clues_mun %>%
 save(PC_CLUES,  file = paste0(here::here(), "/Output/Municipio/PC_CLUES.Rdata"))
 ```
 
+
 ```{r, echo = FALSE}
-tabla <- facto_summarize(PCA_CLUES, "var", axes = 1:ncp) %>%
-          select(-name) %>%
+PCA_CLUES <- readRDS(file = paste0(here::here(), "/Output/Municipio/PCA_CLUES.RDS"))
+
+tabla <- facto_summarize(PCA_CLUES, "var", axes = 1) %>%
+          rename("Indicadores" = "name") %>%
            as.data.frame()
+
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Resumen de los indicadores de salud utilizando PCA", 
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       tab_footnote(footnote = "Fuente: Elaboración propia", 
+                    placement = "left") %>%
+        fmt_number(columns = c(2:5), 
+                   decimals = 3)  %>%
+         as_raw_html() 
 ```
 
-```{r, echo = FALSE}
-tabla %>%
-  kable(title = "Tabla: Resumen de los indicadores de salud utilizando PCA", 
-               digits = 3, 
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html") %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                   footnote_as_chunk = T)
-```
 
-#### Caso extremos {.unnumbered}
+#### Valores extremos {.unnumbered}
 
 ```{r, eval = FALSE}
 ## Principal Components Regression (PCR)
@@ -427,16 +662,110 @@ pcr_extremos <- data.frame("Indicadores" = c("Educación"),
                            "Máximo" = pcr_pred_max[,1,][ncp],
                            "Mínimo" = pcr_pred_min[,1,][ncp]) 
 
+save(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_CLUES.RData"))
 write.table(pcr_extremos, file = paste0(here::here(), "/Output/Municipio/PCR_CLUES.txt"), sep = ",")
+```
+
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Output/Municipio/PCR_CLUES.RData"))
+
+pcr_extremos %>% 
+ as.data.frame() %>%
+  mutate_at(vars(2:3), as.numeric) %>%
+   gt() %>%
+    tab_header(title = "Tabla: Valores extremos utilizando Principal Component Regression (PCR)",  
+               subtitle = "Indicadores del CLUES a nivel municipal") %>%
+     tab_options(heading.title.font.size = 14, 
+                 heading.subtitle.font.size = 12,
+                 table.font.names = "Century Gothic",
+                 table.font.size = 10,
+                 table.align = 'center',
+                 data_row.padding = px(1)) %>%
+      tab_style(style = list(cell_text(align = "left", 
+                                       weight = 'bold')),
+                locations = list(cells_title(groups = c("title")))) %>%
+       tab_style(style = list(cell_text(align = "left")),
+                 locations = list(cells_title(groups = c("subtitle")))) %>%
+        tab_style(style = "vertical-align:center; font-weight: bold",
+                  locations = cells_column_labels()) %>%
+         tab_footnote(footnote = "Fuente: Elaboración propia", 
+                      placement = "left") %>%
+          fmt_number(columns = c("Máximo", "Mínimo"), 
+                     decimals = 3)  %>%
+           as_raw_html() 
 ```
 
 ## Accesibilidad {.unnumbered}
 
 **Índice de accesibilidad**
 
-```{r}
+```{r, eval = FALSE}
 load(paste0(here::here(), "/Bases/Municipio/IA_municipio.Rdata"))
 ```
+
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Municipio/IA_municipio.Rdata"))
+head(accesibilidad_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Índice de accesibilidad",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c("IAL"), 
+                  decimals = 2) %>%
+        fmt_integer(columns = c("POBTOT"),
+                    sep_mark = " ") %>%
+         as_raw_html() 
+```
+
+```{r, echo = FALSE}
+require(psych)
+tabla <- describe(accesibilidad_mun$IAL) %>%
+          tibble::rownames_to_column()
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Análisis descriptivo de la variables de accesibilidad",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c(4:14), 
+                  decimals = 1) %>%
+        fmt_integer(columns = c("n"),
+                    sep_mark = " ") %>%
+         as_raw_html() 
+```
+
+Distribución del índice de accesibilidad a nivel municipal    
+
+<a href="images/IAL a nivel municipal_ggridges.png" data-lightbox="image-1" data-title="IAL_municipio">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel municipal_ggridges.png"))
+```
+</a>
 
 ```{r,echo = FALSE}
 rm(list = ls())
@@ -512,12 +841,7 @@ IAL <- accesibilidad_mun %>%
 
 **Imputación de valores faltantes**
 
-A los valores faltantes de equipamiento se les imputa el valor mínimos
-que puede obtener cada subsistema, calculados por el método de
-componentes principales. Siendo estos los valores extremos (falta de
-equipamiento), este valor se formuló utilizando Principal Component
-Regresion (PCR) y de esta manera poder obtener el valor predictivo del
-valor mínimo.
+A los valores faltantes de equipamiento se les imputa el valor mínimos que puede obtener cada subsistema, calculados por el método de componentes principales. Siendo estos los valores extremos (falta de equipamiento), este valor se formuló utilizando Principal Component Regresion (PCR) y de esta manera poder obtener el valor predictivo del valor mínimo.
 
 ```{r}
 PCR_pred <- read.table(paste0(here::here(), "/Output/Municipio/PCR_SEP.txt"), header = TRUE, sep = ",") %>% 
@@ -554,15 +878,9 @@ ICE_2020 <- ICE_2020 %>%
 
 ### Método de Distancias $DP_2$ {.unnumbered}
 
-José Bernardo Pena Trapero:
-`Problemas de la medición del bienestar y conceptos afines (1977)`
+José Bernardo Pena Trapero: `Problemas de la medición del bienestar y conceptos afines (1977)`
 
-Primeramente se define como es la entrada de los indicadores simples.\
-Este tipo de método - Índice de marginación (Negativo) (Marginación baja
-(-Negativa) / Marginación alta (Positiva)) - Índice de equipamiento +
-CLUES (Postivo) + SEP (Postivo) + DENUE (Positivo) - Indice de
-accesibilidad (Negativo) (Accesibilidad alta (cercanos a cero) /
-Accesibilidad baja (Alejados del cero))
+Primeramente se define como es la entrada de los indicadores simples.\ Este tipo de método - Índice de marginación (Negativo) (Marginación baja (-Negativa) / Marginación alta (Positiva)) - Índice de equipamiento + CLUES (Postivo) + SEP (Postivo) + DENUE (Positivo) - Indice de accesibilidad (Negativo) (Accesibilidad alta (cercanos a cero) / Accesibilidad baja (Alejados del cero))
 
 ```{r}
 require(p2distance)
@@ -586,20 +904,29 @@ minRV <- p2distance::makeReferenceVector(X = ICE_2020_data[-1],
 tabla <- t(minRV) %>%
            as.data.frame() %>%
             tibble::rownames_to_column(var = "Indicadores")
-tabla %>%              
-  kable(caption = "Tabla: Base de referencia a nivel municipal",
-         col.names = c("Indicadores", "Base de referencia"),
-               digits = 4, 
-                align = 'c',
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html") %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                   footnote_as_chunk = T)
+colnames(tabla) <- c("Indicadores", "Base de referencia")
+
+
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Base de referencia a nivel municipal",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c("Base de referencia"), 
+                  decimals = 3) %>%
+         as_raw_html() 
 ```
 
 **Método de Distancia** $DP_{2}$
@@ -839,3 +1166,5 @@ ICE_2020 <- ICE_2020 %>%
 # Se guarda el índice de calidad del entorno normalizado
 save(ICE_2020, file = paste0(here::here(), "/Bases/Municipio/ICE_2020.RData"))
 ```
+
+

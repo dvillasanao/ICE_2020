@@ -7,13 +7,52 @@ readRDS(file = paste0(here::here(), "/Output/AGEB/Network_AGEB.rds"))
 
 
 
-Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad 
+Se toma como referencia el marco geoestadístico nacional 2020 a nivel localidad. El cúal cuenta con 61 439 AGEB's para el año 2020.   
 
 ```{r}
 load(paste0(here::here(), "/Bases/AGEB/MGN_ageb.Rdata"))
 ```
 
-
+<div style="height:320px;overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+head(MGN_ageb, 10) %>% 
+ gt() %>%
+  tab_header(title = "Marco Geoestadístico Nacional (MGN)",
+             subtitle = "Nivel AGEB Urbana") %>%
+   fmt_integer(columns = c("Pob.Total", "Viviendas.Totales"),
+               sep_mark = " ") %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+       tab_style(style = list(cell_text(align = "left",
+                                         weight = 'bold')),
+                  locations = list(cells_title(groups = c("title")))) %>%
+        tab_style(style = list(cell_text(align = "left")),
+                   locations = list(cells_title(groups = c("subtitle")))) %>%
+         cols_label(CVE_AGEB = md("**Clave de la AGEB**"),
+                    ENT = md("**Clave de la entidad**"),
+                    NOM_ENT = md("**Entidad**"), 
+                    MUN = md("**Clave del municipio**"),
+                    NOM_MUN = md("**Municipio**"), 
+                    LOC = md("**Clave de localidad**"),
+                    NOM_LOC = md("**Localidad**"), 
+                    AGEB = md("**AGEB**"), 
+                    AMBITO = md("**Ámbito**"),
+                    Tamaño.de.localidad = md("**Tamaño de la localidad**"),
+                    Pob.Total = md("**Población Total**"), 
+                    Viviendas.Totales = md("**Viviendas totales**"), 
+                    Indicadora = md("**Indicadora**")) %>%
+         cols_width(starts_with("POB") ~ px(100),
+                    starts_with("NOM") ~ px(120),
+                    starts_with("Tamaño") ~ px(150),
+                    everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
 
 ## Marginación {.unnumbered}
 
@@ -24,23 +63,57 @@ Se vuelve a reestructurar la base de datos a nivel AGEB 2020, donde los principa
 
 **Bases de datos**
 
-Se carga la nueva base del índice de marginación 2020. 
+Se carga la nueva base del índice de marginación 2020.   
 
-Para el cálculo de los componentes principales depende de las unidades
-de medida empleadas en las variables. Por lo que es importante, antes de
-aplicar `PCA`, estandarizar los indicadores simples para que tengan
-media **0** y desviación estándar **1**, ya que, de lo contrario, las
-variables con mayor varianza dominarían al resto, aunque en el caso en
-que las variables estén medidas en las mismas unidades, podemos optar
-por no estandarizarlas. La estandarización se lleva a cabo restando a
-cada observación la media y dividiendo entre la desviación estándar de
-la variable a la que pertenece:
+```{r}
+load(paste0(here::here(), "/Bases/AGEB/IMU.Rdata"))
+```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+names(IMU)
+head(IMU, 10) %>% 
+ gt() %>%
+  tab_header(title = "Indicadores sociodemigráficos",
+             subtitle = "Nivel AGEB") %>%
+   fmt_number(columns = c(2:9), 
+                decimals = 2) %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+     tab_style(style = list(cell_text(align = "left", 
+                                      weight = 'bold')),
+               locations = list(cells_title(groups = c("title")))) %>%
+      tab_style(style = list(cell_text(align = "left")),
+                locations = list(cells_title(groups = c("subtitle")))) %>%
+       cols_label(CVE_AGEB = md("**Clave de la AGEB**"),
+                  P6A14NAE = md("**Porcentaje de población de 15 años o más analfabeta**"),
+                  PSDSS = md("**Porcentaje de población sin derechohabiencia a los servicios de salud**"),
+                  PSBASC = md("**Porcentaje de población de 15 años o más sin educación básica**"),
+                  OVSDE = md("**Porcentaje de ocupantes en viviendas sin drenaje ni excusado**"),
+                  OVSEE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  OVSAE = md("**Porcentaje de ocupantes en viviendas sin energía eléctrica**"),
+                  OVHAC = md("**Porcentaje de ocupantes en viviendas con algún nivel de hacinamiento**"),
+                  OVPT = md("**Porcentaje de ocupantes en viviendas con piso de tierra**"),
+                  OVSREF = md("**Porcentaje de ocupantes en viviendas particulares habitadas sin refrigerador**"),
+                  OVSINT = md("**Porcentaje de ocupantes en viviendas particulares habitadas sin internet**"),
+                  OVSCEL = md("**Porcentaje de ocupantes en viviendas particulares habitadas sin celular**")) %>% 
+        cols_width(starts_with("CVE_AGEB") ~ px(80),
+                   everything() ~ px(150)) %>%
+          as_raw_html() 
+```
+</div>
+
+
+Para el cálculo de los componentes principales depende de las unidades de medida empleadas en las variables. Por lo que es importante, antes de aplicar `PCA`, estandarizar los indicadores simples para que tengan media **0** y desviación estándar **1**, ya que, de lo contrario, las variables con mayor varianza dominarían al resto, aunque en el caso en que las variables estén medidas en las mismas unidades, podemos optar por no estandarizarlas. La estandarización se lleva a cabo restando a cada observación la media y dividiendo entre la desviación estándar de la variable a la que pertenece:
 
 $$Z_{i}=\frac{x_{i}-\bar{x}}{\sigma_{i}}$$
 
-Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se
-especifica que se estandaricen las vairables con el parámetro
-*scale.unit=TRUE*
+Se utiliza la función $PCA$ del parquete **FactoMiner**, donde se especifica que se estandaricen las vairables con el parámetro *scale.unit=TRUE*
 
 **Análisis de componentes principales**
 
@@ -49,12 +122,10 @@ especifica que se estandaricen las vairables con el parámetro
 **Se utilizan todas las variables** 
 
 ```{r, eval = FALSE}
-load(paste0(here::here(), "/Bases/AGEB/IMU.Rdata"))
-
 PCA_IMU <- PCA(IMU[, c(2:ncol(IMU))],
-                 scale.unit = TRUE, 
-                  ncp = ncol(IMU[, c(2:ncol(IMU))]),
-                   graph = FALSE) 
+               scale.unit = TRUE, 
+                ncp = ncol(IMU[, c(2:ncol(IMU))]),
+                 graph = FALSE) 
 ```
 
 
@@ -73,8 +144,7 @@ Donde - $\mathbf V$ son los eigenvectors - $\mathbf U$ es la matriz unitaria - $
 
 Las columnas de $\mathbf {US}$ son los pesos de las componentes principales
 
-**Se generan los índices de cada uno de los subsistemas** **Se utilizan
-a los componentes principales que expliquen el máximo de la información**
+**Se generan los índices de cada uno de los subsistemas** **Se utilizan a los componentes principales que expliquen el máximo de la información**
 
 Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.
 
@@ -881,15 +951,11 @@ ICE_2020 <- ICE_2020 %>%
 
 ### Método de estratificación {.unnumbered}
 
-`strata.cumrootf`: cumulative root frequency method by Dalenius and
-Hodges (1959)\
+`strata.cumrootf`: cumulative root frequency method by Dalenius and Hodges (1959)\
 
 **Nclass óptimo del método de Dalenius & Hodge**
 
-`alloc` lista que especifica el esquema de asignación. La lista debe
-contener 3 números para los 3 exponentes q1, q2 y q3 en el esquema de
-asignación general (ver paquete de `stratification`). El valor
-predeterminado es la asignación de **Neyman** (q1 = q3 = 0.5 y q2 = 0)
+`alloc` lista que especifica el esquema de asignación. La lista debe contener 3 números para los 3 exponentes q1, q2 y q3 en el esquema de asignación general (ver paquete de `stratification`). El valor predeterminado es la asignación de **Neyman** (q1 = q3 = 0.5 y q2 = 0)
 
 ```{r, eval = FALSE, cache=TRUE,cache.lazy=TRUE}
 start.time <- Sys.time()

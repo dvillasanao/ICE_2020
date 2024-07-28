@@ -4,7 +4,7 @@ Primeramente, las fuentes de información que se utilizaron para la realización
 
 
 
-## CPV2020 {-}
+## Indicadores sociodemográficos {-}
 
 
 El Censo de Población y Vivienda 2020 (CPV2020) del INEGI (Instituto Nacional de Estadística y Geografía) el objetivo fue recopilar información detallada y actualizada sobre la población y las viviendas de México para ser utilizada en la toma de decisiones y la planificación de políticas públicas y privadas en el país. Esto incluye datos sobre la cantidad y características de las personas que viven en el país, como su edad, sexo, educación, ocupación, entre otros aspectos, así como información sobre la estructura y características de las viviendas en las que habitan. El cúal este tpo de informción es importante para la planificación y la toma de decisiones en áreas como la política pública, la inversión en infraestructura, la distribución de recursos y servicios, la investigación demográfica y social, y muchas otras. Además, también es utilizado por empresas y organizaciones para el análisis de mercado y la toma de decisiones estratégicas.  
@@ -47,6 +47,34 @@ Se consideran 13 subsistemas económicos de los cuales se clasificaron 52 elemen
 ```{r, eval = FALSE, comment="R/01_SCIAN2018.R"}
 load(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(paste0(here::here(), "/Bases/Claves_subsistema_SCIAN2018.RData"))
+head(SCIAN, 10) %>% 
+ gt() %>%
+  tab_header(title = "Sistema de Clasificación Industrial de América del Norte, 2018 (SCIAN)",
+             subtitle = "Estrucutura") %>%
+    tab_options(heading.title.font.size = 14, 
+                heading.subtitle.font.size = 12,
+                table.font.names = "Century Gothic",
+                table.font.size = 10,
+                table.align = 'center',
+                data_row.padding = px(1)) %>%
+     tab_style(style = list(cell_text(align = "left", 
+                                      weight = 'bold')),
+               locations = list(cells_title(groups = c("title")))) %>%
+      tab_style(style = list(cell_text(align = "left")),
+                locations = list(cells_title(groups = c("subtitle")))) %>%
+       tab_style(style = "vertical-align:middle; font-weight: bold",
+                  locations = cells_column_labels()) %>% 
+        cols_width(starts_with("ELEMENTO") ~ px(200),
+                   starts_with("ESTRUCTURA_SCIAN2018") ~ px(800),
+                   everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
 
 Se cargan todas las bases del DENUE 2021 que se van a usar, el cúal después se van a seleccionar los subramos económicos. 
 
@@ -107,6 +135,34 @@ load(paste0(here::here(), "/Bases/denue_integrado.RData"))
 codigo <- unique(SCIAN$CODIGO)
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE, cache.lazy=TRUE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/denue_integrado_20obs.RData"))
+head(denue_2021, 10) %>% 
+ gt() %>%
+  tab_header(title = "Directorio Estadístico Nacional de Unidades Económicas (DENUE)",
+             subtitle = "DENUE (2021)") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>% 
+        cols_width(starts_with("localidad") ~ px(270),
+                   starts_with("nombre_act") ~ px(320),
+                   starts_with("ESTRUCTURA_SCIAN2018") ~ px(320),
+                   everything() ~ px(120)) %>%
+          as_raw_html() 
+```
+</div>
 
 #### Municipio {-}
 
@@ -128,6 +184,33 @@ denue_mun <- denue_2021 %>%
 save(denue_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_DENUE.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Bases/Municipio/Indicadores_DENUE.RData"))
+require(gt)
+head(denue_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Directorio Estadístico Nacional de Unidades Económicas (DENUE)",
+             subtitle = "Nivel municipal (2021)") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(2:ncol(denue_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
+
 #### Localidad {-}
 
 ```{r, eval = FALSE}
@@ -147,6 +230,34 @@ denue_loc <- denue_2021 %>%
 
 save(denue_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_DENUE.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Bases/Localidad/Indicadores_DENUE.RData"))
+require(gt)
+head(denue_loc, 10) %>% 
+ gt() %>%
+  tab_header(title = "Directorio Estadístico Nacional de Unidades Económicas (DENUE)",
+             subtitle = "Nivel localidad (2021)") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(2:ncol(denue_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
+
 
 #### AGEB {-}
 
@@ -168,12 +279,67 @@ denue_ageb <- denue_2021 %>%
 save(denue_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_DENUE.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Bases/AGEB/Indicadores_DENUE.RData"))
+require(gt)
+head(denue_ageb, 10) %>% 
+ gt() %>%
+  tab_header(title = "Directorio Estadístico Nacional de Unidades Económicas (DENUE)",
+             subtitle = "Nivel AGEB (2021)") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(2:ncol(denue_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
+
 ### SEP {-}
 
 
 ```{r, eval = FALSE, comment="03_SEP_Estructura.Rmd"}
 load(paste0(here::here(), "/Bases/SEP_Estructura.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(paste0(here::here(), "/Bases/SEP_Estructura.RData"))
+head(SEP, 10) %>% 
+ gt() %>%
+  tab_header(title = "SIGED (Sistema de Información y Gestión Educativa)",
+             subtitle = "Secretaría de Educación Pública (SEP)") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       cols_width(starts_with("NOM_CT") ~ px(470),
+                  starts_with("SERV_EDUC") ~ px(280),
+                  everything() ~ px(120)) %>%
+        as_raw_html() 
+```
+</div>
 
 #### Municipio {-}
 
@@ -194,6 +360,34 @@ sep_mun <- SEP %>%
 save(sep_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_Escuelas_SEP.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(paste0(here::here(), "/Bases/Municipio/Indicadores_Escuelas_SEP.RData"))
+require(gt)
+head(sep_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "SIGED (Sistema de Información y Gestión Educativa)",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())%>%
+       fmt_number(columns = c(2:ncol(sep_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
+
+
 #### Localidad {-}
 
 ```{r, eval = FALSE}
@@ -211,6 +405,33 @@ sep_loc <- SEP %>%
 
 save(sep_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_Escuelas_SEP.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Bases/Localidad/Indicadores_Escuelas_SEP.RData"))
+require(gt)
+head(sep_loc, 10) %>% 
+ gt() %>%
+  tab_header(title = "SIGED (Sistema de Información y Gestión Educativa)",
+             subtitle = "Nivel localidad") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())%>%
+       fmt_number(columns = c(2:ncol(sep_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
 
 #### AGEB {-}
 
@@ -234,12 +455,68 @@ sep_ageb <- sep_ageb %>%
 save(sep_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_Escuelas_SEP.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Bases/AGEB/Indicadores_Escuelas_SEP.RData"))
+require(gt)
+head(sep_ageb, 10) %>% 
+ gt() %>%
+  tab_header(title = "SIGED (Sistema de Información y Gestión Educativa)",
+             subtitle = "Nivel AGEB") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(2:ncol(sep_mun)), 
+                  decimals = 2) %>%
+          as_raw_html() 
+```
+</div>
+
 ### CLUES {-}
 
 ```{r, eval = FALSE, comment="04_CLUES_Estructura.Rmd"}
 load("Bases/CLUES_Estructura.RData")
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/CLUES_Estructura.RData"))
+head(CLUES, 10) %>% 
+ gt() %>%
+  tab_header(title = "Clave Única de Establecimientos de Salud (CLUES)",
+             subtitle = "Dirección General de Información en Salud (DGIS).") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       cols_width(starts_with("Nombre del municipio") ~ px(200),
+                  starts_with("Nombre de la loalidad") ~ px(250),
+                  starts_with("NOMBRE.DE.LA.INSTITUCION") ~ px(400),
+                  starts_with("Nivel de atención") ~ px(200),
+                  everything() ~ px(100)) %>%
+        as_raw_html() 
+```
+</div>
 
 #### Municipio {-}
 
@@ -260,6 +537,34 @@ clues_mun <- CLUES %>%
 save(clues_mun, file = paste0(here::here(), "/Bases/Municipio/Indicadores_CLUES.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Municipio/Indicadores_CLUES.RData"))
+head(clues_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Clave Única de Establecimientos de Salud (CLUES)",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c(2:ncol(clues_mun)), 
+                  decimals = 2) %>%
+        as_raw_html() 
+```
+</div>
+
+
 #### Localidad {-}
 
 ```{r, eval = FALSE}
@@ -278,6 +583,33 @@ clues_loc <- CLUES %>%
 
 save(clues_loc, file = paste0(here::here(), "/Bases/Localidad/Indicadores_CLUES.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(paste0(here::here(), "/Bases/Localidad/Indicadores_CLUES.RData"))
+head(clues_loc, 10) %>% 
+ gt() %>%
+  tab_header(title = "Clave Única de Establecimientos de Salud (CLUES)",
+             subtitle = "Nivel localidad") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c(2:ncol(clues_mun)), 
+                  decimals = 2) %>%
+        as_raw_html() 
+```
+</div>
 
 #### AGEB {-}
 
@@ -302,8 +634,34 @@ clues_ageb <- CLUES_AGEB %>%
 save(clues_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_CLUES.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/AGEB/Indicadores_CLUES.RData"))
+head(clues_ageb, 10) %>% 
+ gt() %>%
+  tab_header(title = "Clave Única de Establecimientos de Salud (CLUES)",
+             subtitle = "Nivel AGEB") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c(2:ncol(clues_mun)), 
+                  decimals = 2) %>%
+        as_raw_html() 
+```
+</div>
 
-## IAL {-}
+## Índice de accesibilidad (IA) {-}
 
 #### Municipio {-}
 
@@ -311,12 +669,86 @@ save(clues_ageb, file = paste0(here::here(), "/Bases/AGEB/Indicadores_CLUES.RDat
 load(paste0(here::here(), "/Bases/Municipio/IA_municipio.Rdata"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Municipio/IA_municipio.Rdata"))
+head(accesibilidad_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Índice de accesibilidad",
+             subtitle = "Nivel municipal") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c("IAL"), 
+                  decimals = 2) %>%
+        fmt_integer(columns = c("POBTOT"),
+                    sep_mark = " ") %>%
+         as_raw_html() 
+```
+</div>
+
+<a href="images/IAL a nivel municipal_Mapa.png" data-lightbox="image-1" data-title="IALmun">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel municipal_Mapa.png"))
+```
+</a>
 
 #### Localidad {-}
 
 ```{r, eval = FALSE}
 load(paste0(here::here(), "/Bases/Localidad/IA_localidad.Rdata"))
 ```
+
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Localidad/IA_localidad.Rdata"))
+head(accesibilidad_loc, 10) %>% 
+ gt() %>%
+  tab_header(title = "Índice de accesibilidad",
+             subtitle = "Nivel localidad") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:middle; font-weight: bold",
+                locations = cells_column_labels())  %>%
+       fmt_number(columns = c("IAL"), 
+                  decimals = 2) %>%
+        cols_width(starts_with("NOM_LOC") ~ px(200),
+                   starts_with("GACC") ~ px(180),
+                   starts_with("TAMLOC") ~ px(150),
+                   everything() ~ px(100)) %>%
+         as_raw_html() 
+```
+</div>
+
+<a href="images/IAL a nivel localidad_Mapa.png" data-lightbox="image-1" data-title="IALloc">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel localidad_Mapa.png"))
+```
+</a>
 
 ## Entorno Urbano {-}
 
@@ -353,6 +785,32 @@ No enfocamos en los indicadores númericos.
 load(paste0(here::here(), "/Bases/MANZANA_EU_2020.RData"))
 ```
 
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(paste0(here::here(), "/Bases/MANZANA_EU_2020.RData"))
+head(MANZANA_EU_2020, 10) %>% 
+ gt() %>%
+  tab_header(title = "Características del Entorno Urbano",
+             subtitle = "INEGI") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       cols_width(everything() ~ px(100)) %>%
+        as_raw_html() 
+```
+</div>
+
 ###  `Caso particular` {-}
 
 **Caso particular**
@@ -385,6 +843,35 @@ EU_mun <- MANZANA_EU_2020 %>%
 save(EU_mun, file = paste0(here::here(), "/Bases/Municipio/EU_mun.RData"))
 ```
 
+<div style="height:150px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Municipio/EU_mun.RData"))
+head(EU_mun, 10) %>% 
+ gt() %>%
+  tab_header(title = "Características del Entorno Urbano",
+             subtitle = "Caso particular") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(5:25), 
+                    decimals = 2) %>%
+        fmt_integer(columns = c(2:4),
+                    sep_mark = " ") %>%
+         cols_width(everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
 
 #### Nivel Localidad {-}
 
@@ -398,6 +885,36 @@ EU_loc <- MANZANA_EU_2020 %>%
 
 save(EU_loc, file = paste0(here::here(), "/Bases/Localidad/EU_loc.RData"))
 ```
+
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/Localidad/EU_loc.RData"))
+head(EU_loc, 10) %>% 
+ gt() %>%
+  tab_header(title = "Características del Entorno Urbano",
+             subtitle = "Nivel localidad") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(5:25), 
+                    decimals = 2) %>%
+        fmt_integer(columns = c(2:4),
+                    sep_mark = " ") %>%
+         cols_width(everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
 
 
 #### Nivel AGEB {-}
@@ -413,7 +930,35 @@ EU_ageb <- MANZANA_EU_2020 %>%
 save(EU_ageb, file = paste0(here::here(), "/Bases/AGEB/EU_ageb.RData"))
 ```
 
-
+<div style="height:320px; overflow:auto;">
+```{r, echo = FALSE}
+require(gt)
+load(file = paste0(here::here(), "/Bases/AGEB/EU_ageb.RData"))
+head(EU_ageb, 10) %>% 
+ gt() %>%
+  tab_header(title = "Características del Entorno Urbano",
+             subtitle = "Nivel AGEB") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       fmt_number(columns = c(5:25), 
+                    decimals = 2) %>%
+        fmt_integer(columns = c(2:4),
+                    sep_mark = " ") %>%
+         cols_width(everything() ~ px(100)) %>%
+          as_raw_html() 
+```
+</div>
 
 ```{r,echo = FALSE}
 rm(list = ls())
