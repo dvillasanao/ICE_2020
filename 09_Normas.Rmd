@@ -1,0 +1,120 @@
+# Marcos Normativos {.unnumbered}
+
+## PROY-NOM-039-SSA-2023 {-}  
+
+### 13 de diciembre de 2006 {-}    
+
+#### La Asamblea General de las Naciones Unidas aprobó la Convención sobre los Derechos delas Personas con Discapacidad. {-}  
+
+La cual tiene como objetivo principal cambiar el paradigma, al pasar de un modelo en el que las personas con discapacidad son tratadas como objeto de tratamiento médico, caridad y protección social a un modelo en el que las personas con discapacidad son reconocidas como titulares de derechos humanos, activas en las decisiones que influyen en su vida y capacitadas para reivindicar sus derechos
+
+Asamblea General de las Naciones Unidas. (2006). Convención sobre los Derechos de las Personas con Discapacidad. Naciones Unidas.
+
+### 30 de marzo de 2007 {-}  
+
+México firmó la Convención y ratificó su Protocolo Facultativo, misma que fue confirmada por la Cámara de Senadores el 27 de septiembre de 2007 y promulgada en el Diario Oficial de la Federación (DOF) el 2 de mayo de2008, convirtiéndose así en parte de los Estados comprometidos a proteger y promover los derechos y la dignidad de las personas con discapacidad, con miras a una sociedad mundial inclusiva;
+
+Diario Oficial de la Federación. (2008, 2 de mayo). Convención sobre los Derechos de las Personas con Discapacidad. México: Secretaría de Gobernación.
+
+### 12 de julio de 2018, {-}  
+
+Se publicó en el DOF el Decreto por el que se reforman y adicionan diversas disposiciones de la Ley General para la Inclusión de las Personas con Discapacidad, de la Ley General de Salud y de la Ley General de Población. En su segundo transitorio establece que el Sector Salud deberá publicar e implementar la Norma Oficial Mexicana en materia de Certificación de la Discapacidad. Esta NOM deberá elaborarse de acuerdo con los tratados internacionales de los que México forma parte y adoptar la Clasificación Internacional del Funcionamiento, la Discapacidad y la Salud;
+
+### Reglamento Interior de la Secretaría de Salud  {-}  
+
+El artículo 24, fracciones VI y VII. La Dirección General de Información en Salud (DGIS), coordina el funcionamiento del Centro Mexicano para la Clasificación de Enfermedades (CEMECE) y promueve y vigila el adecuado uso de clasificaciones internacionales de la Organización Mundial de la Salud;
+
+Secretaría de Salud. (s.f.). Reglamento Interior de la Secretaría de Salud, artículo 24, fracciones VI y VII.
+
+### Ley de Infraestructura de la Calidad  {-}  
+
+Que establece que las Normas Oficiales Mexicanas tienen como fin esencial el fomento de la calidad para el desarrollo económico y la protección de los objetivos legítimos de interés público como la protección y promoción a la salud, mediante el establecimiento de reglas, denominación, especificaciones o características aplicables a un bien, producto, proceso o servicio, así como aquéllas relativas a terminología, marcado o etiquetado y de información; 
+
+Se requiere contar con un documento de certificación con un enfoque integrador biopsicosocial,  por lo cual, es prioritario unificar la metodología de valoración, registro, formatos y presentación de datos para la mejor toma de decisiones en salud pública y cubrir las necesidades de la población.
+
+Secretaría de Economía. (2018). **Ley de Infraestructura de la Calidad**. Diario Oficial de la Federación, 1 de julio de 2018.
+
+### El Comité Consultivo Nacional de Normalización de Salud Pública  {-}  
+
+Aprobó en la Primera Sesión Ordinaria de 2023, la publicación del Proyecto de Norma Oficial Mexicana,
+**PROY-NOM-039-SSA-2023**
+
+### Ley General de Salud  {-}  
+
+Artículos 389, fracción I Ter, 389 Bis 2 y 389 Bis 3, establece que para fines sanitarios se extenderán, entre otros certificados, el de Discapacidad, el cual será expedido conforme a la legislación vigente y acorde con los tratados internacionales de los que México forme parte, por las personas profesionales de la medicina o persona autorizada por la autoridad sanitaria.  
+
+Secretaría de Salud. (s.f.). Ley General de Salud, Artículos 389, fracción I Ter, 389 Bis 2 y 389 Bis 3.
+
+## Objetivo y campo de aplicación  {-}  
+
+Esta Norma tiene por objeto establecer los criterios, procesos y metodología para la certificación de la discapacidad bajo el enfoque integrador biopsicosocial, alineado a los tratados internacionales de los que México forma parte en materia de derechos humanos, y a la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud, así como el otorgamiento de la impresión del Certificado Electrónico de Discapacidad a la persona solicitante.
+
+Esta Norma es de **observancia obligatoria en todo el territorio nacional** para los integrantes del Sistema Nacional de Salud que cuenten con Centros de valoración y expedición de Certificado Electrónico
+de Discapacidad.
+
+## Referencias normativas  {-}  
+
+Para la correcta aplicación de esta Norma, es necesario consultar las siguientes Normas Oficiales Mexicanas o las que las sustituyan:
+
+### Norma Oficial Mexicana NOM-004-SSA3-2012, Del expediente clínico.  {-}  
+
+La Norma Oficial Mexicana NOM-004-SSA3-2012 regula la elaboración, integración, uso y conservación del expediente clínico en el Sistema Nacional de Salud. Es de cumplimiento obligatorio para todos los profesionales de la salud y tiene como objetivo principal garantizar la calidad y continuidad de la atención médica. Define los componentes esenciales del expediente clínico, como la historia clínica, notas médicas y de enfermería, y reportes de estudios de laboratorio. Además, establece las responsabilidades de los proveedores de servicios de salud respecto a la confidencialidad y protección de la información en los expedientes clínicos.
+
+### Norma Oficial Mexicana NOM-005-SSA3-2018, Que establece los requisitos mínimos de infraestructura y equipamiento de establecimientos para la atención médica de pacientes ambulatorios.  {-}  
+
+La Norma Oficial Mexicana NOM-005-SSA3-2018 establece los requisitos mínimos de infraestructura y equipamiento que deben cumplir los establecimientos para la atención médica de pacientes ambulatorios. Esta norma es de carácter obligatorio y tiene como objetivo asegurar que los servicios de salud proporcionados a pacientes ambulatorios sean de alta calidad y se realicen en condiciones adecuadas. La norma detalla las especificaciones necesarias para las instalaciones físicas, el equipo médico, y otros recursos necesarios para la operación eficiente y segura de estos establecimientos. Además, busca garantizar la seguridad y bienestar tanto de los pacientes como del personal de salud que labora en dichos centros.
+
+### Norma Oficial Mexicana NOM-007-SSA2-2016, Para la atención de la mujer durante el embarazo, parto y puerperio, y dela persona recién nacida.  {-}  
+
+La Norma Oficial Mexicana NOM-007-SSA2-2016 establece los criterios y procedimientos para la atención de la mujer durante el embarazo, parto y puerperio, así como la atención del recién nacido. Su objetivo principal es garantizar la calidad y seguridad en la atención médica proporcionada a mujeres embarazadas y recién nacidos. La norma incluye especificaciones sobre el manejo clínico, la infraestructura y el equipamiento necesario en los establecimientos de salud. También aborda la capacitación del personal y la implementación de protocolos para prevenir y manejar complicaciones durante el embarazo y el parto, con el fin de reducir la mortalidad materna y neonatal.
+
+### Norma Oficial Mexicana NOM-008-SEGOB-2015, Personas con discapacidad. - Acciones de prevención y condiciones de seguridad en materia de protección civil en situación de emergencia o desastre.  {-}  
+
+La Norma Oficial Mexicana NOM-008-SEGOB-2015 establece acciones de prevención y condiciones de seguridad en materia de protección civil para personas con discapacidad en situaciones de emergencia o desastre. Su objetivo es garantizar la seguridad y bienestar de las personas con discapacidad mediante la implementación de medidas específicas que faciliten su evacuación, rescate y atención en contextos de emergencia. La norma detalla las responsabilidades de las autoridades y los procedimientos que deben seguirse para proteger a este grupo vulnerable, asegurando que se tomen en cuenta sus necesidades especiales en planes y operaciones de protección civil.
+
+### Norma Oficial Mexicana NOM-015-SSA3-2012, Para la atención integral de personas con discapacidad.  {-}  
+
+La Norma Oficial Mexicana NOM-015-SSA3-2012 se enfoca en la atención integral de personas con discapacidad. Establece los criterios y procedimientos necesarios para garantizar una atención de calidad, segura y adecuada para este grupo poblacional. La norma detalla las responsabilidades de los profesionales de la salud y las especificaciones sobre la infraestructura y equipamiento necesarios para brindar una atención óptima. Además, busca asegurar que se respeten los derechos humanos de las personas con discapacidad, fomentando su inclusión y bienestar en el sistema de salud.
+
+### Norma Oficial Mexicana NOM-016-SSA3-2012, Que establece las características mínimas de infraestructura y equipamiento de hospitales y consultorios de atención médica especializada.  {-}  
+
+La Norma Oficial Mexicana NOM-016-SSA3-2012 establece las características mínimas de infraestructura y equipamiento que deben cumplir los hospitales y consultorios de atención médica especializada. Su objetivo es garantizar que estos establecimientos proporcionen servicios de salud de alta calidad y en condiciones adecuadas. La norma especifica los requisitos necesarios para las instalaciones físicas, el equipo médico y otros recursos esenciales para la operación eficiente y segura de estos centros. Además, busca asegurar la seguridad y el bienestar tanto de los pacientes como del personal de salud.
+
+### Norma Oficial Mexicana NOM-024-SSA3-2012, Sistemas de información de registro electrónico para la salud. Intercambio de información en salud.  {-}  
+
+La Norma Oficial Mexicana NOM-024-SSA3-2012 establece los criterios y procedimientos para la implementación de sistemas de información de registro electrónico para la salud. Su objetivo principal es garantizar el intercambio eficiente y seguro de información en el sector salud, facilitando la interoperabilidad entre los diferentes sistemas y plataformas utilizados por los proveedores de servicios de salud. La norma define los estándares técnicos y operativos que deben cumplir estos sistemas para asegurar la calidad, confidencialidad y protección de los datos de los pacientes. Además, busca mejorar la continuidad y coordinación de la atención médica, optimizando los procesos administrativos y clínicos.
+
+### Norma Oficial Mexicana NOM-025-SSA2-2014, Para la prestación de servicios de salud en unidades de atención integral hospitalaria médico-psiquiátrica.  {-}  
+
+La Norma Oficial Mexicana NOM-025-SSA2-2014 establece los lineamientos y requisitos para la prestación de servicios de salud en unidades de atención integral hospitalaria médico-psiquiátrica. Su objetivo principal es garantizar la calidad, seguridad y adecuación de los servicios proporcionados a pacientes que requieren atención médico-psiquiátrica en un entorno hospitalario. La norma define las especificaciones necesarias para la infraestructura, el equipamiento y el personal especializado en estas unidades, así como los procedimientos clínicos y administrativos que deben seguirse para asegurar una atención integral y efectiva a los pacientes con trastornos mentales.
+
+### Norma Oficial Mexicana NOM-030-SSA3-2013, Que establece las características arquitectónicas para facilitar el acceso, tránsito, uso y permanencia de las personas con discapacidad en establecimientos para la atención médica ambulatoria y hospitalaria del Sistema Nacional de Salud.  {-}  
+
+La Norma Oficial Mexicana NOM-030-SSA3-2013 establece las características arquitectónicas que deben cumplir los establecimientos de atención médica ambulatoria y hospitalaria del Sistema Nacional de Salud para facilitar el acceso, tránsito, uso y permanencia de las personas con discapacidad. Su objetivo es garantizar que los servicios de salud sean accesibles y adecuados para todos los pacientes, independientemente de sus capacidades físicas, promoviendo así la inclusión y equidad en la atención médica.
+
+### Norma Oficial Mexicana NOM-034-SSA2-2013, Para la prevención y control de los defectos al nacimiento.  {-}  
+
+La Norma Oficial Mexicana NOM-034-SSA2-2013 establece los lineamientos y procedimientos para la prevención y control de los defectos al nacimiento. Su objetivo principal es reducir la incidencia de defectos congénitos a través de estrategias de vigilancia epidemiológica, promoción de la salud y atención médica especializada. La norma detalla las medidas preventivas, como la suplementación con ácido fólico, el diagnóstico prenatal y la educación para la salud, así como los protocolos de atención para los recién nacidos con defectos congénitos. Además, busca garantizar la coordinación entre los diferentes niveles del sistema de salud y promover la investigación y capacitación en este ámbito.
+
+### Norma Oficial Mexicana NOM-035-SSA3-2012, En materia de información en salud.  {-}  
+
+La Norma Oficial Mexicana NOM-035-SSA3-2012 establece los criterios y procedimientos relacionados con la información en salud. Su objetivo principal es garantizar la calidad, disponibilidad, y confidencialidad de la información generada y utilizada en el sector salud. Esta norma busca asegurar que los datos de salud sean precisos y accesibles para mejorar la toma de decisiones, la planificación y la prestación de servicios de salud. Además, promueve la estandarización en la recolección y manejo de información para facilitar su intercambio entre diferentes entidades y sistemas dentro del Sistema Nacional de Salud.
+
+### Norma Oficial Mexicana PROY-NOM-039-SSA-2023, en materia de Certificación de la Discapacidad.  {-}  
+
+La Norma Oficial Mexicana NOM-039-SSA-2023 establece los criterios, procesos y metodología para la certificación de la discapacidad con un enfoque integrador biopsicosocial. Está alineada a los tratados internacionales de derechos humanos y a la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud. Su objetivo es garantizar la emisión del Certificado Electrónico de Discapacidad a las personas que lo soliciten. Es de observancia obligatoria en todo el territorio nacional para los integrantes del Sistema Nacional de Salud que cuenten con centros de valoración y expedición del certificado. Además, la norma se basa en diversas Normas Oficiales Mexicanas relacionadas con la atención médica, infraestructura, equipamiento y protección de personas con discapacidad.
+
+## Referencias  {-}  
+
+1. Diario Oficial de la Federación. (2012, 15 de octubre). Norma Oficial Mexicana NOM-004-SSA3-2012, Del expediente clínico. Recuperado de [https://www.dof.gob.mx/nota_detalle.php?codigo=5272787&fecha=15/10/2012](https://www.dof.gob.mx/nota_detalle.php?codigo=5272787&fecha=15/10/2012) (consultado el 29 de julio de 2024)
+2. Diario Oficial de la Federación. (2018, 24 de enero). Norma Oficial Mexicana NOM-005-SSA3-2018, Que establece los requisitos mínimos de infraestructura y equipamiento de establecimientos para la atención médica de pacientes ambulatorios. Recuperado de [https://www.dof.gob.mx/nota_detalle.php?codigo=5518805&fecha=24/01/2018](https://www.dof.gob.mx/nota_detalle.php?codigo=5518805&fecha=24/01/2018) (consultado el 29 de julio de 2024)
+3. Diario Oficial de la Federación. (2016, 7 de abril). Norma Oficial Mexicana NOM-007-SSA2-2016, Para la atención de la mujer durante el embarazo, parto y puerperio, y de la persona recién nacida. Recuperado de [https://www.dof.gob.mx/nota_detalle.php?codigo=5432287&fecha=07/04/2016](https://www.dof.gob.mx/nota_detalle.php?codigo=5432287&fecha=07/04/2016)
+4. Diario Oficial de la Federación. (2015, 24 de marzo). Norma Oficial Mexicana NOM-008-SEGOB-2015, Personas con discapacidad. - Acciones de prevención y condiciones de seguridad en materia de protección civil en situación de emergencia o desastre. Recuperado de [https://www.dof.gob.mx/nota_detalle.php?codigo=5383010&fecha=24/03/2015](https://www.dof.gob.mx/nota_detalle.php?codigo=5383010&fecha=24/03/2015)
+5. Diario Oficial de la Federación. (2012, 15 de octubre). Norma Oficial Mexicana NOM-015-SSA3-2012, Para la atención integral de personas con discapacidad. México: Secretaría de Salud.
+6. Diario Oficial de la Federación. (2012, 15 de octubre). Norma Oficial Mexicana NOM-016-SSA3-2012, Que establece las características mínimas de infraestructura y equipamiento de hospitales y consultorios de atención médica especializada. México: Secretaría de Salud.
+7. Diario Oficial de la Federación. (2012, 15 de octubre). Norma Oficial Mexicana NOM-024-SSA3-2012, Sistemas de información de registro electrónico para la salud. Intercambio de información en salud. Recuperado de [URL] (consultado el 29 de julio de 2024)
+8. Diario Oficial de la Federación. (2014, 20 de marzo). Norma Oficial Mexicana NOM-025-SSA2-2014, Para la prestación de servicios de salud en unidades de atención integral hospitalaria médico-psiquiátrica. México: Secretaría de Salud.
+9. Diario Oficial de la Federación. (2013, 23 de octubre). Norma Oficial Mexicana NOM-030-SSA3-2013, Que establece las características arquitectónicas para facilitar el acceso, tránsito, uso y permanencia de las personas con discapacidad en establecimientos para la atención médica ambulatoria y hospitalaria del Sistema Nacional de Salud. Recuperado de [URL] (consultado el 29 de julio de 2024)
+10. Diario Oficial de la Federación. (2013, 24 de octubre). Norma Oficial Mexicana NOM-034-SSA2-2013, Para la prevención y control de los defectos al nacimiento. Recuperado de [URL] (consultado el 29 de julio de 2024)
+11. Diario Oficial de la Federación. (2012, 15 de octubre). Norma Oficial Mexicana NOM-035-SSA3-2012, En materia de información en salud. México: Secretaría de Salud.
+12. Diario Oficial de la Federación. (2024, 2 de febrero).  Proyecto de Norma Oficial Mexicana PROY-NOM-039-SSA-2023, en materia de Certificación de la Discapacidad. Recuperado de [https://dof.gob.mx/nota_detalle.php?codigo=5715918&fecha=02/02/2024#gsc.tab=0](https://dof.gob.mx/nota_detalle.php?codigo=5715918&fecha=02/02/2024#gsc.tab=0) (consultado el 29 de julio de 2024)
