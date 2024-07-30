@@ -1,6 +1,6 @@
 # Anexos (COBAMEX-CIF) {.unnumbered}
 
-En este apartado vamos ir encontrando todas las anotaciones de la norma. 
+En este apartado vamos ir encontrando todas las anotaciones para mi tesis. 
 
 [Trabajo aplicativo ](https://www.notion.so/Trabajo-aplicativo-fd58ff87299e4b68863daa68eb471239?pvs=21) 
 
@@ -13,6 +13,8 @@ En este apartado vamos ir encontrando todas las anotaciones de la norma.
 [Referencias](https://www.notion.so/Referencias-6dacbdd8da30450fa1b6c683fa349fc9?pvs=21)
 
 [Términos](https://www.notion.so/T-rminos-bb8c8b2d227840ce943d139d71a67c68?pvs=21)
+
+[**Las personas con discapacidad en México: una visión censal**](https://www.notion.so/Las-personas-con-discapacidad-en-M-xico-una-visi-n-censal-fce0fe5bc6244aec908303615824c6eb?pvs=21)
 
 ## Componentes de la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud. {-}
 
@@ -28,5 +30,41 @@ knitr::include_graphics(paste0(here::here(), "/images/Anexos/Componentes_CIF.png
 ```
 </a>
 
-
 Figura 1. Interacción de componentes de la CIF
+
+<a href="/images/Anexos/Cuestionarios_CEDis.png" data-lightbox="image-1" data-title="Cuestionarios_CEDis">
+```{r, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/images/Anexos/Cuestionarios_CEDis.png"))
+```
+</a>
+
+## Generalidades {-}
+
+1. Para fines sanitarios la Secretaría de Salud (SS) es responsable del diseño del certificado de discapacidad, alineado a lo establecido en los tratados internacionales de los que México forma parte, entre los que destaca la Convención sobre los Derechos de las Personas con Discapacidad (CDPD) y adoptar la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud (CIF).   
+2. En este sentido, a toda persona que lo solicite y posterior al proceso de valoración se le debe extender un Certificado Electrónico de Discapacidad (CEDis) en términos de lo plasmado en el Capítulo 7 de esta Norma.   
+3. La Secretaría de Salud (SS), a través de la Dirección General de Información en Salud (DGIS), es responsable de elaborar, difundir y vigilar la normatividad para los procesos de diseño, captación, integración, procesamiento y difusión de las estadísticas en salud, entre la que se encuentra la relacionada con discapacidad.    
+4. Todo personal de la salud o relacionado con la salud que participe en la valoración de la discapacidad, así como el profesional de la medicina o persona autorizada por la autoridad sanitaria para la expedición del Certificado Electrónico de Discapacidad (CEDis), debe estar capacitado en este proceso de acuerdo al enfoque integrador biopsicosocial y en apego a la Convención sobre los Derechos de las Personas con Discapacidad (CDPD) y la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud (CIF).   
+5. Los datos personales y sensibles que se obtengan derivado del proceso de valoración y certificación de la discapacidad en cualquiera de sus apartados deben tratarse de conformidad con las disposiciones aplicables en materia de Transparencia, Acceso a la Información y Protección de Datos Personales.    
+ 
+[Expedición del Certificado Electrónico de Discapacidad](https://www.notion.so/Expedici-n-del-Certificado-Electr-nico-de-Discapacidad-389e0fe809ca4d36af13d8ad81a31ea6?pvs=21)
+
+### **Concordancia con normas mexicanas e internacionales**  {-}  
+
+Esta norma tiene concordancia con los tratados internacionales de los que México forma parte, los cuales son:  
+
+11.1.1. Convención sobre los Derechos de las Personas con Discapacidad  
+
+11.1.2 Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud   
+
+[Cuestionarios para la evaluación](https://www.notion.so/Cuestionarios-para-la-evaluaci-n-62628c733f6349f296a5de3e701770e0?pvs=21)
+
+17 de agosto de 2022
+
+- Aprobado en la tercera reunión extraordinaria del CTESS  
+
+<a href="/images/Anexos/CertificadoDiscapacidad.png" data-lightbox="image-1" data-title="CertificadoDiscapacidad">
+```{r, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/images/Anexos/CertificadoDiscapacidad.png"))
+```
+</a>
+

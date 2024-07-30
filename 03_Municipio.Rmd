@@ -754,10 +754,10 @@ tabla %>%
 
 Distribución del índice de accesibilidad a nivel municipal    
 
-<a href="images/IAL a nivel municipal_ggridges.png" data-lightbox="image-1" data-title="IAL_municipio">
+<a href="/images/Municipio/IAL a nivel municipal_ggridges.png" data-lightbox="image-1" data-title="IAL_municipio">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel municipal_ggridges.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL a nivel municipal_ggridges.png"))
 ```
 </a>
 
