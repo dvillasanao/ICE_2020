@@ -30,10 +30,10 @@ La Secretaría General del Consejo Nacional de Población (CONAPO) presenta el �
 1. **Dimensión sociodemográfica**: Basada en indicadores socioeconómicos de los índices de marginación a nivel municipal y localidad (CONAPO, 2021a y 2021b).   
 2. **Dimensión de equipamiento**: Analiza la disponibilidad de equipamiento y servicios públicos y privados, organizados en subsistemas según el Sistema Normativo de Equipamiento (SEDESOL, 2012). Los datos provienen de fuentes como el DENUE (INEGI, 2021), SIGED (SEP, 2021) y CLUES (DGIS, 2021).    
 
-<a href="img/IE_Estructura.png" data-lightbox="image-1" data-title="metodologia">
+<a href="/images/Estructura/IE_Estructura.png" data-lightbox="image-1" data-title="metodologia">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/img/IE_Estructura.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Estructura/IE_Estructura.png"))
 ```
 </a>
 
@@ -42,7 +42,7 @@ knitr::include_graphics(paste0(here::here(), "/img/IE_Estructura.png"))
 ## Estructura del índice de calidad del entorno {-}
 
 ```{r, echo = FALSE}
-readRDS(file = paste0(here::here(), "/img/Estructura_ICE.RDS"))
+readRDS(file = paste0(here::here(), "/images/Estructura/Estructura_ICE.RDS"))
 ```
 
 **Metodología del ICE.**
