@@ -1,1 +1,32 @@
-# Discapacidad {.unnumbered}
+# Anexos (COBAMEX-CIF) {.unnumbered}
+
+En este apartado vamos ir encontrando todas las anotaciones de la norma. 
+
+[Trabajo aplicativo ](https://www.notion.so/Trabajo-aplicativo-fd58ff87299e4b68863daa68eb471239?pvs=21) 
+
+[Índice de calidad del entorno](https://www.notion.so/ndice-de-calidad-del-entorno-ad60345edd864bc6ac9b132fb90b033f?pvs=21) 
+
+[PROYECTO de Norma Oficial Mexicana PROY-NOM-039-SSA-2023, en materia de Certificación de la Discapacidad.](https://www.notion.so/PROYECTO-de-Norma-Oficial-Mexicana-PROY-NOM-039-SSA-2023-en-materia-de-Certificaci-n-de-la-Discapac-1e8d63a6634741dba9a16687a0341866?pvs=21)
+
+[Historia ](https://www.notion.so/Historia-81de3d74c9aa4ffebd2766cb21312c7e?pvs=21)
+
+[Referencias](https://www.notion.so/Referencias-6dacbdd8da30450fa1b6c683fa349fc9?pvs=21)
+
+[Términos](https://www.notion.so/T-rminos-bb8c8b2d227840ce943d139d71a67c68?pvs=21)
+
+## Componentes de la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud. {-}
+
+Componentes que interactúan de acuerdo al enfoque integrador biopsicosocial. Inician con una condición de salud y posteriormente se subdividen en dos partes: 
+
+**Parte 1 se ocupa del funcionamiento y la discapacidad** y dentro de ésta están las funciones y **estructuras corporales y actividad y participación**. 
+
+**Parte 2 se ocupa de los factores contextuales**, donde se encuentran los **factores ambientales y los factores personales**. Para la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud, versión para la infancia y la adolescencia, es el mismo modelo. Para una valoración integral se deben considerar todos los componentes tal como se muestra en la figura.  
+
+<a href="/img/Componentes_CIF.png" data-lightbox="image-1" data-title="Componentes_CIF">
+```{r, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/img/Componentes_CIF.png"))
+```
+</a>
+
+
+Figura 1. Interacción de componentes de la CIF

@@ -1,9 +1,9 @@
 # Metodología {.unlisted .unnumbered}
 
-<a href="images/Metodología ICE.png" data-lightbox="image-1" data-title="metodologia">
+<a href="img/Metodología ICE.png" data-lightbox="image-1" data-title="metodologia">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/Metodología ICE.png"))
+knitr::include_graphics(paste0(here::here(), "/img/Metodología ICE.png"))
 ```
 </a>
 
@@ -84,16 +84,16 @@ Descomposición en valores singulares (singular value decomposition, SVD): Esta 
 
 En ambas descomposiciones, se pueden seleccionar las componentes principales más importantes para reducir la dimensionalidad de los datos y simplificar su análisis.   
 
-<a href="images/SVD.png" data-lightbox="image-1" data-title="SVD">
+<a href="img/SVD.png" data-lightbox="image-1" data-title="SVD">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/SVD.png"))
+knitr::include_graphics(paste0(here::here(), "/img/SVD.png"))
 ```
 </a>
 
-<a href="images/SVD_Page_2.png" data-lightbox="image-1" data-title="SVD_2">
+<a href="img/SVD_Page_2.png" data-lightbox="image-1" data-title="SVD_2">
 ```{r, echo = FALSE, fig.width=8, fig.height=8, out.width='100%'}
-knitr::include_graphics(paste0(here::here(), "/images/SVD_Page_2.png"))
+knitr::include_graphics(paste0(here::here(), "/img/SVD_Page_2.png"))
 ```
 </a>
 

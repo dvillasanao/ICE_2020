@@ -12,10 +12,10 @@ El Censo de Población y Vivienda 2020 (CPV2020) del INEGI (Instituto Nacional d
 
 ## Equipamiento {-}
 
-<a href="images/IE_Subsectores.png" data-lightbox="image-1" data-title="Subsectores">
+<a href="img/IE_Subsectores.png" data-lightbox="image-1" data-title="Subsectores">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/IE_Subsectores.png"))
+knitr::include_graphics(paste0(here::here(), "/img/IE_Subsectores.png"))
 ```
 </a>
 
@@ -698,10 +698,10 @@ head(accesibilidad_mun, 10) %>%
 ```
 </div>
 
-<a href="images/IAL a nivel municipal_Mapa.png" data-lightbox="image-1" data-title="IALmun">
+<a href="img/IAL a nivel municipal_Mapa.png" data-lightbox="image-1" data-title="IALmun">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel municipal_Mapa.png"))
+knitr::include_graphics(paste0(here::here(), "/img/IAL a nivel municipal_Mapa.png"))
 ```
 </a>
 
@@ -743,10 +743,10 @@ head(accesibilidad_loc, 10) %>%
 ```
 </div>
 
-<a href="images/IAL a nivel localidad_Mapa.png" data-lightbox="image-1" data-title="IALloc">
+<a href="img/IAL a nivel localidad_Mapa.png" data-lightbox="image-1" data-title="IALloc">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/IAL a nivel localidad_Mapa.png"))
+knitr::include_graphics(paste0(here::here(), "/img/IAL a nivel localidad_Mapa.png"))
 ```
 </a>
 
@@ -825,7 +825,7 @@ Debido a la falta de información de este municipio, se toma como referencia a l
 - `08066` Uruachi
 
 <center>
-![](images/Ocampo_Mun.png){#id .class width=450 height=300px}
+![](img/Ocampo_Mun.png){#id .class width=450 height=300px}
 </center>
 
 Fuente: [Espacio y datos de México (INEGI)](https://www.inegi.org.mx/app/mapa/espacioydatos/default.aspx)
