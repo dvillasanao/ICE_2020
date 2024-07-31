@@ -7,3 +7,33 @@
 knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo sobre discapacidad (Internacional).png"))
 ```
 </a>
+
+**Referencias**   
+- Metzler, Irina. (2013). *Disability in Medieval Europe: Thinking about Physical Impairment during the High Middle Ages, c. 1100–1400*. Routledge.   
+- Rocha, Arturo (2001). Nadie es ombligo en la tierra. Ayac xictli in tlaltícpac. Discapacidad en el México antiguo, Cultura náhuatl. TELETON, Editorial Miguel Ángel Porrúa. México.   
+- Aguado Díaz, Antonio León (1993). Historia de las Deficiencias. Colección Tesis y Praxis. Escuela Libre Editorial, Fundación ONCE. Madrid, España.  
+- Porter, G.L. (1997). Critical Elements for Inclusive Schools. En: Pijl, S.J., Meijer, C.J.W., y Hegerty, S. (Eds.) Inclusive Education, a Global Agenda. London : Routledge Publishing.  
+- Baynton, Douglas C. (2016), “Disability in History”, Disability Studies Quarterly, 28 (3), available at: [http://dsq-sds.org](http://dsq-sds.org/)/article/view/108/108.   
+- Harrison, Mark. (2000). *The Medical War: British Military Medicine in the First World War*. Oxford University Press.   
+- Lo, V. (2000). *The Influence of Buddhism on Chinese Medicine*. In H. T. Barrett (Ed.), *Chinese medicine and healing: An illustrated history* (pp. 112-137). Harvard University Press.   
+- Savage-Smith, E. (1996). Attitudes toward dissection in medieval Islam. *Journal of the history of medicine and allied sciences*, 50(1), 67–110. https://doi.org/10.1093/jhmas/50.1.67   
+- Lane, Harlan. (1984). *When the Mind Hears: A History of the Deaf*. New York: Random House.   
+- Rose, Sarah F. ‘“Crippled” Hands: Disability in Labor and Working-Class History’, Labor 2:1 (2003), 27–54.    
+- Scotch, Richard K. (2001). *From Good Will to Civil Rights: Transforming Federal Disability Policy*. Temple University Press.    
+- Instituto Nacional de Estadística, Geografía e Informática (INEGI). (2000). Las personas con discapacidad en México: una visión censal.   
+
+## Línea de tiempo (México) {-}
+ 
+<a href="/images/Anexos/Línea de tiempo sobre discapacidad (México).png" data-lightbox="image-1" data-title="linea_tiempo_2">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo sobre discapacidad (México).png"))
+```
+</a>
+
+**Referencias**   
+- Alvarez Amézquita, José; Bustamante, Miguel E.; López P. Antonio y Fernández del Castillo Francisco (1960). Historia de la salubridad y de la asistencia en México. Tomo II. SSA. México.   
+- Rocha, Arturo (2001). Nadie es ombligo en la tierra. Ayac xictli in tlaltícpac. Discapacidad en el México antiguo, Cultura náhuatl. TELETON, Editorial Miguel Ángel Porrúa. México.    
+- Fuentes, Mario Luis (1998). La asistencia social en México. Historia y perspectivas. Ediciones del
+Milenio. México, D.F.   
+- Secretaría de Salud (SSA). (2003). Historia de la atención a las personas con discapacidad en México. Ciudad de México: Secretaría de Salud.    
+
