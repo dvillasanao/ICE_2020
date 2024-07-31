@@ -1,0 +1,9 @@
+# Históricos {.unnumbered}
+
+## Línea de tiempo (Internacional) {-}
+ 
+<a href="/images/Anexos/Línea de tiempo sobre discapacidad (Internacional).png" data-lightbox="image-1" data-title="linea_tiempo_1">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo sobre discapacidad (Internacional).png"))
+```
+</a>
