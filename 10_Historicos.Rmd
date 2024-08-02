@@ -40,7 +40,7 @@ La **Convención sobre los Derechos de las Personas con Discapacidad de la ONU**
 
 El futuro de la discapacidad está marcado por un enfoque en la inclusión, accesibilidad y el respeto a los derechos humanos. Los avances en tecnología asistiva, la educación inclusiva, y la expansión de leyes que protegen los derechos de las personas con discapacidad continúan siendo una prioridad global. Las campañas de sensibilización y educación pública están ayudando a reducir el estigma y promover una mayor comprensión y aceptación de la discapacidad en la sociedad.  
 
-<a href="/images/Anexos/Línea de tiempo sobre discapacidad (Internacional).png" data-lightbox="image-1" data-title="linea_tiempo_1">
+<a href="/images/Anexos/L%C3%ADnea%20de%20tiempo%20sobre%20discapacidad%20(Internacional).png" data-lightbox="image-1" data-title="linea_tiempo_1">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo sobre discapacidad (Internacional).png"))
 ```
@@ -92,7 +92,7 @@ El desarrollo tecnológico en México ha permitido la creación de dispositivos 
 a
 El futuro de la discapacidad en México está marcado por un enfoque en la inclusión, accesibilidad y el respeto a los derechos humanos. Los avances en tecnología asistiva, la educación inclusiva y la expansión de leyes que protegen los derechos de las personas con discapacidad continúan siendo una prioridad. Las campañas de sensibilización y educación pública están ayudando a reducir el estigma y promover una mayor comprensión y aceptación de la discapacidad en la sociedad.   
 
-<a href="/images/Anexos/Línea de tiempo sobre discapacidad (México).png" data-lightbox="image-1" data-title="linea_tiempo_2">
+<a href="/images/Anexos/L%C3%ADnea%20de%20tiempo%20sobre%20discapacidad%20(M%C3%A9xico).png" data-lightbox="image-1" data-title="linea_tiempo_2">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo sobre discapacidad (México).png"))
 ```
