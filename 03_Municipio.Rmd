@@ -1162,10 +1162,10 @@ save(ICE_2020, file = paste0(here::here(), "/Bases/Municipio/ICE_2020.RData"))
 ```
 
 
-<a href="/images/Municipio/ICE a nivel municipal.png" data-lightbox="image-1" data-title="ICE_mun">
+<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-1" data-title="ICE_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%', fig.cap="Elaboración propia"}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/Municipio/ICE a nivel municipal.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Municipio/ICE_Mun_Mapa.png"))
 ```
 </a>
 

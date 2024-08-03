@@ -698,10 +698,10 @@ head(accesibilidad_mun, 10) %>%
 ```
 </div>
 
-<a href="/images/Municipio/IAL a nivel municipal_Mapa.png" data-lightbox="image-1" data-title="IALmun">
+<a href="/images/Municipio/IAL_Mun_Mapa.png" data-lightbox="image-1" data-title="IAL_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL a nivel municipal_Mapa.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL_Mun_Mapa.png"))
 ```
 </a>
 
@@ -743,10 +743,10 @@ head(accesibilidad_loc, 10) %>%
 ```
 </div>
 
-<a href="/images/Localidad/IAL a nivel localidad_Mapa.png" data-lightbox="image-1" data-title="IALloc">
+<a href="/images/Localidad/IAL_Loc_Mapa.png" data-lightbox="image-1" data-title="IAL_Loc_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/Localidad/IAL a nivel localidad_Mapa.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Localidad/IAL_Loc_Mapa.png"))
 ```
 </a>
 
