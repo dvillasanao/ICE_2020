@@ -510,8 +510,7 @@ tabla %>%
 ```{r, eval = FALSE}
 ## Principal Components Regression (PCR)
 pcr_model <- pcr(PC_SEP$PC~., data = sep_mun[, c(3:11)], ncomp = ncp,  scale = TRUE, center = TRUE, validation = "LOO")
-
-saveRDS(pcr_model, paste0(here::here(), "/Output/Municipio/pcr_model_sep.rds"))
+#saveRDS(pcr_model, paste0(here::here(), "/Output/Municipio/pcr_model_sep.rds"))
 
 ## Caso máximo
 test <- t(rep(100, 9)) %>% as.data.frame() 
@@ -561,6 +560,132 @@ pcr_extremos %>%
                      decimals = 3)  %>%
            as_raw_html() 
 ```
+
+#### Validación Cruzada {.unnumbered}
+
+- Mean Squared Error (MSE) 
+ 
+$$MSE = \frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}$$
+- Root Mean Squared Prediction Error `RMSE`
+
+$$RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}}$$
+```{r, eval = FALSE}
+ncomp <- 9
+# Validación Cruzada 
+pcr_model <- pcr(PC_SEP$PC~., data = sep_mun[, c(3:11)], 
+                 ncomp = ncomp,  
+                 scale = TRUE, 
+                 center = TRUE, 
+                 validation = "LOO")
+saveRDS(pcr_model, paste0(here::here(), "/Output/Municipio/pcr_model_sep_cv.rds"))
+
+summary(pcr_model)
+
+#calculate MSE
+mean((pcr_model[["residuals"]])^2)
+```
+
+```{r, echo = FALSE}
+pcr_model <- readRDS(paste0(here::here(), "/Output/Municipio/pcr_model_sep_cv.rds"))
+
+# Extraer los datos de validación
+validation_data <- MSEP(pcr_model)$val[,,]
+
+# Se convierten los datos a un data frame para ggplot2
+validation_df <- validation_data %>%
+                  t() %>%
+                   as.data.frame() %>%
+                    tibble::rownames_to_column(var = "rowid") %>%
+                     mutate(ncomp = seq(0, nrow(.) - 1))
+
+# Crear el gráfico con ggplot2
+validation_df %>% 
+ filter(ncomp %nin% 0) %>% 
+  ggplot(aes(x = ncomp)) +
+   geom_line(aes(y = CV, color = "line1")) + 
+    geom_line(aes(y = adjCV, color = "line2"), linetype = "dashed") + 
+     geom_point(aes(y = CV, color = "line1")) + 
+      geom_point(aes(y = adjCV, color = "line2")) + 
+       theme_minimal() +
+        scale_color_manual(labels = c("CV", "CVAdj"), 
+                            values = c("line1" = "#18b581", "line2" = "#e01280")) +
+         scale_x_continuous(breaks = seq(0, 10, by = 1)) +
+          labs(title = "Validation Plot", 
+               x = "Number of Components", 
+               y = "Mean Squared Error of Prediction (MSEP)",
+               color = "CrossValidation") 
+```
+
+La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
+
+- Mean Absolute Error (MSE) 
+ 
+$$MSE = \frac{1}{n}\sum_{i = 1}^{n}\left|Y_{i}- \hat{Y}_{i}\right|^{2}$$
+
+```{r, eval = FALSE}
+set.seed(123)
+require(caret)
+require(pls)
+#require(pca)
+trControl <- trainControl(method = "cv", number = 10, selectionFunction = "oneSE")
+
+# Base de datos original con los la variable respuesta 
+df <- data.frame(PC = PC_SEP$PC) %>% 
+       cbind(., sep_mun %>%
+                 select(3:ncol(sep_mun)))
+
+# Split the data into training and test set
+inTraining <- createDataPartition(df$PC, p = .75, list = FALSE)
+training <- df[ inTraining,]
+testing  <- df[-inTraining,]
+
+# Build the model on training set
+caret.pcr <- train(PC~., 
+                   data = training,
+                   method = "pcr",
+                   preProcess = c("center", "scale"),
+                   trControl = trControl, 
+                   tuneGrid = data.frame(ncomp = 1:ncomp))
+
+saveRDS(caret.pcr, paste0(here::here(), "/Output/Municipio/caret_pcr_sep_cv.rds"))
+```
+
+```{r, eval = FALSE}
+pcr_pred <- predict(caret.pcr, testing)
+# Calculate MSE 
+mean((pcr_pred - testing$PC)^2)
+# Calculate RMSE 
+#sqrt(mean((pcr_pred - testing$PC)^2))
+RMSE = caret::RMSE(pcr_pred, testing$PC)
+# Summary of accurracy 
+postResample(pred = pcr_pred, obs = testing$PC)
+```
+
+```{r, echo = FALSE}
+caret.pcr<- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_sep_cv.rds"))
+# Extraer los datos de validación
+validation_data <- caret.pcr[["results"]]
+
+tabla <- validation_data %>% 
+          reshape2::melt(id.vars = "ncomp") %>% 
+           as.data.frame()
+
+p <- tabla %>%
+      ggplot(aes(x = ncomp)) +
+       geom_line(aes(y = value, color = variable), linetype = "dashed") + 
+        geom_point(aes(y = value, color = variable)) +
+         theme_minimal() +
+          scale_color_viridis_d(option = "A", begin = 0, end = 0.8) +
+           scale_y_continuous(labels = scales::unit_format(scale = 1e-1, unit = NULL)) + 
+           scale_x_continuous(breaks = seq(0, 10, by = 1)) + 
+            facet_wrap(. ~ variable, scales = "free") + 
+             labs(title = "Validation Plot", 
+                  x = "Number of Components", 
+                  y = "",
+                  color = "CrossValidation") 
+p
+```
+
 
 ### Salud {.unnumbered}
 
