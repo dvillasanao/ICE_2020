@@ -340,6 +340,8 @@ save(PC_DENUE, file = paste0(here::here(), "/Output/Localidad/PC_DENUE.Rdata"))
 
 ```{r, echo = FALSE}
 PCA_Subsistemas <- readRDS(file = paste0(here::here(), "/Output/Localidad/PC_DENUE.RDS"))
+load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
+tablas <- names(Subsitemas)
 
 ncp <- c(2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 1) %>% as.matrix() %>% `rownames<-`(.,paste(tablas))
 
@@ -351,8 +353,8 @@ for(i in 1:11){
 # Asistencia Social 
 i <- 2
 tabla <- facto_summarize(PCA_Subsistemas[[paste0(tablas[i])]], "var", axes = 1:ncp[i]) %>%
-          select(-name) %>%
-           as.data.frame() 
+           as.data.frame() %>%
+            rename("Indicadores" = "name")
 
 tabla %>% 
  gt() %>%
