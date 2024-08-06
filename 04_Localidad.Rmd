@@ -478,7 +478,8 @@ mean((pcr_model[[1]][["residuals"]])^2)
 ```{r, echo = FALSE, out.width = '70%', fig.align='center'}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Localidad/pcr_model_denue_cv.rds"))
 require(ggrepel)
-
+load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
+tablas <- names(Subsitemas)
 p <- lapply(1:11, function(x){
                      # Extraer los datos de validación
                       validation_data <- MSEP(pcr_model[[x]])$val[,,]
@@ -595,6 +596,8 @@ postResample(pred = pcr_pred, obs = testing_list[[5]]$PC)
 
 ```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_denue_cv.rds"))
+load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
+tablas <- names(Subsitemas)
 
 p <- NULL
 for(i in 1:11){
@@ -721,7 +724,7 @@ tabla %>%
 
 ```{r, eval = FALSE}
 ## Principal Components Regression (PCR)
-pcr_model <- pcr(PC_SEP$PC~., data = sep_loc[, c(3:11)], ncomp = ncp,  scale = TRUE, center = TRUE, validation = "LOO")
+pcr_model <- pcr(PC_SEP$PC~., data = sep_loc[, c(3:11)], ncomp = ncp,  scale = TRUE, center = TRUE, validation = "CV", segments = 1000)
 
 saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_sep.rds"))
 
@@ -790,7 +793,8 @@ pcr_model <- pcr(PC_SEP$PC~., data = sep_loc[, c(3:11)],
                  ncomp = ncomp,  
                  scale = TRUE, 
                  center = TRUE, 
-                 validation = "LOO")
+                 validation = "CV", 
+                 segments = 1000)
 saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_sep_cv.rds"))
 
 summary(pcr_model)
@@ -868,8 +872,8 @@ trControl <- trainControl(method = "cv", number = 10, selectionFunction = "oneSE
 
 # Base de datos original con los la variable respuesta 
 df <- data.frame(PC = PC_SEP$PC) %>% 
-       cbind(., sep_mun %>%
-                 select(3:ncol(sep_mun)))
+       cbind(., sep_loc %>%
+                 select(3:ncol(sep_loc)))
 
 # Split the data into training and test set
 inTraining <- createDataPartition(df$PC, p = .75, list = FALSE)
@@ -947,7 +951,6 @@ ggexport(p,
 
 ### Salud {.unnumbered}
 
-
 ```{r, class.source = "fold-show"}
 load(paste0(here::here(), "/Bases/Localidad/Indicadores_CLUES.RData"))
 
@@ -957,6 +960,7 @@ clues_loc <- clues_loc %>%
                   filter(.$suma != 0) %>%
                     select(-suma)
 ```
+
 
 ```{r, class.source = "fold-show"}
 PCA_CLUES <- PCA(clues_loc[, c(3:6)],
@@ -1274,27 +1278,27 @@ p <- ICE_2020 %>%
        geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.7) + 
         geom_jitter(aes(x = ICE, y = "", color = ICE, fill = ICE), size = 0.3, alpha = 0.01) + 
          theme_ipsum_rc(grid = "X") +
-                     theme(title = element_text(size = 15, family = "Century Gothic"),
-                            plot.title = element_text(size = 15,family = "Century Gothic"),
-                            plot.subtitle = element_text(size = 12, hjust = 0, family = "Century Gothic"),
-                             plot.caption = element_text(size = 9, family = "Century Gothic"),
-                             axis.text.x = element_text(size = 6, family = "Century Gothic"), 
-                             axis.text.y = element_text(size = 6, family = "Century Gothic"), 
-                              axis.title = element_text(size = 10, family = "Century Gothic"), 
-                               axis.title.y = element_text(size = 10, family = "Century Gothic"), 
-                                axis.title.x = element_text(size = 10, family = "Century Gothic"), 
-                            legend.key.size = unit(0.5, 'cm'),
-                               legend.text =element_text(size = 10, family = "Century Gothic"), 
-                                legend.title = element_text(size = 12, family = "Century Gothic")) + 
-              scale_color_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
-                scale_fill_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
-                 scale_y_discrete(expand = c(0.5,0)) +
-                 labs(title = paste("Boxplot del índice de calidad del entorno"),
-                       subtitle = "Nivel localidad", 
-                       color = "",  
-                        fill = "", 
-                         x = "", 
-                          y = "") 
+           theme(title = element_text(size = 15, family = "Century Gothic"),
+                 plot.title = element_text(size = 15,family = "Century Gothic"),
+                 plot.subtitle = element_text(size = 12, hjust = 0, family = "Century Gothic"),
+                 plot.caption = element_text(size = 9, family = "Century Gothic"),
+                 axis.text.x = element_text(size = 6, family = "Century Gothic"), 
+                 axis.text.y = element_text(size = 6, family = "Century Gothic"), 
+                 axis.title = element_text(size = 10, family = "Century Gothic"), 
+                 axis.title.y = element_text(size = 10, family = "Century Gothic"), 
+                 axis.title.x = element_text(size = 10, family = "Century Gothic"), 
+                 legend.key.size = unit(0.5, 'cm'),
+                 legend.text =element_text(size = 10, family = "Century Gothic"), 
+                 legend.title = element_text(size = 12, family = "Century Gothic")) + 
+            scale_color_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
+             scale_fill_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
+              scale_y_discrete(expand = c(0.5,0)) +
+               labs(title = paste("Boxplot del índice de calidad del entorno"),
+                     subtitle = "Nivel localidad", 
+                      color = "",  
+                       fill = "", 
+                        x = "", 
+                         y = "") 
 p
 ```
 
@@ -1306,16 +1310,15 @@ outliers <- boxplot.stats(ICE_2020$ICE)
 
 ## Se crea un índice ficticio quitando los outliers   
 ICE_2020 <- ICE_2020 %>%
-              mutate(ICE_out = case_when(.$ICE < outliers$stats[1] ~ outliers$stats[1],
-                                         .$ICE > outliers$stats[5] ~ outliers$stats[5],
-                                         .$ICE >= outliers$stats[1] | .$ICE <= outliers$stats[5] ~ .$ICE)) 
+             mutate(ICE_out = case_when(.$ICE < outliers$stats[1] ~ outliers$stats[1],
+                                        .$ICE > outliers$stats[5] ~ outliers$stats[5],
+                                        .$ICE >= outliers$stats[1] | .$ICE <= outliers$stats[5] ~ .$ICE)) 
 ```
 
 
 ### Método de estratificación {.unnumbered}
 
-`strata.cumrootf`: cumulative root frequency method by Dalenius and
-Hodges (1959)\
+`strata.cumrootf`: cumulative root frequency method by Dalenius and Hodges (1959)\
 
 **Nclass óptimo del método de Dalenius & Hodge**
 
