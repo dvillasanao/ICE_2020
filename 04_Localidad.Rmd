@@ -665,6 +665,10 @@ PCA_SEP <- PCA(sep_loc[, c(3:11)],
                   graph = FALSE)
 ```
 
+```{r, echo = FALSE, eval = FALSE}
+saveRDS(PCA_SEP, file = paste0(here::here(), "/Output/Localidad/PCA_SEP.RDS"))
+```
+
 
 ```{r}
 # Índice estandarizado (SVD)
@@ -673,37 +677,45 @@ ncp <- 4
 
 # Índices de las componentes principales seleccionados
 PC_SEP <-  sep_loc %>%
-              select(CVE_LOC) %>%
-               mutate(PC = as.numeric(scale(as.matrix(sep_loc[, c(3:11)])) %*% 
-                              as.matrix(PCA_SEP[["var"]][["coord"]][,1:ncp]) %*% 
-                                        as.matrix(PCA_SEP[["eig"]][,2][1:ncp]/100))) %>%
-                 as.data.frame()
+            select(CVE_LOC) %>%
+             mutate(PC = as.numeric(scale(as.matrix(sep_loc[, c(3:11)])) %*% 
+                     as.matrix(PCA_SEP[["var"]][["coord"]][,1:ncp]) %*% 
+                      as.matrix(PCA_SEP[["eig"]][,2][1:ncp]/100))) %>%
+              as.data.frame()
 
 save(PC_SEP,  file = paste0(here::here(), "/Output/Localidad/PC_SEP.Rdata"))
 ```
 
-\renewcommand{\arraystretch}{2}
 ```{r, echo = FALSE}
-tabla <- facto_summarize(PCA_SEP, "var", axes = 1:ncp) %>%
+PCA_SEP <- readRDS(file = paste0(here::here(), "/Output/Localidad/PCA_SEP.RDS"))
+
+tabla <- facto_summarize(PCA_SEP, "var", axes = 1:4) %>%
           select(-name) %>%
            as.data.frame() 
-tabla %>%
-  kable(caption = "Tabla: Resumen de los indicadores de educación utilizando PCA", 
-               digits = 3, 
-                align = 'c',
-                format.args = list(font_size = '10px', family = "Century Gothic"),
-                 format = "html", 
-                  booktabs = FALSE) %>% 
-        kable_classic(full_width = FALSE, html_font = "Century Gothic", position = "center") %>% 
-         kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 8) %>%
-          column_spec(1, bold = T, border_right = T) %>%
-           row_spec(0, bold = T) %>%
-            row_spec(1:9, extra_css = 'vertical-align: middle !important; padding: 2px 8px;') %>%
-        footnote(., general = "Elaboración propia", 
-                  general_title = "Fuente:", 
-                   footnote_as_chunk = T)
-```
 
+tabla %>% 
+ gt() %>%
+  tab_header(title = "Tabla: Resumen de los indicadores de educación utilizando PCA", 
+             subtitle = "Nivel localidad") %>%
+   tab_options(heading.title.font.size = 14, 
+               heading.subtitle.font.size = 12,
+               table.font.names = "Century Gothic",
+               table.font.size = 10,
+               table.align = 'center',
+               data_row.padding = px(1)) %>%
+    tab_style(style = list(cell_text(align = "left", 
+                                     weight = 'bold')),
+              locations = list(cells_title(groups = c("title")))) %>%
+     tab_style(style = list(cell_text(align = "left")),
+               locations = list(cells_title(groups = c("subtitle")))) %>%
+      tab_style(style = "vertical-align:center; font-weight: bold",
+                locations = cells_column_labels()) %>%
+       tab_footnote(footnote = "Fuente: Elaboración propia", 
+                    placement = "left") %>%
+        fmt_number(columns = c(2:7), 
+                   decimals = 3)  %>%
+         as_raw_html() 
+```
 
 #### Valores extremos {.unnumbered}
 
@@ -728,9 +740,209 @@ pcr_extremos <- data.frame("Indicadores" = c("Educación"),
                            "Máximo" = pcr_pred_max[,1,][ncp],
                            "Mínimo" = pcr_pred_min[,1,][ncp]) 
 
+save(pcr_extremos, file = paste0(here::here(), "/Output/Localidad/PCR_SEP.RData"))
 write.table(pcr_extremos, file = paste0(here::here(), "/Output/Localidad/PCR_SEP.txt"), sep = ",")
 ```
 
+
+```{r, echo = FALSE}
+load(file = paste0(here::here(), "/Output/Localidad/PCR_SEP.RData"))
+
+pcr_extremos %>% 
+ as.data.frame() %>%
+  mutate_at(vars(2:3), as.numeric) %>%
+   gt() %>%
+    tab_header(title = "Tabla: Valores extremos utilizando Principal Component Regression (PCR)",  
+               subtitle = "Indicadores de la SEP a nivel localidad") %>%
+     tab_options(heading.title.font.size = 14, 
+                 heading.subtitle.font.size = 12,
+                 table.font.names = "Century Gothic",
+                 table.font.size = 10,
+                 table.align = 'center',
+                 data_row.padding = px(1)) %>%
+      tab_style(style = list(cell_text(align = "left", 
+                                       weight = 'bold')),
+                locations = list(cells_title(groups = c("title")))) %>%
+       tab_style(style = list(cell_text(align = "left")),
+                 locations = list(cells_title(groups = c("subtitle")))) %>%
+        tab_style(style = "vertical-align:center; font-weight: bold",
+                  locations = cells_column_labels()) %>%
+         tab_footnote(footnote = "Fuente: Elaboración propia", 
+                      placement = "left") %>%
+          fmt_number(columns = c("Máximo", "Mínimo"), 
+                     decimals = 3)  %>%
+           as_raw_html() 
+```
+
+#### Validación Cruzada {.unnumbered}
+
+- Mean Squared Error (MSE) 
+ 
+$$MSE = \frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}$$
+- Root Mean Squared Prediction Error `RMSE`
+
+$$RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}}$$ 
+
+```{r, eval = FALSE}
+ncomp <- length(sep_loc[, c(3:11)])
+# Validación Cruzada 
+pcr_model <- pcr(PC_SEP$PC~., data = sep_loc[, c(3:11)], 
+                 ncomp = ncomp,  
+                 scale = TRUE, 
+                 center = TRUE, 
+                 validation = "LOO")
+saveRDS(pcr_model, paste0(here::here(), "/Output/Localidad/pcr_model_sep_cv.rds"))
+
+summary(pcr_model)
+
+#calculate MSE
+mean((pcr_model[["residuals"]])^2)
+```
+
+
+```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+pcr_model <- readRDS(paste0(here::here(), "/Output/Localidad/pcr_model_sep_cv.rds"))
+
+# Extraer los datos de validación
+validation_data <- MSEP(pcr_model)$val[,,]
+
+# Se convierten los datos a un data frame para ggplot2
+validation_df <- validation_data %>%
+                  t() %>%
+                   as.data.frame() %>%
+                    tibble::rownames_to_column(var = "rowid") %>%
+                     mutate(ncomp = seq(0, nrow(.) - 1))
+
+# Crear el gráfico con ggplot2
+p <- validation_df %>% 
+      filter(ncomp %nin% 0) %>% 
+       ggplot(aes(x = ncomp)) +
+        geom_line(aes(y = CV, color = "line1")) + 
+         geom_line(aes(y = adjCV, color = "line2"), linetype = "dashed") + 
+          geom_point(aes(y = CV, color = "line1")) + 
+           geom_point(aes(y = adjCV, color = "line2")) + 
+            geom_text_repel(aes(y = CV, label = format(CV, scientific = TRUE, digits = 2), color = "line1"),
+                                color = "#767676", 
+                                size = 2.5, 
+                                force = 0.5,
+                                force_pull = 0, 
+                                family = "Century Gothic") +
+               theme_minimal() +
+                theme(plot.title = element_text(size = 18, family = "Century Gothic"),
+                      plot.subtitle = element_text(size = 14, family = "Century Gothic", color = "#abaaa9"),
+                      legend.key.width = unit(0.5, "cm")) + 
+                scale_color_manual(labels = c("CV", "CVAdj"), 
+                                    values = c("line1" = "#18b581", "line2" = "#e01280")) +
+                 scale_x_continuous(breaks = seq(0, 10, by = 1)) +
+                  labs(title = "Validation Plot", 
+                       subtitle = "Subsitema de educación",
+                       x = "Number of Components", 
+                       y = "Mean Squared Error of Prediction (MSEP)",
+                       color = "CrossValidation") 
+p
+```
+
+
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Localidad/pcr_model_sep_CrossValidation.pdf"),
+         width =  10,
+         height = 8,
+         device = "cairo_pdf")
+```
+
+
+La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
+
+- Mean Absolute Error (MSE) 
+ 
+$$MSE = \frac{1}{n}\sum_{i = 1}^{n}\left|Y_{i}- \hat{Y}_{i}\right|^{2}$$
+
+```{r, eval = FALSE}
+set.seed(123)
+require(caret)
+require(pls)
+
+trControl <- trainControl(method = "cv", number = 10, selectionFunction = "oneSE")
+
+# Base de datos original con los la variable respuesta 
+df <- data.frame(PC = PC_SEP$PC) %>% 
+       cbind(., sep_mun %>%
+                 select(3:ncol(sep_mun)))
+
+# Split the data into training and test set
+inTraining <- createDataPartition(df$PC, p = .75, list = FALSE)
+training <- df[ inTraining,]
+testing  <- df[-inTraining,]
+
+# Build the model on training set
+caret.pcr <- train(PC~., 
+                   data = training,
+                   method = "pcr",
+                   preProcess = c("center", "scale"),
+                   trControl = trControl, 
+                   tuneGrid = data.frame(ncomp = 1:ncomp))
+
+saveRDS(caret.pcr, paste0(here::here(), "/Output/Localidad/caret_pcr_sep_cv.rds"))
+```
+
+```{r, eval = FALSE}
+#use model to make predictions on a test set
+pcr_pred <- predict(caret.pcr, testing)
+# Calculate MSE 
+mean((pcr_pred - testing$PC)^2)
+# Calculate RMSE 
+#sqrt(mean((pcr_pred - testing$PC)^2))
+RMSE = caret::RMSE(pcr_pred, testing$PC)
+# Summary of accurracy 
+postResample(pred = pcr_pred, obs = testing$PC)
+```
+
+```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_sep_cv.rds"))
+
+# Extraer los datos de validación
+validation_data <- caret.pcr[["results"]]
+
+tabla <- validation_data %>% 
+          reshape2::melt(id.vars = "ncomp") %>% 
+           as.data.frame()
+
+p <- tabla %>%
+      ggplot(aes(x = ncomp)) +
+       geom_line(aes(y = value, color = variable), linetype = "dashed") + 
+        geom_point(aes(y = value, color = variable)) + 
+         geom_text_repel(aes(y = value, label = format(value, scientific = TRUE, digits = 2)),
+                         color = "#767676", 
+                         size = 2.5, 
+                         force = 1,
+                         force_pull = 0, 
+                         family = "Century Gothic") +
+           theme_minimal() +
+            theme(plot.title = element_text(size = 18, family = "Century Gothic"),
+                  plot.subtitle = element_text(size = 14, family = "Century Gothic", color = "#abaaa9"),
+                  legend.key.width = unit(0.5, "cm")) + 
+             scale_color_viridis_d(option = "A", begin = 0, end = 0.8) +
+              scale_y_continuous(labels = scales::unit_format(scale = 1e-1, unit = NULL)) + 
+               scale_x_continuous(breaks = seq(0, 10, by = 1)) + 
+                facet_wrap(. ~ variable, scales = "free") + 
+                 labs(title = "Validation Plot",
+                      subtitle = "Subsistema de educación",
+                      x = "Number of Components", 
+                      y = "",
+                      color = "CrossValidation") 
+p
+```
+
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Localidad/caret_pcr_sep_CrossValidation.pdf"),
+         width =  15,
+         height = 8,
+         device = "cairo_pdf")
+```
 
 
 ### Salud {.unnumbered}
