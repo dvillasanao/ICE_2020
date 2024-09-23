@@ -601,6 +601,16 @@ caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_denue_cv.
 load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
 tablas <- names(Subsitemas)
 
+## Se guardan las tablas en un excel 
+wb <- createWorkbook()
+for(i in 1:11){
+addWorksheet(wb, paste(tablas[i]))
+writeData(wb, i, caret.pcr[[i]][["results"]])
+saveWorkbook(wb, 
+              file = paste0(here::here(),"/Output/Localidad/caret_pcr_denue_cv.xlsx"), 
+               overwrite = TRUE)
+}
+
 p <- NULL
 for(i in 1:11){
 # Extraer los datos de validación
@@ -911,6 +921,8 @@ caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_sep_cv.rd
 # Extraer los datos de validación
 validation_data <- caret.pcr[["results"]]
 
+write.xlsx(validation_data, paste0(here::here(), "/Output/Localidad/caret_pcr_sep_cv.xlsx"), overwrite = TRUE)
+
 tabla <- validation_data %>% 
           reshape2::melt(id.vars = "ncomp") %>% 
            as.data.frame()
@@ -1214,6 +1226,8 @@ postResample(pred = pcr_pred, obs = testing$PC)
 caret.pcr<- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_clues_cv.rds"))
 # Extraer los datos de validación
 validation_data <- caret.pcr[["results"]]
+
+write.xlsx(validation_data, paste0(here::here(), "/Output/Localidad/caret_pcr_clues_cv.xlsx"), overwrite = TRUE)
 
 tabla <- validation_data %>% 
           reshape2::melt(id.vars = "ncomp") %>% 
