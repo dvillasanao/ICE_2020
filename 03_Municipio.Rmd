@@ -579,6 +579,16 @@ postResample(pred = pcr_pred, obs = testing_list[[5]]$PC)
 ```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_denue_cv.rds"))
 
+## Se guardan las tablas en un excel 
+wb <- createWorkbook()
+for(i in 1:11){
+addWorksheet(wb, paste(tablas[i]))
+writeData(wb, i, caret.pcr[[i]][["results"]])
+saveWorkbook(wb, 
+              file = paste0(here::here(), "/Output/Municipio/caret_pcr_denue_cv.xlsx"), 
+               overwrite = TRUE)
+}
+
 p <- NULL
 for(i in 1:11){
 # Extraer los datos de validación
@@ -587,6 +597,7 @@ validation_data <- caret.pcr[[i]][["results"]]
 tabla <- validation_data %>% 
           reshape2::melt(id.vars = "ncomp") %>% 
            as.data.frame() 
+
 p[[i]] <- tabla %>%
            ggplot(aes(x = ncomp)) +
             geom_line(aes(y = value, color = variable), linetype = "dashed") + 
@@ -1187,8 +1198,11 @@ postResample(pred = pcr_pred, obs = testing$PC)
 
 ```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
 caret.pcr<- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_clues_cv.rds"))
+summary(caret.pcr)
 # Extraer los datos de validación
 validation_data <- caret.pcr[["results"]]
+
+write.xlsx(validation_data, paste0(here::here(), "/Output/Municipio/caret_pcr_clues_cv.xlsx"))
 
 tabla <- validation_data %>% 
           reshape2::melt(id.vars = "ncomp") %>% 
