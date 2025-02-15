@@ -6,7 +6,7 @@ En este apartado se desglozaran todos los criterios que se usaron para validar l
 
 Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.
 
-<a href="/images/Municipio/Comportamiento acumulado_PC1 a PC9_IMM.png" data-lightbox="image-1" data-title="IMM_Sedimentacion">
+<a href="/images/Municipio/Comportamiento acumulado_PC1 a PC9_IMM.png" data-lightbox="image-7" data-title="IMM_Sedimentacion">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/Comportamiento acumulado_PC1 a PC9_IMM.png"))
@@ -14,7 +14,7 @@ knitr::include_graphics(paste0(here::here(), "/images/Municipio/Comportamiento a
 </a>
 
 **Contribución de las variables**
-<a href="/images/Municipio/Contribución de las variables_IMM.png" data-lightbox="image-1" data-title="IMM_Contribucion">
+<a href="/images/Municipio/Contribución de las variables_IMM.png" data-lightbox="image-8" data-title="IMM_Contribucion">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/Contribución de las variables_IMM.png"))

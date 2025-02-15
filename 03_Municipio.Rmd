@@ -1282,8 +1282,8 @@ head(accesibilidad_mun, 10) %>%
 
 ```{r, echo = FALSE}
 require(psych)
-tabla <- describe(accesibilidad_mun$IAL) %>%
-          tibble::rownames_to_column()
+tabla <- psych::describe(accesibilidad_mun$IAL) 
+
 tabla %>% 
  gt() %>%
   tab_header(title = "Análisis descriptivo de la variables de accesibilidad",
@@ -1301,7 +1301,7 @@ tabla %>%
                locations = list(cells_title(groups = c("subtitle")))) %>%
       tab_style(style = "vertical-align:middle; font-weight: bold",
                 locations = cells_column_labels())  %>%
-       fmt_number(columns = c(4:14), 
+       fmt_number(columns = c(4:13), 
                   decimals = 1) %>%
         fmt_integer(columns = c("n"),
                     sep_mark = " ") %>%
@@ -1718,7 +1718,7 @@ save(ICE_2020, file = paste0(here::here(), "/Bases/Municipio/ICE_2020.RData"))
 ```
 
 
-<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-1" data-title="ICE_Mun_Mapa">
+<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-5" data-title="ICE_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%', fig.cap="Elaboración propia"}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/ICE_Mun_Mapa.png"))

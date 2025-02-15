@@ -24,7 +24,7 @@ Componentes que interactúan de acuerdo al enfoque integrador biopsicosocial. In
 
 **Parte 2 se ocupa de los factores contextuales**, donde se encuentran los **factores ambientales y los factores personales**. Para la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud, versión para la infancia y la adolescencia, es el mismo modelo. Para una valoración integral se deben considerar todos los componentes tal como se muestra en la figura.  
 
-<a href="/images/Anexos/Componentes_CIF.png" data-lightbox="image-1" data-title="Componentes_CIF">
+<a href="/images/Anexos/Componentes_CIF.png" data-lightbox="image-8" data-title="Componentes_CIF">
 ```{r, echo=FALSE, out.width='70%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/images/Anexos/Componentes_CIF.png"))
 ```
@@ -32,7 +32,7 @@ knitr::include_graphics(paste0(here::here(), "/images/Anexos/Componentes_CIF.png
 
 Figura 1. Interacción de componentes de la CIF
 
-<a href="/images/Anexos/Cuestionarios_CEDis.png" data-lightbox="image-1" data-title="Cuestionarios_CEDis">
+<a href="/images/Anexos/Cuestionarios_CEDis.png" data-lightbox="image-9" data-title="Cuestionarios_CEDis">
 ```{r, echo=FALSE, out.width='70%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/images/Anexos/Cuestionarios_CEDis.png"))
 ```

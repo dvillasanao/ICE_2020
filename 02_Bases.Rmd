@@ -12,7 +12,7 @@ El Censo de Población y Vivienda 2020 (CPV2020) del INEGI (Instituto Nacional d
 
 ## Equipamiento {-}
 
-<a href="/images/Estructura/IE_Subsectores.png" data-lightbox="image-1" data-title="Subsectores">
+<a href="/images/Estructura/IE_Subsectores.png" data-lightbox="image-2" data-title="Subsectores">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Estructura/IE_Subsectores.png"))
@@ -698,7 +698,7 @@ head(accesibilidad_mun, 10) %>%
 ```
 </div>
 
-<a href="/images/Municipio/IAL_Mun_Mapa.png" data-lightbox="image-1" data-title="IAL_Mun_Mapa">
+<a href="/images/Municipio/IAL_Mun_Mapa.png" data-lightbox="image-3" data-title="IAL_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL_Mun_Mapa.png"))
@@ -743,7 +743,7 @@ head(accesibilidad_loc, 10) %>%
 ```
 </div>
 
-<a href="/images/Localidad/IAL_Loc_Mapa.png" data-lightbox="image-1" data-title="IAL_Loc_Mapa">
+<a href="/images/Localidad/IAL_Loc_Mapa.png" data-lightbox="image-4" data-title="IAL_Loc_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Localidad/IAL_Loc_Mapa.png"))
