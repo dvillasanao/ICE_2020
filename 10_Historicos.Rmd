@@ -4,41 +4,27 @@
 
 ### Panorama de la Discapacidad a Nivel Internacional: Desde sus Inicios hasta la Actualidad {-} 
 
-#### Antigüedad {-} 
 
-En la antigüedad, las percepciones y tratamientos de la discapacidad variaban considerablemente entre culturas. En el **Egipto Antiguo**, las representaciones artísticas sugieren una cierta aceptación social de las personas con discapacidades. Por contraste, en la **Grecia Antigua**, los infanticidios motivados por eugenesia eran comunes, mientras que en **Roma** se observaban actitudes mixtas, con prácticas tanto de infanticidio como de entretenimiento mediante personas con deformidades. En la **China Antigua**, los textos médicos de la dinastía Han describían diversas discapacidades y sus tratamientos, mostrando un enfoque más médico.   
+#### **Antigüedad:** {-}
 
-#### Edad Media {-} 
+En el **Antiguo Egipto**, la evidencia artística sugiere la presencia e integración de individuos con discapacidades en la estructura social, asignándoles roles funcionales específicos (Metzler, 2013). En contraste, la **Grecia** clásica exhibió prácticas eugenésicas, incluyendo el abandono de infantes con discapacidades en el monte Taigeto (Rocha, 2001). La **Roma** antigua presentó actitudes duales, desde el infanticidio y la explotación de personas con deformidades para entretenimiento, hasta la fundación del primer nosocomio por San Basilio en el año 370 (Aguado, 1993). La **China Antigua**, por su parte, demostró un enfoque médico temprano, con descripciones y tratamientos de diversas discapacidades documentados en textos de la dinastía Han (Lo, 2000).
 
-Durante la Edad Media, la percepción de la discapacidad también varió. En el mundo **islámico medieval**, se realizaron avances significativos en la medicina, lo que permitió una mejor comprensión y tratamiento de diversas discapacidades. En **Europa Medieval**, las personas con discapacidades eran a menudo vistas como objeto de caridad cristiana, lo que llevó a la fundación de instituciones benéficas y hospitales.   
+#### **Edad Media:** {-}
 
-#### Renacimiento y Edad Moderna {-} 
+El mundo **árabe medieval** experimentó un avance significativo en la medicina, con hospitales como el Bimaristán en Bagdad que proporcionaban tratamientos especializados para diversas discapacidades (Savage-Smith, 1996). En la **Europa medieval**, las personas con discapacidades fueron frecuentemente objeto de caridad cristiana, lo que condujo a la creación de instituciones benéficas y hospitales (Aguado, 1993). No obstante, también persistió una tradición demonológica que asociaba las discapacidades con la posesión diabólica, aunque el humanitarismo cristiano impulsó la fundación de sanatorios y hospitales (Aguado, 1993).
 
-El **Renacimiento** trajo un resurgimiento del interés en la ciencia y la medicina, promoviendo un enfoque más racional hacia la discapacidad. En el siglo XVIII, la **Ilustración** introdujo ideas sobre la igualdad y los derechos humanos, influyendo en la percepción y el tratamiento de las personas con discapacidades.   
+#### **Renacimiento y Edad Moderna:** {-}
 
-#### Siglo XX {-} 
+El **Renacimiento** marcó un cambio hacia un enfoque más científico y racional de la discapacidad, con figuras como Paracelso y Vesalio que contribuyeron a la comprensión médica (Porter, 1997). El **siglo XVIII**, con la Ilustración, introdujo ideales de igualdad que influyeron en la creación de instituciones educativas especializadas para personas sordas y ciegas, como se evidenció durante la Revolución Francesa (Lane, 1984).
 
-El siglo XX fue testigo de cambios significativos. Las **Guerras Mundiales** aumentaron el número de personas con discapacidades debido a las lesiones de guerra, lo que impulsó el desarrollo de nuevas tecnologías de rehabilitación y prótesis. El **movimiento por los derechos civiles** en la segunda mitad del siglo XX también incluyó la lucha por los derechos de las personas con discapacidades, resultando en leyes como el Americans with Disabilities Act (ADA) de 1990.   
+#### **Siglo XX:** {-}
 
-En 1981, la ONU declaró el **Año Internacional de las Personas con Discapacidad**, promoviendo la sensibilización y la acción global. En 1980, la OMS publicó la **Clasificación Internacional de Deficiencias, Discapacidades y Minusvalías (CIDDM)**, proporcionando un marco para comprender y clasificar las discapacidades.   
+Las **Guerras Mundiales** resultaron en un aumento sustancial de personas con discapacidades, lo que impulsó el desarrollo de tecnologías de rehabilitación (Harrison, 2000). En **1920**, Estados Unidos promulgó la Ley Smith-Fess, iniciando programas de rehabilitación vocacional. El **movimiento por los derechos civiles** en la segunda mitad del siglo XX abogó por los derechos de las personas con discapacidades, culminando en la promulgación de la Ley de Estadounidenses con Discapacidades (ADA) en 1990 (Scotch, 2001). La **Declaración Universal de Derechos Humanos (1948)** y la **Clasificación Internacional de Deficiencias, Discapacidades y Minusvalías (CIDDM) de la OMS (1980)** establecieron marcos para la igualdad y la comprensión de la discapacidad. El **Año Internacional de las Personas con Discapacidad (1981)** y las **Normas Uniformes de la ONU (1993)** promovieron la sensibilización y la acción global.
 
-#### Siglo XXI {-} 
+#### **Siglo XXI:** {-}
 
-En el siglo XXI, se han hecho importantes avances en la inclusión y los derechos de las personas con discapacidades. En 2006, la ONU adoptó la **Convención sobre los Derechos de las Personas con Discapacidad (CDPD)**, un tratado internacional que busca proteger los derechos y la dignidad de las personas con discapacidades.   
+La **Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud (CIF) de 2001** adoptó un enfoque holístico y multidimensional de la discapacidad. La **Convención sobre los Derechos de las Personas con Discapacidad (CDPD) de 2006** representó un hito al establecer un tratado internacional para proteger los derechos y la dignidad de las personas con discapacidades. Los **Objetivos de Desarrollo Sostenible (ODS) de 2015** incluyeron metas específicas para la inclusión de las personas con discapacidades en la educación y el empleo.
 
-Los **Objetivos de Desarrollo Sostenible (ODS)** de 2015 también incluyen varias metas específicas relacionadas con la discapacidad, como garantizar la educación inclusiva y equitativa y promover el empleo pleno y productivo.   
-
-#### Avances Tecnológicos y Educativos {-} 
-
-El desarrollo tecnológico ha permitido la creación de dispositivos avanzados que mejoran la movilidad y la comunicación, como sillas de ruedas motorizadas, software de reconocimiento de voz y prótesis biónicas. Los sistemas educativos han adoptado políticas más inclusivas, promoviendo la participación plena de estudiantes con discapacidades en aulas regulares mediante tecnologías de apoyo y metodologías pedagógicas adaptativas.   
-
-#### Legislación Internacional {-} 
-
-La **Convención sobre los Derechos de las Personas con Discapacidad de la ONU**, adoptada en 2006, ha sido fundamental en la promoción de los derechos y la dignidad de las personas con discapacidades a nivel global, obligando a los estados miembros a implementar políticas inclusivas y accesibles.  
-
-#### Perspectivas Futuras {-} 
-
-El futuro de la discapacidad está marcado por un enfoque en la inclusión, accesibilidad y el respeto a los derechos humanos. Los avances en tecnología asistiva, la educación inclusiva, y la expansión de leyes que protegen los derechos de las personas con discapacidad continúan siendo una prioridad global. Las campañas de sensibilización y educación pública están ayudando a reducir el estigma y promover una mayor comprensión y aceptación de la discapacidad en la sociedad.  
 
 <a href="/images/Anexos/L%C3%ADnea%20de%20tiempo%20sobre%20discapacidad%20(Internacional).png" data-lightbox="image-10" data-title="linea_tiempo_1">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
