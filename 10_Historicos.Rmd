@@ -50,33 +50,26 @@ knitr::include_graphics(paste0(here::here(), "/images/Anexos/Línea de tiempo so
 
 ### Panorama de la Discapacidad a Nivel Nacional en México: Desde sus Inicios hasta la Actualidad {-}    
 
-#### Época Prehispánica en México {-}    
+#### **Época Prehispánica:** {-}
 
-En la época prehispánica, las culturas indígenas de México, como la náhuatl, tenían diversas formas de interpretar y tratar las discapacidades. Las enfermedades y deficiencias eran frecuentemente asociadas a razones naturales, castigos divinos, maleficios o influencias astrológicas. Los códices Florentino y Badiano documentan prácticas terapéuticas complejas, incluyendo el uso de herbolaria y otros tratamientos.   
+En el México prehispánico, particularmente en la cultura Náhuatl, las enfermedades y deficiencias se entendían desde múltiples perspectivas: causas naturales, castigo divino, maleficios y la influencia de los astros (Álvarez, et al., 1960). No obstante, existían prácticas terapéuticas sofisticadas, como el uso de herbolaria y tratamientos complejos, que quedaron registrados en los Códices Florentino y Badiano (Rocha, 2001).
 
-#### Colonia en México {-}  
+#### **Colonia:** {-}
 
-Durante la colonia, la atención a las personas con discapacidades comenzó a institucionalizarse. En 1566, se fundó el Hospital de San Hipólito en Ciudad de México, el primer hospital en el continente dedicado a enfermedades mentales. En 1698, José Sáyago fundó el Real Hospital del Divino Salvador, también dedicado a enfermedades mentales. En 1794, se establecieron el Hospital de Belén en Guadalajara y el Hospital Civil en Monterrey, ambos con secciones para atender a personas con deficiencias mentales.   
-  
-#### Siglo XIX {-}  
+Durante la Colonia, se establecieron los primeros hospitales dedicados a la atención de enfermedades mentales en el continente. En 1566, se fundó el Hospital de San Hipólito en la Ciudad de México (SSA, 2003). Posteriormente, en 1698, José Sáyago creó el Real Hospital del Divino Salvador, también enfocado en la salud mental. Hacia 1794, se sumaron el Hospital de Belén en Guadalajara y el Hospital Civil en Monterrey, ambos con secciones especializadas para deficiencias mentales (SSA, 2003).
 
-El siglo XIX vio avances significativos en la educación y atención a personas con discapacidades. En 1861, Benito Juárez ordenó la creación de una escuela para sordomudos en la Ciudad de México, y en 1866, José Urbano Fonseca fundó dicha escuela. Estos esfuerzos marcaron el inicio de una mayor conciencia y acción hacia la inclusión educativa de personas con discapacidades.   
+#### **Siglo XIX:** {-}
 
-#### Siglo XX {-}  
+El siglo XIX marcó un avance en la atención a personas con discapacidades sensoriales. En 1861, Benito Juárez ordenó la creación de una escuela para sordomudos en la Ciudad de México, que se materializó en 1866 gracias a José Urbano Fonseca (Fuentes, 1998).
 
-A principios del siglo XX, se fundaron varias instituciones dedicadas a personas con discapacidades en ciudades como Veracruz, Yucatán, Jalisco y Puebla. En 1928, se creó el Instituto Nacional de Protección a la Infancia (INPI), precursor del Sistema Nacional para el Desarrollo Integral de la Familia (DIF). En 1970, se estableció el Instituto Nacional de Rehabilitación (INR) para proporcionar atención médica especializada y rehabilitación. En 1995, una reforma constitucional reconoció los derechos de las personas con discapacidades y estableció políticas públicas para su inclusión. En 1997, se creó la Fundación Teletón, que ofrece atención y rehabilitación a través de sus Centros de Rehabilitación e Inclusión Infantil Teletón (CRIT).   
+#### **Siglo XX:** {-}
 
-#### Siglo XXI {-}  
+A principios del siglo XX, se multiplicaron las instituciones dedicadas a personas con discapacidades en ciudades como Veracruz, Yucatán, Jalisco y Puebla (SSA, 2003). En 1928, se fundó el Instituto Nacional de Protección a la Infancia (INPI), precursor del Sistema Nacional para el Desarrollo Integral de la Familia (DIF). La atención médica especializada y la rehabilitación dieron un paso importante con la creación del Instituto Nacional de Rehabilitación (INR) en 1970. En 1995, la reforma constitucional reconoció los derechos de las personas con discapacidades y estableció políticas públicas para su inclusión. En 1997, la Fundación Teletón comenzó a operar sus Centros de Rehabilitación e Inclusión Infantil Teletón (CRIT).
 
-En el siglo XXI, México ha continuado avanzando en la inclusión y derechos de las personas con discapacidades. El XII Censo de Población y Vivienda del 2000 proporcionó datos relevantes sobre la población con discapacidad en el país. En 2005, se publicó la Ley General de las Personas con Discapacidad y se creó el Consejo Nacional para el Desarrollo y la Inclusión de las Personas con Discapacidad (CONADIS). En 2007, México ratificó la Convención sobre los Derechos de las Personas con Discapacidad y su Protocolo Facultativo, adoptados por la Asamblea General de las Naciones Unidas en 2006. En 2011, una reforma constitucional amplió los derechos humanos en México, incluyendo a las personas con discapacidades.   
+#### **Siglo XXI:** {-}
 
-#### Avances Tecnológicos y Educativos {-}  
+El siglo XXI ha sido testigo de importantes avances legislativos y de políticas públicas. En 2000, el XII Censo de Población y Vivienda del INEGI proporcionó datos cruciales sobre la población con discapacidad en México. En 2001, México ratificó el Protocolo Facultativo de la CEDAW. En 2005, se promulgó la Ley General de las Personas con Discapacidad y se creó el Consejo Nacional para el Desarrollo y la Inclusión de las Personas con Discapacidad (CONADIS). En 2007, México ratificó la Convención sobre los Derechos de las Personas con Discapacidad y su Protocolo Facultativo. La reforma constitucional de 2011 amplió los derechos humanos, incluyendo explícitamente a las personas con discapacidades. En 2018, entró en vigor la Ley General para la Inclusión de las Personas con Discapacidad y se realizaron reformas a la Ley General de Salud para implementar el certificado único de discapacidad basado en la CIF.
 
-El desarrollo tecnológico en México ha permitido la creación de dispositivos avanzados que mejoran la movilidad y la comunicación, como sillas de ruedas motorizadas, software de reconocimiento de voz y prótesis biónicas. Los sistemas educativos han adoptado políticas más inclusivas, promoviendo la participación plena de estudiantes con discapacidades en aulas regulares mediante tecnologías de apoyo y metodologías pedagógicas adaptativas.   
-
-#### Perspectivas Futuras {-}  
-a
-El futuro de la discapacidad en México está marcado por un enfoque en la inclusión, accesibilidad y el respeto a los derechos humanos. Los avances en tecnología asistiva, la educación inclusiva y la expansión de leyes que protegen los derechos de las personas con discapacidad continúan siendo una prioridad. Las campañas de sensibilización y educación pública están ayudando a reducir el estigma y promover una mayor comprensión y aceptación de la discapacidad en la sociedad.   
 
 <a href="/images/Anexos/L%C3%ADnea%20de%20tiempo%20sobre%20discapacidad%20(M%C3%A9xico).png" data-lightbox="image-1" data-title="linea_tiempo_2">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
