@@ -1,4 +1,4 @@
-# 📃 Bookdown: Índice de Calidad del Entorno (ICE) - CONAPO
+# 📔 Bookdown: Índice de Calidad del Entorno (ICE) - CONAPO
 
 El Índice de Calidad del Entorno (ICE) es un indicador que busca analizar las características de los factores contextuales determinados por las condiciones de marginación, la disponibilidad y concentración de servicios y el equipamiento urbano. El ICE permite valorar y diferenciar municipios y localidades según los efectos facilitadores o de barrera que genera el entorno para la población.
 
