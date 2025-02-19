@@ -30,9 +30,26 @@ El ICE 2020 permite valorar y diferenciar municipios y localidades según los ef
 
 ### Nivel municipal
 
-![](images/Municipio/ICE_Mun_Mapa.png)
+![](images/Municipio/ICE_Mun_Mapa.png){width="80%"}
 
 ### Nivel localidad
+
+## 🛠️ Instalación y Uso
+Para visualizar el bookdown localmente, sigue estos pasos:
+  
+  1. Clonar el repositorio:
+  ```sh
+git clone https://github.com/dvillasana/bookdown_ICE.git
+cd bookdown_ICE
+```
+2. Instalar las dependencias en R:
+  ```r
+install.packages("bookdown")
+```
+3. Compilar el bookdown:
+  ```r
+bookdown::render_book("index.Rmd")
+```
 
 ## Referencias
 
