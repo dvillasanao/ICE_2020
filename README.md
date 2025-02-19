@@ -30,9 +30,11 @@ El ICE 2020 permite valorar y diferenciar municipios y localidades según los ef
 
 ### Nivel municipal
 
-![](images/Municipio/ICE_Mun_Mapa.png){width="80%"}
+<img src="images/Municipio/ICE_Mun_Mapa.png" width="70%">
 
 ### Nivel localidad
+
+<img src="images/Localidad/ICE_Loc_Mapa.png" width="70%">
 
 ## 🛠️ Instalación y Uso
 Para visualizar el bookdown localmente, sigue estos pasos:
