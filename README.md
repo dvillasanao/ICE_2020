@@ -53,6 +53,9 @@ install.packages("bookdown")
 bookdown::render_book("index.Rmd")
 ```
 
+## 🌐 Publicación
+El bookdown está disponible en [Netlify](https://ice-bookdown.netlify.app/) para consulta en línea.
+
 ## Referencias
 
 -   Instituto Nacional de Estadística y Geografía (2021). Censo Nacional de Población y Vivienda 2020. México: INEGI.
