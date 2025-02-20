@@ -59,7 +59,8 @@ El bookdown está disponible en [Netlify](https://ice-bookdown.netlify.app/) par
 ## Referencias
 
 -   Instituto Nacional de Estadística y Geografía (2021). Censo Nacional de Población y Vivienda 2020. México: INEGI.
--   Secretaría General del Consejo Nacional de Población. (2023). Índices de marginación 2020. <https://www.gob.mx/conapo/documentos/indices-de-marginacion-2020-284372> Consejo Nacional de Población, Instituto Mexicano del Transporte y Centro de Investigación en Ciecias de Información Geoespacial. (2023). Análisis geoespacial de la accesibilidad a centros urbanos de las localidades de México. <https://www.gob.mx/conapo/documentos/analisis-geoespacial-de-la-accesibilidad-a-centros-urbanos-de-las-localidades-de-mexico>.
+-   Secretaría General del Consejo Nacional de Población. (2023). Índices de marginación 2020. <https://www.gob.mx/conapo/documentos/indices-de-marginacion-2020-284372> 
+-   Consejo Nacional de Población, Instituto Mexicano del Transporte y Centro de Investigación en Ciecias de Información Geoespacial. (2023). Análisis geoespacial de la accesibilidad a centros urbanos de las localidades de México. <https://www.gob.mx/conapo/documentos/analisis-geoespacial-de-la-accesibilidad-a-centros-urbanos-de-las-localidades-de-mexico>.
 -   Secretaría General del Consejo Nacional de Población (2023). Índice de Calidad del Entorno 2020. México: CONAPO.
 -   Secretaría de Desarrollo Social (2012). Sistema Normativo de Equipamiento. México: SEDESOL.
 
