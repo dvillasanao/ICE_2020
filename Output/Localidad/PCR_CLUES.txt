@@ -1,0 +1,2 @@
+"Indicadores","Máximo","Mínimo"
+"2 comps","Salud",9.10103355686315,-0.293520160331828

@@ -1,0 +1,2 @@
+"Indicadores","Máximo","Mínimo"
+"1","Educación",59.871805221528,-0.780809788274585
