@@ -21,7 +21,9 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.9000/fill.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <title></title>
 <script>
@@ -78,7 +80,20 @@
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
 </form>
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html">Municipio</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introducción</a></li>
+<li><a class="" href="metodolog%C3%ADa.html">Metodología</a></li>
+<li><a class="" href="fuentes-de-informaci%C3%B3n.html">Fuentes de información</a></li>
+<li><a class="active" href="municipio-4.html">Municipio</a></li>
+<li><a class="" href="localidad-4.html">Localidad</a></li>
+<li><a class="" href="ageb-3.html">AGEB</a></li>
+<li><a class="" href="criterios-de-validaci%C3%B3n.html">Criterios de validación</a></li>
+<li><a class="" href="discusi%C3%B3n.html">Discusión</a></li>
+<li><a class="" href="anexos-cobamex-cif.html">Anexos (COBAMEX-CIF)</a></li>
+<li><a class="" href="marcos-normativos.html">Marcos Normativos</a></li>
+<li><a class="" href="hist%C3%B3ricos.html">Históricos</a></li>
+<li><a class="" href="referencias-1.html">Referencias</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/dvillasanao/ICE_2020">View book repository <i class="fab fa-github"></i></a></p>
@@ -88,12 +103,12 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="municipio-4" class="section level1 unlisted unnumbered">
 <h1>Municipio<a class="anchor" aria-label="anchor" href="#municipio-4"><i class="fas fa-link"></i></a>
 </h1>
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-1763bca0008f3ace3950" style="width:100%;height:672px;"></div>
-<script type="application/json" data-for="htmlwidget-1763bca0008f3ace3950">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],"label":["Calidad del entorno","Marginación","ANALF","SBASC","OVSDE","OVSEE","OVSAE","OVPT","PL.5000","VHAC","PO2SM","Equipamiento","Educación","Inicial","Preescolar","Primaria","Secundaria","Bachillerato","Profesional","Centro de atención múltiple","Centros de capacitación","Otros de educación","Salud","Apoyo / Asistencia Social","Primer nivel","Segundo nivel","Tercer nivel","DENUE","Cultura","Asistencia social","Comercio","Comunicaciones","Transporte","Deporte y recreación","Administración pública","Servicios urbanos","Servicios financieros","Hotelería y restaurantes","Talleres","Accesibilidad"],"value":[40,20,10,10,10,10,10,10,10,10,10,20,5,6,6,6,6,6,6,6,6,6,5,8,8,8,8,10,5,5,5,5,5,5,5,5,5,5,5,20],"group":["Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified"],"shape":["box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box"],"color":["#35608DFF","#33628DFF","#32658EFF","#31678EFF","#306A8EFF","#2E6D8EFF","#2E6F8EFF","#2C718EFF","#2C738EFF","#2A768EFF","#29798EFF","#297B8EFF","#277E8EFF","#27808EFF","#26828EFF","#25858EFF","#24878EFF","#238A8DFF","#228D8DFF","#218F8DFF","#20928CFF","#20938CFF","#1F968BFF","#1F998AFF","#1E9B8AFF","#1F9E89FF","#1FA188FF","#1FA287FF","#21A585FF","#22A785FF","#24AA83FF","#25AD81FF","#28AE80FF","#2CB17EFF","#2EB37CFF","#32B67AFF","#36B878FF","#3ABA76FF","#3FBC73FF","#43BF71FF"],"font.color":["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],"font.size":[28,22,12,12,12,12,12,12,12,12,12,22,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,22],"font.family":["montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat"],"shadow":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]},"edges":{"from":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],"to":["1","2","2","2","2","2","2","2","2","2","1","12","13","13","13","13","13","13","13","13","13","12","23","23","23","23","12","28","28","28","28","28","28","28","28","28","28","28","1"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"ellipse","shapeProperties":{"borderRadius":12},"scaling":{"min":40,"max":80}},"manipulation":{"enabled":false},"edges":{"arrows":"to","smooth":{"enabled":true}},"physics":{"stabilization":false},"layout":{"randomSeed":321},"interaction":{"dragNodes":true,"dragView":true,"hover":true,"keyboard":true,"multiselect":true,"navigationButtons":true,"zoomView":true,"zoomSpeed":2}},"groups":["Not user-specified"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Estructura del índice de calidad del entorno","style":"font-family:montserrat; font-size:22px;text-align:center; color;#35608DFF; font-weight: bold;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","events":{"doubleClick":"function openFullscreen() {\n  if (elem.requestFullscreen) {\n    elem.requestFullscreen();\n  } else if (elem.webkitRequestFullscreen) { /* Safari */\n    elem.webkitRequestFullscreen();\n  } else if (elem.msRequestFullscreen) { /* IE11 */\n    elem.msRequestFullscreen();\n  }\n}"}},"evals":["events.doubleClick"],"jsHooks":[]}</script><p>Se toma como referencia el marco geoestadístico nacional 2020 a Nivel Municipal.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-41747297045de5ca1b9f" style="width:100%;height:672px;"></div>
+<script type="application/json" data-for="htmlwidget-41747297045de5ca1b9f">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],"label":["Calidad del entorno","Marginación","ANALF","SBASC","OVSDE","OVSEE","OVSAE","OVPT","PL.5000","VHAC","PO2SM","Equipamiento","Educación","Inicial","Preescolar","Primaria","Secundaria","Bachillerato","Profesional","Centro de atención múltiple","Centros de capacitación","Otros de educación","Salud","Apoyo / Asistencia Social","Primer nivel","Segundo nivel","Tercer nivel","DENUE","Cultura","Asistencia social","Comercio","Comunicaciones","Transporte","Deporte y recreación","Administración pública","Servicios urbanos","Servicios financieros","Hotelería y restaurantes","Talleres","Accesibilidad"],"value":[40,20,10,10,10,10,10,10,10,10,10,20,5,6,6,6,6,6,6,6,6,6,5,8,8,8,8,10,5,5,5,5,5,5,5,5,5,5,5,20],"group":["Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified","Not user-specified"],"shape":["box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box","box"],"color":["#35608DFF","#33628DFF","#32658EFF","#31678EFF","#306A8EFF","#2E6D8EFF","#2E6F8EFF","#2C718EFF","#2C738EFF","#2A768EFF","#29798EFF","#297B8EFF","#277E8EFF","#27808EFF","#26828EFF","#25858EFF","#24878EFF","#238A8DFF","#228D8DFF","#218F8DFF","#20928CFF","#20938CFF","#1F968BFF","#1F998AFF","#1E9B8AFF","#1F9E89FF","#1FA188FF","#1FA287FF","#21A585FF","#22A785FF","#24AA83FF","#25AD81FF","#28AE80FF","#2CB17EFF","#2EB37CFF","#32B67AFF","#36B878FF","#3ABA76FF","#3FBC73FF","#43BF71FF"],"font.color":["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],"font.size":[28,22,12,12,12,12,12,12,12,12,12,22,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,22],"font.family":["montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat","montserrat"],"shadow":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]},"edges":{"from":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],"to":["1","2","2","2","2","2","2","2","2","2","1","12","13","13","13","13","13","13","13","13","13","12","23","23","23","23","12","28","28","28","28","28","28","28","28","28","28","28","1"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"ellipse","shapeProperties":{"borderRadius":12},"scaling":{"min":40,"max":80}},"manipulation":{"enabled":false},"edges":{"arrows":"to","smooth":{"enabled":true}},"physics":{"stabilization":false},"layout":{"randomSeed":321},"interaction":{"dragNodes":true,"dragView":true,"hover":true,"keyboard":true,"multiselect":true,"navigationButtons":true,"zoomView":true,"zoomSpeed":2}},"groups":["Not user-specified"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Estructura del índice de calidad del entorno","style":"font-family:montserrat; font-size:22px;text-align:center; color;#35608DFF; font-weight: bold;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","events":{"doubleClick":"function openFullscreen() {\n  if (elem.requestFullscreen) {\n    elem.requestFullscreen();\n  } else if (elem.webkitRequestFullscreen) { /* Safari */\n    elem.webkitRequestFullscreen();\n  } else if (elem.msRequestFullscreen) { /* IE11 */\n    elem.msRequestFullscreen();\n  }\n}"}},"evals":["events.doubleClick"],"jsHooks":[]}</script><p>Se toma como referencia el marco geoestadístico nacional 2020 a Nivel Municipal.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/MGN.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div style="height:320px;overflow:auto;">
-<div id="eziipftuxh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nulzujmtxg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; table-layout: fixed; width: 0px;" data-quarto-disable-processing="false" data-quarto-bootstrap="false" width="0" bgcolor="#FFFFFF">
 <colgroup>
@@ -329,10 +344,10 @@
 <h2>Marginación<a class="anchor" aria-label="anchor" href="#marginaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 <p>Se carga la nueva base del índice de marginación 2020.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/IMM.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div style="height:320px; overflow:auto;">
-<div id="ymwicmmthq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gmasuzgmkn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; table-layout: fixed; width: 0px;" data-quarto-disable-processing="false" data-quarto-bootstrap="false" width="0" bgcolor="#FFFFFF">
 <colgroup>
@@ -497,7 +512,7 @@
 <p>Se utiliza la función <span class="math inline">\(PCA\)</span> del parquete <strong>FactoMiner</strong>, donde se especifica que se estandaricen las vairables con el parámetro <em>scale.unit=TRUE</em></p>
 <p><strong>Análisis de componentes principales</strong></p>
 <p>Se utilizan todas las variables</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PCA_IMM</span> <span class="op">&lt;-</span> <span class="fu">PCA</span><span class="op">(</span><span class="va">IMM</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">IMM</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>                scale.unit <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                 ncp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">IMM</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">IMM</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
@@ -511,7 +526,7 @@
 <p>Las columnas de <span class="math inline">\(\mathbf {US}\)</span> son los pesos de las componentes principales</p>
 <p><strong>Se generan los índices de cada uno de los subsistemas</strong> <strong>Se utilizan a los componentes principales que expliquen el máximo de la información</strong></p>
 <p>Se utilizó como criterio los gráficos de sedimentación y la contriución de la variables en cada uno de los componentes y la varianza acumulada.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Componentes seleccionadas</span></span>
 <span><span class="va">ncp</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span></span>
@@ -525,7 +540,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_IMM</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_IMM.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Resumen</strong></p>
-<div id="uxfnfgcekv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rrfyktfkqo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -643,14 +658,14 @@
 <h3>DENUE<a class="anchor" aria-label="anchor" href="#denue-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Se anexan los indicadores simples, de acuerdo a la clasificación económica del DENUE (<strong>01</strong>)</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/Indicadores_DENUE.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Se utiliza la nueva reclasificación de los subsitemas, de los cuales fueron obtenidos del DENUE</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Claves_subsistema_SCIAN2018.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Subramos</strong></p>
 <p>Se toman como referencia 13 subsitemas económicos y 64 elementos económicos que lo integran</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Subsistemas_DENUE.Rdata"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">tablas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">Subsitemas</span><span class="op">)</span></span>
 <span><span class="va">tablas</span></span>
@@ -658,7 +673,7 @@
 <span><span class="co">#&gt;  [4] "Comunicaciones"         "Transporte"             "Deporte_Recreacion"    </span></span>
 <span><span class="co">#&gt;  [7] "Administracion_publica" "Servicios_urbanos"      "Servicios_financieros" </span></span>
 <span><span class="co">#&gt; [10] "Hoteleria_Restaurantes" "Talleres"</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">{</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/assign.html">assign</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"tabla_"</span>, <span class="va">tablas</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, <span class="va">denue_mun</span> <span class="op">%&gt;%</span></span>
 <span>                                     <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -669,7 +684,7 @@
 <span>                                           <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">suma</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p><strong>Dimensiones de cálculo</strong></p>
-<div id="eevtgmnfep" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="knhvartvhk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -748,7 +763,7 @@
 </table></div>
 </div>
 <p><strong>Análisis de componentes principales</strong></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ncp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span> ,<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">`rownames&lt;-`</span><span class="op">(</span><span class="va">.</span>,<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tablas</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">PCA_Subsistemas</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
@@ -758,7 +773,7 @@
 <span>                                               ncp <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">Subsitemas</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">tablas</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>                                                graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Índices de las componentes principales seleccionados</span></span>
 <span><span class="va">PC_DENUE</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">{</span></span>
@@ -770,7 +785,7 @@
 <span>                        <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_DENUE</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_DENUE.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="wxirubxdaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="csxknqxzpq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -833,7 +848,7 @@
 <div id="valores-extremos" class="section level4 unnumbered">
 <h4>Valores extremos<a class="anchor" aria-label="anchor" href="#valores-extremos"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Principal Components Regression (PCR)</span></span>
 <span><span class="va">pcr_model</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">{</span></span>
@@ -870,7 +885,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_DENUE.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_DENUE.txt"</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="pozqkraalm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wbyfzbcjvr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -958,7 +973,7 @@
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}\]</span>
 - Root Mean Squared Prediction Error <code>RMSE</code></p>
 <p><span class="math display">\[RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}}\]</span></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Validación Cruzada </span></span>
 <span><span class="co">## Principal Components Regression (PCR)</span></span>
 <span><span class="va">pcr_model</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
@@ -980,7 +995,7 @@
 <li>Mean Absolute Error (MSE)</li>
 </ul>
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left|Y_{i}- \hat{Y}_{i}\right|^{2}\]</span></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/khliland/pls">pls</a></span><span class="op">)</span></span>
@@ -1019,7 +1034,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">caret.pcr</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/caret_pcr_denue_cv.rds"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">training_list</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/caret_train_denue_cv.rds"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">testing_list</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/caret_test_denue_cv.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#use model to make predictions on a test set</span></span>
 <span><span class="va">pcr_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">caret.pcr</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span>, <span class="va">testing_list</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co"># Calculate MSE </span></span>
@@ -1037,7 +1052,7 @@
 <div id="educación" class="section level3 unnumbered">
 <h3>Educación<a class="anchor" aria-label="anchor" href="#educaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"Bases/Municipio/Indicadores_Escuelas_SEP.RData"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sep_mun</span> <span class="op">&lt;-</span> <span class="va">sep_mun</span> <span class="op">%&gt;%</span></span>
@@ -1046,12 +1061,12 @@
 <span>                <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">suma</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>                  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">suma</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Análisis de componentes principales</strong></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PCA_SEP</span> <span class="op">&lt;-</span> <span class="fu">PCA</span><span class="op">(</span><span class="va">sep_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>                scale.unit <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                 ncp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">sep_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>                  graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Índice estandarizado (SVD)</span></span>
 <span><span class="co"># Componentes seleccionadas</span></span>
 <span><span class="va">ncp</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
@@ -1063,7 +1078,7 @@
 <span>               <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">PCA_SEP</span><span class="op">[[</span><span class="st">"eig"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">ncp</span><span class="op">]</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_SEP</span>,  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_SEP.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="busxefkfqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xblhijafmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1164,7 +1179,7 @@
 <div id="valores-extremos-1" class="section level4 unnumbered">
 <h4>Valores extremos<a class="anchor" aria-label="anchor" href="#valores-extremos-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Principal Components Regression (PCR)</span></span>
 <span><span class="va">pcr_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pls/man/mvr.html">pcr</a></span><span class="op">(</span><span class="va">PC_SEP</span><span class="op">$</span><span class="va">PC</span><span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">sep_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span>, ncomp <span class="op">=</span> <span class="va">ncp</span>,  scale <span class="op">=</span> <span class="cn">TRUE</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, validation <span class="op">=</span> <span class="st">"LOO"</span><span class="op">)</span></span>
 <span><span class="co">#saveRDS(pcr_model, paste0(here::here(), "/Output/Municipio/pcr_model_sep.rds"))</span></span>
@@ -1186,7 +1201,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_SEP.txt"</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="kesrxfkyhk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="enixlpjhsh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1222,7 +1237,7 @@
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}\]</span>
 - Root Mean Squared Prediction Error <code>RMSE</code></p>
 <p><span class="math display">\[RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}}\]</span></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ncomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sep_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co"># Validación Cruzada </span></span>
 <span><span class="va">pcr_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pls/man/mvr.html">pcr</a></span><span class="op">(</span><span class="va">PC_SEP</span><span class="op">$</span><span class="va">PC</span><span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">sep_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">]</span>, </span>
@@ -1242,7 +1257,7 @@
 <li>Mean Absolute Error (MSE)</li>
 </ul>
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left|Y_{i}- \hat{Y}_{i}\right|^{2}\]</span></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/khliland/pls">pls</a></span><span class="op">)</span></span>
@@ -1268,7 +1283,7 @@
 <span>                   tuneGrid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>ncomp <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">ncomp</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">caret.pcr</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/caret_pcr_sep_cv.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#use model to make predictions on a test set</span></span>
 <span><span class="va">pcr_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">caret.pcr</span>, <span class="va">testing</span><span class="op">)</span></span>
 <span><span class="co"># Calculate MSE </span></span>
@@ -1284,7 +1299,7 @@
 <div id="salud" class="section level3 unnumbered">
 <h3>Salud<a class="anchor" aria-label="anchor" href="#salud"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/Indicadores_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clues_mun</span> <span class="op">&lt;-</span> <span class="va">clues_mun</span> <span class="op">%&gt;%</span></span>
@@ -1292,12 +1307,12 @@
 <span>               <span class="fu">mutate</span><span class="op">(</span>suma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">suma</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>                <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">suma</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>                  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">suma</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PCA_CLUES</span> <span class="op">&lt;-</span> <span class="fu">PCA</span><span class="op">(</span><span class="va">clues_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>                  scale.unit <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                   ncp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">clues_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>                    graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Índice estandarizado (SVD)</span></span>
 <span><span class="co"># Componentes seleccionadas</span></span>
 <span><span class="va">ncp</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
@@ -1311,7 +1326,7 @@
 <span>                 <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_CLUES</span>,  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_CLUES.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="grsvmtfdih" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dhyghoyglp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1367,7 +1382,7 @@
 <div id="valores-extremos-2" class="section level4 unnumbered">
 <h4>Valores extremos<a class="anchor" aria-label="anchor" href="#valores-extremos-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Principal Components Regression (PCR)</span></span>
 <span><span class="va">pcr_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pls/man/mvr.html">pcr</a></span><span class="op">(</span><span class="va">PC_CLUES</span><span class="op">$</span><span class="va">PC</span><span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">clues_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span>, ncomp <span class="op">=</span> <span class="va">ncp</span>,  scale <span class="op">=</span> <span class="cn">TRUE</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, validation <span class="op">=</span> <span class="st">"LOO"</span><span class="op">)</span></span>
 <span></span>
@@ -1389,7 +1404,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_CLUES.txt"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
-<div id="akmiehfnca" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cvjggmwyrq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1425,7 +1440,7 @@
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}\]</span>
 - Root Mean Squared Prediction Error <code>RMSE</code></p>
 <p><span class="math display">\[RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}\left(Y_{i}- \hat{Y}_{i}\right)^{2}}\]</span></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ncomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">clues_mun</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co"># Validación Cruzada </span></span>
 <span></span>
@@ -1447,7 +1462,7 @@
 <li>Mean Absolute Error (MSE)</li>
 </ul>
 <p><span class="math display">\[MSE = \frac{1}{n}\sum_{i = 1}^{n}\left|Y_{i}- \hat{Y}_{i}\right|^{2}\]</span></p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/khliland/pls">pls</a></span><span class="op">)</span></span>
@@ -1473,7 +1488,7 @@
 <span>                   tuneGrid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>ncomp <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">ncomp</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">caret.pcr</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/caret_pcr_clues_cv.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#use model to make predictions on a test set</span></span>
 <span><span class="va">pcr_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">caret.pcr</span>, <span class="va">testing</span><span class="op">)</span></span>
 <span><span class="co"># Calculate MSE </span></span>
@@ -1491,9 +1506,9 @@
 <h2>Accesibilidad<a class="anchor" aria-label="anchor" href="#accesibilidad"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>Índice de accesibilidad</strong></p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/IA_municipio.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="mmcekdzpms" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dhyghoyglp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1607,7 +1622,7 @@
 </tbody>
 </table></div>
 </div>
-<div id="lqnvbsusnd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cvjggmwyrq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1658,16 +1673,16 @@
 <h2>Calidad del entorno<a class="anchor" aria-label="anchor" href="#calidad-del-entorno"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>MGN</strong></p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/MGN.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_IMM.Rdata"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">IMM</span> <span class="op">&lt;-</span> <span class="va">PC_IMM</span> <span class="op">%&gt;%</span></span>
 <span>        <span class="fu">rename</span><span class="op">(</span><span class="st">"IMM"</span> <span class="op">=</span> <span class="st">"PC"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>DENUE</strong></p>
 <p>Se excluyen los subsistemas de <code>Educación</code> y <code>Salud</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Subsistemas_DENUE.Rdata"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">Indicadores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">Subsitemas</span><span class="op">)</span></span>
 <span></span>
@@ -1689,28 +1704,28 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">DENUE</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CVE_MUN"</span>, <span class="va">Indicadores</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">tabla_DENUE</span><span class="op">)</span></span></code></pre></div>
 <p><strong>SEP</strong></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">SEP</span> <span class="op">&lt;-</span> <span class="va">PC_SEP</span> <span class="op">%&gt;%</span></span>
 <span>         <span class="fu">rename</span><span class="op">(</span><span class="st">"Educacion"</span> <span class="op">=</span> <span class="st">"PC"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>CLUES</strong></p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PC_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">CLUES</span> <span class="op">&lt;-</span> <span class="va">PC_CLUES</span> <span class="op">%&gt;%</span></span>
 <span>          <span class="fu">rename</span><span class="op">(</span><span class="st">"Salud"</span> <span class="op">=</span> <span class="st">"PC"</span><span class="op">)</span></span></code></pre></div>
 <p>** Índice de accesibilidad a nivel municipio**</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/IA_municipio.Rdata"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">IAL</span> <span class="op">&lt;-</span> <span class="va">accesibilidad_mun</span> <span class="op">%&gt;%</span></span>
 <span>         <span class="fu">select</span><span class="op">(</span><span class="va">CVE_MUN</span>, <span class="va">IAL</span><span class="op">)</span> </span></code></pre></div>
 <p><strong>Integración del ICE</strong></p>
 <p><strong>Imputación de valores faltantes</strong></p>
 <p>A los valores faltantes de equipamiento se les imputa el valor mínimos que puede obtener cada subsistema, calculados por el método de componentes principales. Siendo estos los valores extremos (falta de equipamiento), este valor se formuló utilizando Principal Component Regresion (PCR) y de esta manera poder obtener el valor predictivo del valor mínimo.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PCR_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_SEP.txt"</span><span class="op">)</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>             <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">.</span>,<span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_CLUES.txt"</span><span class="op">)</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>              <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">.</span>, <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/PCR_DENUE.txt"</span><span class="op">)</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ICE_2020</span> <span class="op">&lt;-</span> <span class="va">MGN_mun</span> <span class="op">%&gt;%</span></span>
 <span>             <span class="fu">select</span><span class="op">(</span><span class="va">CVE_MUN</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>              <span class="fu">left_join</span><span class="op">(</span><span class="va">.</span>, <span class="va">IMM</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CVE_MUN"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -1740,7 +1755,7 @@
 </h3>
 <p>José Bernardo Pena Trapero: <code>Problemas de la medición del bienestar y conceptos afines (1977)</code></p>
 <p>Primeramente se define como es la entrada de los indicadores simples. Este tipo de método - Índice de marginación (Negativo) (Marginación baja (-Negativa) / Marginación alta (Positiva)) - Índice de equipamiento + CLUES (Postivo) + SEP (Postivo) + DENUE (Positivo) - Indice de accesibilidad (Negativo) (Accesibilidad alta (cercanos a cero) / Accesibilidad baja (Alejados del cero))</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">p2distance</span><span class="op">)</span></span>
 <span><span class="va">ICE_2020_data</span> <span class="op">&lt;-</span> <span class="va">ICE_2020</span> <span class="op">%&gt;%</span></span>
 <span>                   <span class="fu">mutate</span><span class="op">(</span>IMM <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">*</span><span class="va">.</span><span class="op">$</span><span class="va">IMM</span>,</span>
@@ -1748,11 +1763,11 @@
 <p><strong>Base de referencia</strong></p>
 <p><strong>Nota.-</strong> Se toma como base de referencia el valor del mínimo de cada
 indicador simple.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">p2distance</span><span class="op">)</span></span>
 <span><span class="va">minRV</span> <span class="op">&lt;-</span> <span class="fu">p2distance</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/p2distance/man/makeReferenceVector.html">makeReferenceVector</a></span><span class="op">(</span>X <span class="op">=</span> <span class="va">ICE_2020_data</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, </span>
 <span>                                          reference_vector_function <span class="op">=</span> <span class="st">'min'</span><span class="op">)</span></span></code></pre></div>
-<div id="cxkmfwmuha" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ciikundihy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1832,7 +1847,7 @@ indicador simple.</p>
 </table></div>
 </div>
 <p><strong>Método de Distancia</strong> <span class="math inline">\(DP_{2}\)</span></p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">##Calculo del Método de Distancias DP2</span></span>
 <span><span class="va">ind_ice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/p2distance/man/p2distance.html">p2distance</a></span><span class="op">(</span>matriz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">ICE_2020_data</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, </span>
 <span>                       reference_vector <span class="op">=</span> <span class="va">minRV</span>, </span>
@@ -1841,16 +1856,16 @@ indicador simple.</p>
 <span><span class="co">#&gt; [1] "Iteration 2"</span></span>
 <span><span class="co">#&gt; [1] "Iteration 3"</span></span></code></pre></div>
 <p>El modelo converge a la cuarta iteración</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ind_ice</span><span class="op">$</span><span class="va">iteration</span></span>
 <span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ICE_2020</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">ICE_2020</span>, <span class="va">ind_ice</span><span class="op">[[</span><span class="st">"p2distance"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Se cambian los nombres de las columnas </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">]</span>, <span class="st">"ICE"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-79-1.png" width="672"></div>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-138-1.png" width="672"></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Se identifican los outliers en el índice de calidad del entorno</span></span>
 <span><span class="co">#boxplot.stats(DP2_2010$IM_2010)$out</span></span>
 <span><span class="va">outliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/boxplot.stats.html">boxplot.stats</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">$</span><span class="va">ICE</span><span class="op">)</span></span>
@@ -1871,7 +1886,7 @@ Hodges (1959)<br></p>
 contener 3 números para los 3 exponentes q1, q2 y q3 en el esquema de
 asignación general (ver paquete de <code>stratification</code>). El valor
 predeterminado es la asignación de <strong>Neyman</strong> (q1 = q3 = 0.5 y q2 = 0)</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">start.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co"># Se define el coeficiente de variación a usar</span></span>
 <span><span class="va">coef.var</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
@@ -1900,7 +1915,7 @@ predeterminado es la asignación de <strong>Neyman</strong> (q1 = q3 = 0.5 y q2 
 <span></span>
 <span><span class="co">#Se guardan los resultados de las iteraciones</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">sd</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Municipio/sd.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">min.strata</span> <span class="op">&lt;-</span> <span class="va">sd</span> <span class="op">%&gt;%</span></span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>                <span class="fu">slice</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">CV</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -1938,10 +1953,10 @@ CV
 </table></div>
 </div>
 <div class="col-md-8">
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-85-1.png" width="80%" height="80%"></div>
+<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-144-1.png" width="80%" height="80%"></div>
 </div>
 </div>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">strata.ice</span> <span class="op">&lt;-</span> <span class="fu">strata.cumrootf</span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">$</span><span class="va">ICE_out</span>,</span>
 <span>                               CV <span class="op">=</span> <span class="fl">0.05</span>,  <span class="co">## Revisar que tenga el mismo CV</span></span>
 <span>                                Ls <span class="op">=</span> <span class="fl">5</span>,</span>
@@ -1966,7 +1981,7 @@ CV
 <p><strong>Indice normalizado</strong></p>
 <p><strong>Escenarios del mínimo y máximo valor en el índice DP2</strong></p>
 <p><strong>Se guarda la bases de Datos del ICE por municipio</strong></p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Desviación estandar de los indicadores</span></span>
 <span><span class="va">desvest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">16</span><span class="op">]</span>, MARGIN <span class="op">=</span> <span class="fl">2</span>, <span class="va">sd</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>                       <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -2000,7 +2015,7 @@ CV
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">ICE_2020</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Municipio/ICE_2020.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-5" data-title="ICE_Mun_Mapa">
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-88"></span>
+<span style="display:block;" id="fig:unnamed-chunk-147"></span>
 <img src="images/Municipio/ICE_Mun_Mapa.png" alt="Elaboración propia" width="100%"><p class="caption">
 Figure 1: Elaboración propia
 </p>
@@ -2011,14 +2026,33 @@ Figure 1: Elaboración propia
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="fuentes-de-informaci%C3%B3n.html">Fuentes de información</a></div>
+<div class="next"><a href="localidad-4.html">Localidad</a></div>
 </div></main><div class="col-md-2 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <img id="cover" class="d-none d-lg-block" src="https://raw.githubusercontent.com/dvillasanao/ICE_2020/main/images/logo.svg" width="198.43" height="190.43" style="margin: 0 auto; max-width: 70%; max-height: 50%;"><nav id="toc" data-toggle="toc" aria-label="On this page" class="indice_derecha"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#municipio-4">Municipio</a></li>
+<li><a class="nav-link" href="#marginaci%C3%B3n">Marginación</a></li>
+<li>
+<a class="nav-link" href="#equipamiento-1">Equipamiento</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#denue-1">DENUE</a></li>
+<li><a class="nav-link" href="#educaci%C3%B3n">Educación</a></li>
+<li><a class="nav-link" href="#salud">Salud</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#accesibilidad">Accesibilidad</a></li>
+<li>
+<a class="nav-link" href="#calidad-del-entorno">Calidad del entorno</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#m%C3%A9todo-de-distancias-dp_2">Método de Distancias \(DP_2\)</a></li>
+<li><a class="nav-link" href="#m%C3%A9todo-de-estratificaci%C3%B3n">Método de estratificación</a></li>
+<li><a class="nav-link" href="#%C3%ADndice-normalizado">Índice normalizado</a></li>
+</ul>
+</li>
+</ul>
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/dvillasanao/ICE_2020/blob/master/03_Municipio.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dvillasanao/ICE_2020/edit/master/03_Municipio.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
