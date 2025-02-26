@@ -458,7 +458,7 @@ mean((pcr_model[[1]][["residuals"]])^2)
 ```
 
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Municipio/pcr_model_denue_cv.rds"))
 require(ggrepel)
 
@@ -515,6 +515,8 @@ ggexport(plotlist = p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+![](Output/Municipio/pcr_model_denue_CrossValidation_Page_05.png)
 
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
@@ -576,7 +578,7 @@ RMSE = caret::RMSE(pcr_pred, testing_list[[5]]$PC)
 postResample(pred = pcr_pred, obs = testing_list[[5]]$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_denue_cv.rds"))
 
 ## Se guardan las tablas en un excel 
@@ -635,6 +637,8 @@ ggexport(plotlist = p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+![](Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png)
 
 
 ### Educación {.unnumbered}
@@ -794,7 +798,7 @@ mean((pcr_model[["residuals"]])^2)
 ```
 
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Municipio/pcr_model_sep_cv.rds"))
 
 # Extraer los datos de validación
@@ -845,7 +849,7 @@ ggexport(p,
          height = 8,
          device = "cairo_pdf")
 ```
-
+![](Output/Municipio/pcr_model_sep_CrossValidation.png)
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
@@ -893,7 +897,7 @@ RMSE = caret::RMSE(pcr_pred, testing$PC)
 postResample(pred = pcr_pred, obs = testing$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_sep_cv.rds"))
 
 # Extraer los datos de validación
@@ -940,7 +944,7 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
-
+![](Output/Municipio/caret_pcr_sep_CrossValidation.png)
 
 ### Salud {.unnumbered}
 
@@ -1098,7 +1102,7 @@ mean((pcr_model[["residuals"]])^2)
 ```
 
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Municipio/pcr_model_clues_cv.rds"))
 
 # Extraer los datos de validación
@@ -1152,6 +1156,8 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
+![](Output/Municipio/pcr_model_clues_CrossValidation.png)
+
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
 - Mean Absolute Error (MSE) 
@@ -1198,7 +1204,7 @@ RMSE = caret::RMSE(pcr_pred, testing$PC)
 postResample(pred = pcr_pred, obs = testing$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr<- readRDS(paste0(here::here(), "/Output/Municipio/caret_pcr_clues_cv.rds"))
 summary(caret.pcr)
 # Extraer los datos de validación
@@ -1244,6 +1250,8 @@ ggexport(p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+![](Output/Municipio/caret_pcr_clues_CrossValidation.png)
 
 ## Accesibilidad {.unnumbered}
 
