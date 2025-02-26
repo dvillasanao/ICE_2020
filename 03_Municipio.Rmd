@@ -646,13 +646,12 @@ ggexport(plotlist = p,
 ```
 
 
-<a href="/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-5" data-title="caret_pcr_denue">
+<a href="/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-6" data-title="caret_pcr_denue">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png"))
 ```
 </a>
 
-![]()
 
 
 ### Educación {.unnumbered}
@@ -863,7 +862,14 @@ ggexport(p,
          height = 8,
          device = "cairo_pdf")
 ```
-![](Output/Municipio/pcr_model_sep_CrossValidation.png)
+
+
+<a href="/Output/Municipio/pcr_model_sep_CrossValidation.png" data-lightbox="image-7" data-title="pcr_sep">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/pcr_model_sep_CrossValidation.png"))
+```
+</a>
+
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
@@ -958,7 +964,13 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
-![](Output/Municipio/caret_pcr_sep_CrossValidation.png)
+
+<a href="/Output/Municipio/caret_pcr_sep_CrossValidation.png" data-lightbox="image-9" data-title="caret_pcr_sep">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_sep_CrossValidation.png"))
+```
+</a>
+
 
 ### Salud {.unnumbered}
 
@@ -1170,7 +1182,14 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
-![](Output/Municipio/pcr_model_clues_CrossValidation.png)
+
+<a href="/Output/Municipio/pcr_model_clues_CrossValidation.png" data-lightbox="image-11" data-title="pcr_clues">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/pcr_model_clues_CrossValidation.png"))
+```
+</a>
+
+
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
@@ -1265,7 +1284,15 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
-![](Output/Municipio/caret_pcr_clues_CrossValidation.png)
+
+<a href="/Output/Municipio/caret_pcr_clues_CrossValidation.png" data-lightbox="image-12" data-title="caret_pcr_clues">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_clues_CrossValidation.png"))
+```
+</a>
+
+
+![]()
 
 ## Accesibilidad {.unnumbered}
 
@@ -1332,7 +1359,7 @@ tabla %>%
 
 Distribución del índice de accesibilidad a nivel municipal    
 
-<a href="/images/Municipio/IAL a nivel municipal_ggridges.png" data-lightbox="image-1" data-title="IAL_municipio">
+<a href="/images/Municipio/IAL a nivel municipal_ggridges.png" data-lightbox="image-13" data-title="IAL_municipio">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL a nivel municipal_ggridges.png"))
@@ -1523,11 +1550,11 @@ ICE_2020 <- cbind(ICE_2020, ind_ice[["p2distance"]])
 names(ICE_2020) = c(colnames(ICE_2020)[1:(ncol(ICE_2020)-1)], "ICE")
 ```
 
-```{r, echo = FALSE, fig.height=3, fig.width=7}
+```{r, echo = FALSE, fig.height=3, fig.width=7, eval = FALSE}
 p <- ICE_2020 %>%
       ggplot() + 
-       geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.7) + 
-        geom_jitter(aes(x = ICE, y = "", color = ICE, fill = ICE), size = 2, alpha = 0.3) + 
+       geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.5) + 
+        geom_jitter(aes(x = ICE, y = "", color = ICE, fill = ICE), size = 0.5, alpha = 0.3) + 
          theme_ipsum_rc(grid = "X") +
                      theme(title = element_text(size = 15, family = "Century Gothic"),
                             plot.title = element_text(size = 15,family = "Century Gothic"),
@@ -1538,12 +1565,12 @@ p <- ICE_2020 %>%
                               axis.title = element_text(size = 10, family = "Century Gothic"), 
                                axis.title.y = element_text(size = 10, family = "Century Gothic"), 
                                 axis.title.x = element_text(size = 10, family = "Century Gothic"),
-                                 legend.key.size = unit(0.5, 'cm'),
+                                 legend.key.size = unit(0.4, 'cm'),
                                legend.text =element_text(size = 10, family = "Century Gothic"), 
                                 legend.title = element_text(size = 12, family = "Century Gothic")) + 
               scale_color_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
                 scale_fill_viridis_c(option = "A", begin = 0.3, end = 0.8) + 
-                 scale_y_discrete(expand = c(0.5,0)) +
+                 scale_y_discrete(expand = c(0.5, 0)) +
                  labs(title = paste("Boxplot del índice de calidad del entorno"),
                        subtitle = "Nivel municipal", 
                        color = "",  
@@ -1552,6 +1579,23 @@ p <- ICE_2020 %>%
                           y = "") 
 p
 ```
+
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Municipio/boxplot_ICE.pdf"),
+         width =  6,
+         height = 4,
+         device = "cairo_pdf")
+```
+
+
+<a href="/Output/Municipio/boxplot_ICE.png" data-lightbox="image-14" data-title="Boxplot_Mun_ICE">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/boxplot_ICE.png"))
+```
+</a>
 
 ```{r}
 # Se identifican los outliers en el índice de calidad del entorno
@@ -1640,7 +1684,7 @@ min.strata %>%
 </div>
 
 <div class = "col-md-8">
-```{r, echo = FALSE, out.width = "80%", out.height= "80%"}
+```{r, echo = FALSE, out.width = "80%", out.height= "80%", eval = FALSE}
 rows <- c(nrow(sd))
 
 p <- sd %>%
@@ -1674,8 +1718,27 @@ p <- sd %>%
                         x = "iteraciones") 
 p
 ```
+
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Municipio/min_strata_ICE.pdf"),
+         width =  6,
+         height = 6,
+         device = "cairo_pdf")
+```
+
+
+<a href="/Output/Municipio/min_strata_ICE.png" data-lightbox="image-15" data-title="min_strata_Mun_ICE">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/min_strata_ICE.png"))
+```
+</a>
+
 </div>
 </div>
+
 
 ```{r}
 strata.ice <- strata.cumrootf(ICE_2020$ICE_out,
@@ -1740,7 +1803,7 @@ save(ICE_2020, file = paste0(here::here(), "/Bases/Municipio/ICE_2020.RData"))
 ```
 
 
-<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-5" data-title="ICE_Mun_Mapa">
+<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-16" data-title="ICE_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%', fig.cap="Elaboración propia"}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/ICE_Mun_Mapa.png"))
