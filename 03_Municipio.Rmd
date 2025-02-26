@@ -516,7 +516,14 @@ ggexport(plotlist = p,
          device = "cairo_pdf")
 ```
 
-![](Output/Municipio/pcr_model_denue_CrossValidation_Page_05.png)
+
+<a href="/Output/Municipio/pcr_model_denue_CrossValidation_Page_05.png" data-lightbox="image-5" data-title="pcr_denue">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/pcr_model_denue_CrossValidation_Page_05.png"))
+```
+</a>
+
+
 
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
@@ -638,7 +645,14 @@ ggexport(plotlist = p,
          device = "cairo_pdf")
 ```
 
-![](Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png)
+
+<a href="/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-5" data-title="caret_pcr_denue">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png"))
+```
+</a>
+
+![]()
 
 
 ### Educación {.unnumbered}
