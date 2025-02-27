@@ -965,7 +965,7 @@ ggexport(p,
 ```
 
 
-<a href="/Output/Municipio/caret_pcr_sep_CrossValidation.png" data-lightbox="image-9" data-title="caret_pcr_sep">
+<a href="/Output/Municipio/caret_pcr_sep_CrossValidation.png" data-lightbox="image-8" data-title="caret_pcr_sep">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_sep_CrossValidation.png"))
 ```
@@ -1183,7 +1183,7 @@ ggexport(p,
 ```
 
 
-<a href="/Output/Municipio/pcr_model_clues_CrossValidation.png" data-lightbox="image-11" data-title="pcr_clues">
+<a href="/Output/Municipio/pcr_model_clues_CrossValidation.png" data-lightbox="image-9" data-title="pcr_clues">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio/pcr_model_clues_CrossValidation.png"))
 ```
@@ -1285,7 +1285,7 @@ ggexport(p,
 ```
 
 
-<a href="/Output/Municipio/caret_pcr_clues_CrossValidation.png" data-lightbox="image-12" data-title="caret_pcr_clues">
+<a href="/Output/Municipio/caret_pcr_clues_CrossValidation.png" data-lightbox="image-10" data-title="caret_pcr_clues">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_clues_CrossValidation.png"))
 ```
@@ -1359,7 +1359,7 @@ tabla %>%
 
 Distribución del índice de accesibilidad a nivel municipal    
 
-<a href="/images/Municipio/IAL a nivel municipal_ggridges.png" data-lightbox="image-13" data-title="IAL_municipio">
+<a href="/images/Municipio/IAL a nivel municipal_ggridges.png" data-lightbox="image-11" data-title="IAL_municipio">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/IAL a nivel municipal_ggridges.png"))
@@ -1590,7 +1590,7 @@ ggexport(p,
 ```
 
 
-<a href="/Output/Municipio/boxplot_ICE.png" data-lightbox="image-14" data-title="Boxplot_Mun_ICE">
+<a href="/Output/Municipio/boxplot_ICE.png" data-lightbox="image-12" data-title="Boxplot_Mun_ICE">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio/boxplot_ICE.png"))
@@ -1729,7 +1729,7 @@ ggexport(p,
 ```
 
 
-<a href="/Output/Municipio/min_strata_ICE.png" data-lightbox="image-15" data-title="min_strata_Mun_ICE">
+<a href="/Output/Municipio/min_strata_ICE.png" data-lightbox="image-13" data-title="min_strata_Mun_ICE">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/Output/Municipio/min_strata_ICE.png"))
@@ -1803,7 +1803,7 @@ save(ICE_2020, file = paste0(here::here(), "/Bases/Municipio/ICE_2020.RData"))
 ```
 
 
-<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-16" data-title="ICE_Mun_Mapa">
+<a href="/images/Municipio/ICE_Mun_Mapa.png" data-lightbox="image-14" data-title="ICE_Mun_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%', fig.cap="Elaboración propia"}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Municipio/ICE_Mun_Mapa.png"))
