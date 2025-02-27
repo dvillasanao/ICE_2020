@@ -646,9 +646,9 @@ ggexport(plotlist = p,
 ```
 
 
-<a href="/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-6" data-title="caret_pcr_denue">
+<a href="/Output/Municipio/caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-6" data-title="caret_pcr_denue">
 ```{r, echo=FALSE, out.width='100%', fig.align='center'}
-knitr::include_graphics(paste0(here::here(), "/Output/Municipio//caret_pcr_denue_CrossValidation_Page_05.png"))
+knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_denue_CrossValidation_Page_05.png"))
 ```
 </a>
 
@@ -1292,7 +1292,6 @@ knitr::include_graphics(paste0(here::here(), "/Output/Municipio/caret_pcr_clues_
 </a>
 
 
-![]()
 
 ## Accesibilidad {.unnumbered}
 

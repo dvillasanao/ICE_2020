@@ -994,7 +994,8 @@ económicos que lo integran</p>
 <span></span>
 <span><span class="co">#calculate MSE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pcr_model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"residuals"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-178-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p><a href="/Output/Localidad/pcr_model_denue_CrossValidation_Page_05.png" data-lightbox="image-15" data-title="pcr_denue">
+<img src="Output/Localidad/pcr_model_denue_CrossValidation_Page_05.png" width="100%" style="display: block; margin: auto;"></a></p>
 <p>La función <code>postResample</code> puede utilizarse para estimar el error cuadrático medio (<code>RMSE</code>), el <code>R2</code> simple y el error absoluto medio (<code>MAE</code>) para resultados numéricos.</p>
 <ul>
 <li>Mean Absolute Error (MSE)</li>
@@ -1049,7 +1050,8 @@ económicos que lo integran</p>
 <span><span class="va">RMSE</span> <span class="op">=</span> <span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="va">pcr_pred</span>, <span class="va">testing_list</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span>
 <span><span class="co"># Summary of accurracy </span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">postResample</a></span><span class="op">(</span>pred <span class="op">=</span> <span class="va">pcr_pred</span>, obs <span class="op">=</span> <span class="va">testing_list</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-182-1.png" width="100%"></div>
+<p><a href="/Output/Localidad/caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-16" data-title="caret_pcr_denue">
+<img src="Output/Localidad/caret_pcr_denue_CrossValidation_Page_05.png" width="100%" style="display: block; margin: auto;"></a></p>
 </div>
 </div>
 <div id="educación-1" class="section level3 unnumbered">
@@ -1083,7 +1085,7 @@ económicos que lo integran</p>
 <span>              <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_SEP</span>,  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PC_SEP.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="gvkrxsbmxq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="msvpplahij" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1227,7 +1229,7 @@ económicos que lo integran</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PCR_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PCR_SEP.txt"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
-<div id="tnvqubclhq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fyspflleog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1278,7 +1280,8 @@ económicos que lo integran</p>
 <span></span>
 <span><span class="co">#calculate MSE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pcr_model</span><span class="op">[[</span><span class="st">"residuals"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-192-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p><a href="/Output/Localidad/pcr_model_sep_CrossValidation.png" data-lightbox="image-17" data-title="pcr_sep">
+<img src="Output/Localidad/pcr_model_sep_CrossValidation.png" width="100%" style="display: block; margin: auto;"></a></p>
 <p>La función <code>postResample</code> puede utilizarse para estimar el error cuadrático medio (<code>RMSE</code>), el <code>R2</code> simple y el error absoluto medio (<code>MAE</code>) para resultados numéricos.</p>
 <ul>
 <li>Mean Absolute Error (MSE)</li>
@@ -1320,7 +1323,8 @@ económicos que lo integran</p>
 <span><span class="va">RMSE</span> <span class="op">=</span> <span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="va">pcr_pred</span>, <span class="va">testing</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span>
 <span><span class="co"># Summary of accurracy </span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">postResample</a></span><span class="op">(</span>pred <span class="op">=</span> <span class="va">pcr_pred</span>, obs <span class="op">=</span> <span class="va">testing</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-196-1.png" width="100%"></div>
+<p><a href="/Output/Localidad/caret_pcr_sep_CrossValidation.png" data-lightbox="image-18" data-title="caret_pcr_sep">
+<img src="Output/Localidad/caret_pcr_sep_CrossValidation.png" width="100%" style="display: block; margin: auto;"></a></p>
 </div>
 </div>
 <div id="salud-1" class="section level3 unnumbered">
@@ -1353,7 +1357,7 @@ económicos que lo integran</p>
 <span>                 <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">PC_CLUES</span>,  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PC_CLUES.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div id="pyzjjezvcx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vkrxsbmxqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1436,7 +1440,7 @@ económicos que lo integran</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PCR_CLUES.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">pcr_extremos</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PCR_CLUES.txt"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></code></pre></div>
-<div id="fwuaidmwkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nvqubclhql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   
   <div class="inline-table"><table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: 'Century Gothic'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 10px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
 <thead style="border-style: none;">
@@ -1489,7 +1493,8 @@ económicos que lo integran</p>
 <span></span>
 <span><span class="co">#calculate MSE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pcr_model</span><span class="op">[[</span><span class="st">"residuals"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-206-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p><a href="/Output/Localidad/pcr_model_clues_CrossValidation.png" data-lightbox="image-19" data-title="pcr_clues">
+<img src="Output/Localidad/pcr_model_clues_CrossValidation.png" width="100%" style="display: block; margin: auto;"></a></p>
 <p>La función <code>postResample</code> puede utilizarse para estimar el error cuadrático medio (<code>RMSE</code>), el <code>R2</code> simple y el error absoluto medio (<code>MAE</code>) para resultados numéricos.</p>
 <ul>
 <li>Mean Absolute Error (MSE)</li>
@@ -1531,7 +1536,8 @@ económicos que lo integran</p>
 <span><span class="va">RMSE</span> <span class="op">=</span> <span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="va">pcr_pred</span>, <span class="va">testing</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span>
 <span><span class="co"># Summary of accurracy </span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">postResample</a></span><span class="op">(</span>pred <span class="op">=</span> <span class="va">pcr_pred</span>, obs <span class="op">=</span> <span class="va">testing</span><span class="op">$</span><span class="va">PC</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-210-1.png" width="100%"></div>
+<p><a href="/Output/Localidad/caret_pcr_clues_CrossValidation.png" data-lightbox="image-20" data-title="caret_pcr_clues">
+<img src="Output/Localidad/caret_pcr_clues_CrossValidation.png" width="100%" style="display: block; margin: auto;"></a></p>
 <p><strong>Índice de accesibilidad</strong></p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/IA_localidad.Rdata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -1582,7 +1588,7 @@ económicos que lo integran</p>
 <span><span class="va">DENUE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">cbind.data.frame</span>, <span class="va">tabla</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">DENUE</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CVE_LOC"</span>, <span class="va">Indicadores</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">tabla_DENUE</span><span class="op">)</span></span></code></pre></div>
-<p>*<strong>SEP</strong></p>
+<p><strong>SEP</strong></p>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Output/Localidad/PC_SEP.RData"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1677,7 +1683,7 @@ indicador simple.</p>
 <span>                             reference_vector_function <span class="op">=</span> <span class="st">'min'</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class=" lightable-classic table table-striped table-hover table-condensed" style="font-family: Century Gothic; width: auto !important; margin-left: auto; margin-right: auto; font-size: 8px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:unnamed-chunk-226">Table 1: </span>Tabla: Base de referencia a nivel localidad
+<span id="tab:unnamed-chunk-232">Table 1: </span>Tabla: Base de referencia a nivel localidad
 </caption>
 <thead><tr>
 <th style="text-align:center;font-weight: bold;">
@@ -1834,7 +1840,8 @@ IAL
 <span></span>
 <span><span class="co"># Se cambian los nombres de las columnas </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">ICE_2020</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">]</span>, <span class="st">"ICE"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-230-1.png" width="672"></div>
+<p><a href="/Output/Localidad/boxplot_ICE.png" data-lightbox="image-22" data-title="Boxplot_Loc_ICE">
+<img src="Output/Localidad/boxplot_ICE.png" width="100%"></a></p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Se identifican los outliers en el índice de calidad del entorno</span></span>
 <span><span class="co">#boxplot.stats(DP2_2010$IM_2010)$out</span></span>
@@ -1921,7 +1928,8 @@ CV
 </table></div>
 </div>
 <div class="col-md-8">
-<div class="inline-figure"><img src="ICE_2020_files/figure-html/unnamed-chunk-236-1.png" width="80%" height="80%"></div>
+<p><a href="/Output/Localidad/min_strata_ICE.png" data-lightbox="image-23" data-title="min_strata_Loc_ICE">
+<img src="Output/Localidad/min_strata_ICE.png" width="100%"></a></p>
 </div>
 </div>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
@@ -1982,9 +1990,9 @@ CV
 <span></span>
 <span><span class="co"># Se guarda el índice de calidad del entorno normalizado</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">ICE_2020</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/Bases/Localidad/ICE_2020.RData"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<a href="/images/Localidad/ICE_Loc_Mapa.png" data-lightbox="image-6" data-title="ICE_Loc_Mapa">
+<a href="/images/Localidad/ICE_Loc_Mapa.png" data-lightbox="image-24" data-title="ICE_Loc_Mapa">
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-239"></span>
+<span style="display:block;" id="fig:unnamed-chunk-249"></span>
 <img src="images/Localidad/ICE_Loc_Mapa.png" alt="Elaboración propia" width="100%"><p class="caption">
 Figure 2: Elaboración propia
 </p>

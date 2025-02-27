@@ -1,9 +1,9 @@
 # Metodología {.unlisted .unnumbered}
 
-<a href="images/Metodología ICE.png" data-lightbox="image-1" data-title="metodologia">
+<a href="images/Metodologia ICE.png" data-lightbox="image-1" data-title="metodologia">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
 require(knitr)
-knitr::include_graphics(paste0(here::here(), "/images/Estructura/Metodología ICE.png"))
+knitr::include_graphics(paste0(here::here(), "/images/Estructura/Metodologia ICE.png"))
 ```
 </a>
 

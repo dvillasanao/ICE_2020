@@ -477,7 +477,7 @@ summary(pcr_model[[1]])
 mean((pcr_model[[1]][["residuals"]])^2)
 ```
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Localidad/pcr_model_denue_cv.rds"))
 require(ggrepel)
 load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
@@ -535,6 +535,13 @@ ggexport(plotlist = p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+
+<a href="/Output/Localidad/pcr_model_denue_CrossValidation_Page_05.png" data-lightbox="image-15" data-title="pcr_denue">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/pcr_model_denue_CrossValidation_Page_05.png"))
+```
+</a>
 
 
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
@@ -596,7 +603,7 @@ RMSE = caret::RMSE(pcr_pred, testing_list[[5]]$PC)
 postResample(pred = pcr_pred, obs = testing_list[[5]]$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_denue_cv.rds"))
 load(paste0(here::here(), "/Bases/Subsistemas_DENUE.Rdata"))
 tablas <- names(Subsitemas)
@@ -656,6 +663,13 @@ ggexport(plotlist = p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+<a href="/Output/Localidad/caret_pcr_denue_CrossValidation_Page_05.png" data-lightbox="image-16" data-title="caret_pcr_denue">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/caret_pcr_denue_CrossValidation_Page_05.png"))
+```
+</a>
+
 
 
 
@@ -816,7 +830,7 @@ mean((pcr_model[["residuals"]])^2)
 ```
 
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Localidad/pcr_model_sep_cv.rds"))
 
 # Extraer los datos de validación
@@ -869,6 +883,13 @@ ggexport(p,
 ```
 
 
+<a href="/Output/Localidad/pcr_model_sep_CrossValidation.png" data-lightbox="image-17" data-title="pcr_sep">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/pcr_model_sep_CrossValidation.png"))
+```
+</a>
+
+
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
 - Mean Absolute Error (MSE) 
@@ -915,7 +936,7 @@ RMSE = caret::RMSE(pcr_pred, testing$PC)
 postResample(pred = pcr_pred, obs = testing$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr <- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_sep_cv.rds"))
 
 # Extraer los datos de validación
@@ -961,6 +982,12 @@ ggexport(p,
          height = 8,
          device = "cairo_pdf")
 ```
+
+<a href="/Output/Localidad/caret_pcr_sep_CrossValidation.png" data-lightbox="image-18" data-title="caret_pcr_sep">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/caret_pcr_sep_CrossValidation.png"))
+```
+</a>
 
 
 ### Salud {.unnumbered}
@@ -1122,7 +1149,7 @@ mean((pcr_model[["residuals"]])^2)
 ```
 
 
-```{r, echo = FALSE, out.width = '70%', fig.align='center'}
+```{r, echo = FALSE, out.width = '70%', fig.align='center', eval = FALSE}
 pcr_model <- readRDS(paste0(here::here(), "/Output/Localidad/pcr_model_clues_cv.rds"))
 
 # Extraer los datos de validación
@@ -1176,6 +1203,12 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
+<a href="/Output/Localidad/pcr_model_clues_CrossValidation.png" data-lightbox="image-19" data-title="pcr_clues">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/pcr_model_clues_CrossValidation.png"))
+```
+</a>
+
 La función `postResample` puede utilizarse para estimar el error cuadrático medio (`RMSE`), el `R2` simple y el error absoluto medio (`MAE`) para resultados numéricos.     
 
 - Mean Absolute Error (MSE) 
@@ -1222,7 +1255,7 @@ RMSE = caret::RMSE(pcr_pred, testing$PC)
 postResample(pred = pcr_pred, obs = testing$PC)
 ```
 
-```{r, echo = FALSE, fig.width=10,  out.width = '100%'}
+```{r, echo = FALSE, fig.width=10,  out.width = '100%', eval = FALSE}
 caret.pcr<- readRDS(paste0(here::here(), "/Output/Localidad/caret_pcr_clues_cv.rds"))
 # Extraer los datos de validación
 validation_data <- caret.pcr[["results"]]
@@ -1268,6 +1301,12 @@ ggexport(p,
          device = "cairo_pdf")
 ```
 
+
+<a href="/Output/Localidad/caret_pcr_clues_CrossValidation.png" data-lightbox="image-20" data-title="caret_pcr_clues">
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/caret_pcr_clues_CrossValidation.png"))
+```
+</a>
 
 **Índice de accesibilidad**
 
@@ -1342,7 +1381,7 @@ rm(tabla_DENUE)
 ```
 
 
-***SEP** 
+**SEP** 
 
 ```{r}
 load(paste0(here::here(), "/Output/Localidad/PC_SEP.RData"))
@@ -1505,10 +1544,10 @@ ICE_2020 <- cbind(ICE_2020, ind_ice[["p2distance"]])
 names(ICE_2020) = c(colnames(ICE_2020)[1:(ncol(ICE_2020)-1)], "ICE")
 ```
 
-```{r, echo = FALSE, fig.height=3, fig.width=7}
+```{r, echo = FALSE, fig.height=3, fig.width=7, eval = FALSE}
 p <- ICE_2020 %>%
       ggplot() + 
-       geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.7) + 
+       geom_boxplot(aes(x = ICE, y = "", color = ICE), fill = "transparent", size = 0.3) + 
         geom_jitter(aes(x = ICE, y = "", color = ICE, fill = ICE), size = 0.3, alpha = 0.01) + 
          theme_ipsum_rc(grid = "X") +
            theme(title = element_text(size = 15, family = "Century Gothic"),
@@ -1535,6 +1574,22 @@ p <- ICE_2020 %>%
 p
 ```
 
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Localidad/boxplot_ICE.pdf"),
+         width =  6,
+         height = 4,
+         device = "cairo_pdf")
+```
+
+
+<a href="/Output/Localidad/boxplot_ICE.png" data-lightbox="image-22" data-title="Boxplot_Loc_ICE">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/boxplot_ICE.png"))
+```
+</a>
 
 ```{r}
 # Se identifican los outliers en el índice de calidad del entorno
@@ -1623,7 +1678,7 @@ min.strata %>%
 </div>
 
 <div class = "col-md-8">
-```{r, echo = FALSE, out.width = "80%", out.height= "80%"}
+```{r, echo = FALSE, out.width = "80%", out.height= "80%", eval = FALSE}
 rows <- c(nrow(sd))
 
 p <- sd %>%
@@ -1657,6 +1712,25 @@ p <- sd %>%
                         x = "iteraciones") 
 p
 ```
+
+```{r, eval = FALSE, echo = FALSE}
+require(ggpubr)
+ggexport(p, 
+         filename =paste0(here::here(), "/Output/Localidad/min_strata_ICE.pdf"),
+         width =  6,
+         height = 6,
+         device = "cairo_pdf")
+```
+
+
+<a href="/Output/Localidad/min_strata_ICE.png" data-lightbox="image-23" data-title="min_strata_Loc_ICE">
+```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%'}
+require(knitr)
+knitr::include_graphics(paste0(here::here(), "/Output/Localidad/min_strata_ICE.png"))
+```
+</a>
+
+
 </div>
 </div>
 
@@ -1727,7 +1801,7 @@ save(ICE_2020, file = paste0(here::here(), "/Bases/Localidad/ICE_2020.RData"))
 ```
 
 
-<a href="/images/Localidad/ICE_Loc_Mapa.png" data-lightbox="image-6" data-title="ICE_Loc_Mapa">
+<a href="/images/Localidad/ICE_Loc_Mapa.png" data-lightbox="image-24" data-title="ICE_Loc_Mapa">
 ```{r, echo = FALSE, fig.width=12, fig.height=12, out.width='100%', fig.cap="Elaboración propia"}
 require(knitr)
 knitr::include_graphics(paste0(here::here(), "/images/Localidad/ICE_Loc_Mapa.png"))
